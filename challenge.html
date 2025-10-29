@@ -1,0 +1,182 @@
+<!-- challenge.html — SAFE client-side SQLi CTF simulation -->
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>CTF SQLi (Mock) — Safe Local Challenge</title>
+  <style>
+    body{font-family:Inter,system-ui,Arial;background:#0f172a;padding:28px;color:#e6eef6}
+    .wrap{max-width:980px;margin:0 auto}
+    .card{background:#0b1220;border-radius:10px;padding:20px;box-shadow:0 8px 30px rgba(2,6,23,.7)}
+    label{display:block;margin:8px 0 6px;color:#9aa9c7;font-weight:600}
+    input[type=text], input[type=password]{width:100%;padding:10px;border-radius:8px;border:1px solid #203041;background:#07101a;color:#e6eef6}
+    button{margin-top:10px;padding:10px 14px;border-radius:8px;border:0;cursor:pointer}
+    .btn-danger{background:#ef4444;color:white}
+    .btn-primary{background:#2563eb;color:white;margin-left:8px}
+    pre{background:#071428;padding:12px;border-radius:8px;overflow:auto;color:#cfeffd}
+    .muted{color:#7f98b2}
+    .flag{background:#052e2f;padding:10px;border-radius:8px;color:#7ef3c5;font-weight:700}
+    .note{background:#071522;padding:10px;border-radius:8px;color:#9fc9d8}
+    .result-ok{color:#6ee7b7}
+    .result-bad{color:#ff9b9b}
+    .log{font-size:13px;color:#9fc9d8}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>CTF: SQL Injection — Mock (SAFE)</h1>
+    <p class="muted">Mô phỏng SQLi hoàn toàn trên client — <strong>không</strong> có server/database thật. Mục tiêu: hiểu cách query được ghép và cách bypass hoạt động.</p>
+
+    <div class="card" style="margin-top:16px">
+      <form id="loginForm" onsubmit="return false;">
+        <label>Username</label>
+        <input id="username" type="text" value="admin" autocomplete="off"/>
+        <label>Password</label>
+        <input id="password" type="text" value="wrongpass" autocomplete="off"/>
+
+        <div style="margin-top:10px">
+          <button id="runBtn" class="btn-danger">Show SQL & Run (Mock)</button>
+        </div>
+      </form>
+
+      <h3 style="margin-top:18px">Constructed SQL (visual)</h3>
+      <pre id="constructed">-- Chưa có query --</pre>
+
+      <h3>Mock Execution Result</h3>
+      <pre id="result">-- Chưa thực thi --</pre>
+
+      <div id="flagArea" style="margin-top:12px;display:none">
+        <div class="note">🎉 Bạn đã bypass thành công (mô phỏng). Flag:</div>
+        <div class="flag" id="flagText"></div>
+      </div>
+
+      <h4 style="margin-top:14px">Server-side debug (visual)</h4>
+      <div class="log" id="serverLog">-- logs --</div>
+
+      <p class="muted">Trang này chỉ minh họa cách chuỗi SQL có thể bị ghép và cách payload "làm cho điều kiện luôn đúng". <strong>KHÔNG</strong> sử dụng kỹ thuật này trên hệ thống thật.</p>
+    </div>
+  </div>
+
+<script>
+  // Mock "database" (client-side only)
+  const users = [
+    { id: 1, username: "admin", password: "password123", info: "Administrator" },
+    { id: 2, username: "alice", password: "alice_pw", info: "Alice user" },
+    { id: 3, username: "bob", password: "bob_pw", info: "Bob user" }
+  ];
+
+  // Example flag (in a real CTF keep this secret server-side; here it's visible for demo)
+  const FLAG = "01100101 01001000 01001010 01110010 01011000 00110011 01101000 01101100 01100101 01010111 00110001 01100110 01100101 01101110 01001010 01110010 01100101 01101100 00111001 01101000 01011010 01010111 01101100 01110110 01100101 01000110 00111001 01101111 01100011 01101101 00110001 00110100";
+
+  const usernameEl = document.getElementById('username');
+  const passwordEl = document.getElementById('password');
+  const constructedEl = document.getElementById('constructed');
+  const resultEl = document.getElementById('result');
+  const flagArea = document.getElementById('flagArea');
+  const flagText = document.getElementById('flagText');
+  const serverLog = document.getElementById('serverLog');
+  const runBtn = document.getElementById('runBtn');
+  const safeBtn = document.getElementById('safeBtn');
+
+  // Utility: escape for HTML display
+  function esc(s){
+    return String(s)
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#39;');
+  }
+
+  // Detect common SQLi payload patterns (for demonstration only)
+  function detectSqliPattern(input){
+    const i = input.toLowerCase();
+    // basic patterns: OR 1=1, ' OR '1'='1, comment markers -- ; /* */
+    const patterns = [
+    // Các dạng OR 1=1 phổ biến
+    /(['"]?\s*or\s*['"]?\s*\d+\s*=\s*\d+)/i,     // ' OR 1=1 hoặc "OR 1=1"
+    /(['"]?\s*or\s*['"]?1['"]?\s*=\s*['"]?1['"]?)/i, // 'OR'1'='1' dạng khác
+
+    // Các dấu comment phổ biến
+    /--+/i,       // --
+    /#/,          // #
+    /\/\*/i,      // /*
+
+    // UNION SELECT injection
+    /\bunion\b\s+\bselect\b/i,
+
+    // Một số biến thể nối chuỗi / logic khác
+    /\bor\b\s+'?'?\w+'?'?\s*=\s*'?'?\w+'?'?/i, // OR var=var
+    /\|\|/i,      // nối chuỗi 'a'||'b'
+    /\bor\s+true/i,
+    /\b1\s*=\s*1\b/i
+    ];
+
+    return patterns.some(re => re.test(i));
+  }
+
+  // A simple, safe mock "executor":
+  // - We DO NOT run SQL. We parse username/password and:
+  //   * if exact match -> return that user
+  //   * else if password looks like SQLi bypass -> return ALL rows (simulate WHERE always true)
+  //   * else -> return empty (login failed)
+  function mockExecute(username, password){
+    // exact match (normal login)
+    const found = users.filter(u => u.username === username && u.password === password);
+    if (found.length) {
+      return { type: "ok", rows: found.slice(0) };
+    }
+
+    // detect SQLi-like payload -> simulate bypass returning all rows
+    if (detectSqliPattern(password) || detectSqliPattern(username)) {
+      return { type: "bypass", rows: users.slice(0) };
+    }
+
+    // normal failed login -> no rows
+    return { type: "no_row", rows: [] };
+  }
+
+  function runMock(){
+    flagArea.style.display = 'none';
+    serverLog.textContent = "-- logs --";
+
+    const u = usernameEl.value;
+    const p = passwordEl.value;
+
+    // Show constructed insecure query (visual only)
+    const constructed = "SELECT * FROM users WHERE username='" + u + "' AND password='" + p + "';";
+    constructedEl.innerHTML = esc(constructed);
+
+    // Mock execution
+    const res = mockExecute(u, p);
+
+    // Pretty print rows
+    if (res.type === "ok") {
+      resultEl.innerHTML = "Login success (mock). Returned rows:\\n" + res.rows.map(r => JSON.stringify(r)).join("\\n");
+      serverLog.innerHTML = "Executed query (visual):<br>" + esc(constructed) + "<br><br>Result: returned " + res.rows.length + " row(s).";
+      flagArea.style.display = 'none';
+    } else if (res.type === "bypass") {
+      resultEl.innerHTML = "Bypass detected (mock). Returned rows (all):\\n" + res.rows.map(r => JSON.stringify(r)).join("\\n");
+      serverLog.innerHTML = "Executed query (visual):<br>" + esc(constructed);
+      // reveal flag as reward for bypass (mock)
+      flagArea.style.display = 'block';
+      flagText.textContent = FLAG;
+    } else {
+      resultEl.innerHTML = "Login failed (mock). No rows returned.";
+      serverLog.innerHTML = "Executed query (visual):<br>" + esc(constructed);
+    }
+  }
+
+
+
+  runBtn.addEventListener('click', runMock);
+
+
+  // initialize
+  constructedEl.innerText = "-- ready --";
+  resultEl.innerText = "-- ready --";
+  serverLog.innerText = "-- ready --";
+</script>
+</body>
+</html>
