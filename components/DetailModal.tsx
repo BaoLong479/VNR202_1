@@ -107,6 +107,53 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
     return elements;
   };
 
+  // Extract world context section from details for Pre-1986
+  const getWorldContext = (details: string) => {
+    const lines = details.split('\n');
+    const worldContextLines: string[] = [];
+    let inWorldContext = false;
+    
+    for (const line of lines) {
+      const trimmedLine = line.trim();
+      if (trimmedLine === '**Bối cảnh thế giới:**') {
+        inWorldContext = true;
+        worldContextLines.push(line);
+        continue;
+      }
+      if (trimmedLine.startsWith('**Bối cảnh Việt Nam:**')) {
+        break;
+      }
+      if (inWorldContext) {
+        worldContextLines.push(line);
+      }
+    }
+    
+    return worldContextLines.join('\n');
+  };
+
+  // Get Vietnam context and remaining details (excluding world context)
+  const getVietnamContextAndRest = (details: string) => {
+    const lines = details.split('\n');
+    const filteredLines: string[] = [];
+    let skipWorldContext = false;
+    
+    for (const line of lines) {
+      const trimmedLine = line.trim();
+      if (trimmedLine === '**Bối cảnh thế giới:**') {
+        skipWorldContext = true;
+        continue;
+      }
+      if (trimmedLine.startsWith('**Bối cảnh Việt Nam:**')) {
+        skipWorldContext = false;
+      }
+      if (!skipWorldContext) {
+        filteredLines.push(line);
+      }
+    }
+    
+    return filteredLines.join('\n');
+  };
+
   // Component for Pre-1986 Visualization
   const Pre1986Visualization = () => (
     <div className="space-y-8 mb-8">
@@ -214,11 +261,18 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
             />
           </div>
 
+          {/* Show world context first for Pre-1986 event */}
+          {isPre1986 && (
+            <div className="prose prose-lg max-w-none bg-white rounded-lg shadow-md p-6 mb-8">
+              {formatDetails(getWorldContext(event.details))}
+            </div>
+          )}
+
           {/* Show visualization for Pre-1986 event */}
           {isPre1986 && <Pre1986Visualization />}
           
           <div className="prose prose-lg max-w-none bg-white rounded-lg shadow-md p-6">
-            {formatDetails(event.details)}
+            {formatDetails(isPre1986 ? getVietnamContextAndRest(event.details) : event.details)}
           </div>
         </div>
         
