@@ -65,57 +65,12 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
 
       // List items
       if (trimmedLine.startsWith('- ')) {
-        let content = trimmedLine.substring(2);
-        
-        // Check if it's a bold item (contains **)
-        const boldMatch = content.match(/\*\*(.*?)\*\*/);
-        if (boldMatch) {
-          const beforeBold = content.substring(0, content.indexOf('**'));
-          const boldText = boldMatch[1];
-          const afterBold = content.substring(content.indexOf('**') + boldMatch[0].length);
-          
-          listItems.push(
-            <li key={`item-${index}`} className="text-gray-700 leading-relaxed">
-              <span className="text-red-500 font-bold mr-2">•</span>
-              {beforeBold}
-              <strong className="font-bold text-gray-900">{boldText}</strong>
-              {afterBold}
-            </li>
-          );
-        } else {
-          listItems.push(
-            <li key={`item-${index}`} className="text-gray-700 leading-relaxed">
-              <span className="text-red-500 font-bold mr-2">•</span>
-              {content}
-            </li>
-          );
-        }
-        return;
-      }
-
-      // Special stat highlight (emoji + bold percentage)
-      const statMatch = trimmedLine.match(/^(🔴|⚠️|📊|📈|📉)\s+\*\*(.*?)\*\*\s+-\s+(.+)$/);
-      if (statMatch) {
-        if (listItems.length > 0) {
-          elements.push(
-            <ul key={`list-${index}`} className="mb-4 ml-6 space-y-2">
-              {listItems}
-            </ul>
-          );
-          listItems = [];
-        }
-        
-        const [, emoji, statValue, statDescription] = statMatch;
-        elements.push(
-          <div key={`stat-${index}`} className="bg-red-50 border-l-4 border-red-500 p-4 my-4 rounded-r-lg">
-            <div className="flex items-center gap-3">
-              <span className="text-3xl">{emoji}</span>
-              <div>
-                <div className="text-3xl font-bold text-red-600">{statValue}</div>
-                <div className="text-sm text-gray-600 mt-1">{statDescription}</div>
-              </div>
-            </div>
-          </div>
+        const content = trimmedLine.substring(2);
+        listItems.push(
+          <li key={`item-${index}`} className="text-gray-700 leading-relaxed">
+            <span className="text-red-500 font-bold mr-2">•</span>
+            {content}
+          </li>
         );
         return;
       }
@@ -130,27 +85,11 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         listItems = [];
       }
       
-      // Handle inline bold text in paragraphs
-      const boldInlineMatch = trimmedLine.match(/\*\*(.*?)\*\*/g);
-      if (boldInlineMatch) {
-        const parts = trimmedLine.split(/(\*\*.*?\*\*)/);
-        elements.push(
-          <p key={`para-${index}`} className="mb-3 text-gray-700 leading-relaxed">
-            {parts.map((part, i) => {
-              if (part.startsWith('**') && part.endsWith('**')) {
-                return <strong key={i} className="font-bold text-gray-900">{part.slice(2, -2)}</strong>;
-              }
-              return part;
-            })}
-          </p>
-        );
-      } else {
-        elements.push(
-          <p key={`para-${index}`} className="mb-3 text-gray-700 leading-relaxed">
-            {trimmedLine}
-          </p>
-        );
-      }
+      elements.push(
+        <p key={`para-${index}`} className="mb-3 text-gray-700 leading-relaxed">
+          {trimmedLine}
+        </p>
+      );
     });
 
     // Close any remaining list
