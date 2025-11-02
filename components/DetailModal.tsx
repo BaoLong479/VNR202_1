@@ -257,8 +257,13 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
             <img 
               src={event.imageUrl}
               alt={event.title} 
-              className="w-full h-80 object-cover rounded-lg shadow-lg bg-gray-200"
+              className="w-full h-auto object-contain rounded-lg shadow-lg bg-gray-100"
             />
+            {isPre1986 && (
+              <p className="text-sm text-gray-600 italic mt-2 text-center">
+                Xếp hàng mua chất đốt thời bao cấp
+              </p>
+            )}
           </div>
 
           {/* Show world context first for Pre-1986 event */}
