@@ -107,72 +107,12 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
     return elements;
   };
 
-  // Component for Pre-1986 World Context Visualization
-  const Pre1986WorldContext = () => (
-    <div className="space-y-6 mb-8">
-      {/* Cold War Context */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          🌍 Bối Cảnh Thế Giới: Chiến Tranh Lạnh
-        </h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-5 shadow-md">
-            <h4 className="text-lg font-semibold text-blue-700 mb-3 flex items-center">
-              <span className="mr-2">🇺🇸</span>진영 Tư Bản Chủ Nghĩa
-            </h4>
-            <ul className="space-y-2 text-gray-700">
-              <li className="flex items-start">
-                <span className="text-blue-500 mr-2">•</span>
-                <span>Kinh tế thị trường tự do</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-blue-500 mr-2">•</span>
-                <span>Công nghệ phát triển nhanh</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-blue-500 mr-2">•</span>
-                <span>Liên minh NATO, OECD</span>
-              </li>
-            </ul>
-          </div>
-          
-          <div className="bg-red-50 border-2 border-red-300 rounded-lg p-5 shadow-md">
-            <h4 className="text-lg font-semibold text-red-700 mb-3 flex items-center">
-              <span className="mr-2">🇷🇺</span> Khối Xã Hội Chủ Nghĩa
-            </h4>
-            <ul className="space-y-2 text-gray-700">
-              <li className="flex items-start">
-                <span className="text-red-500 mr-2">•</span>
-                <span>Kinh tế kế hoạch hóa tập trung</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-red-500 mr-2">•</span>
-                <span>Bắt đầu xuất hiện dấu hiệu khủng hoảng</span>
-              </li>
-              <li className="flex items-start">
-                <span className="text-red-500 mr-2">•</span>
-                <span>Liên minh Warsaw, COMECON</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-        
-        <div className="mt-6 bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded">
-          <p className="text-gray-700 italic">
-            <strong>⚡ Diễn biến quan trọng:</strong> Gorbachev bắt đầu cải cách Perestroika (1985), 
-            báo hiệu sự lung lay của hệ thống XHCN Đông Âu.
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-
-  // Component for Pre-1986 Vietnam Context Visualization
-  const Pre1986VietnamVisualization = () => (
+  // Component for Pre-1986 Visualization
+  const Pre1986Visualization = () => (
     <div className="space-y-8 mb-8">
       {/* Inflation Highlight */}
       <div className="bg-white rounded-lg shadow-lg p-6 text-center border-2 border-red-100">
-        <h3 className="text-2xl font-bold mb-2 text-gray-800">📊 Đỉnh Điểm Khủng Hoảng</h3>
+        <h3 className="text-2xl font-bold mb-2 text-gray-800">Đỉnh Điểm Khủng Hoảng</h3>
         <p className="text-gray-700 mb-4">
           Cuộc cải cách "Giá - Lương - Tiền" năm 1985 thất bại đã đẩy lạm phát lên mức phi mã
         </p>
@@ -185,7 +125,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
       {/* Economic Model Diagram */}
       <div className="bg-white rounded-lg shadow-lg p-6">
         <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          🏛️ Mô Hình Kinh Tế "Bao Cấp"
+          Mô Hình Kinh Tế "Bao Cấp"
         </h3>
         <p className="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
           Giai đoạn này được đặc trưng bởi cơ chế kế hoạch hóa tập trung, quan liêu, bao cấp. 
@@ -237,47 +177,6 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           <p className="text-gray-700 font-semibold">Hiện tượng xã hội phổ biến</p>
         </div>
       </div>
-
-      {/* Social Crisis Indicators */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          ⚠️ Khủng Hoảng Xã Hội
-        </h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="space-y-4">
-            <div className="flex items-start">
-              <span className="text-3xl mr-3">🍚</span>
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-1">Thiếu Lương Thực</h4>
-                <p className="text-gray-600 text-sm">Người dân phải xếp hàng mua theo tem phiếu, không đủ ăn</p>
-              </div>
-            </div>
-            <div className="flex items-start">
-              <span className="text-3xl mr-3">💰</span>
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-1">Đồng tiền mất giá</h4>
-                <p className="text-gray-600 text-sm">Siêu lạm phát làm tiền mất giá nhanh chóng</p>
-              </div>
-            </div>
-          </div>
-          <div className="space-y-4">
-            <div className="flex items-start">
-              <span className="text-3xl mr-3">🚢</span>
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-1">Vượt biên</h4>
-                <p className="text-gray-600 text-sm">Hàng triệu người mạo hiểm tính mạng để tìm cuộc sống mới</p>
-              </div>
-            </div>
-            <div className="flex items-start">
-              <span className="text-3xl mr-3">😞</span>
-              <div>
-                <h4 className="font-semibold text-gray-800 mb-1">Mất niềm tin</h4>
-                <p className="text-gray-600 text-sm">Người dân không còn tin tưởng vào hệ thống cũ</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   );
 
@@ -316,20 +215,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           </div>
 
           {/* Show visualization for Pre-1986 event */}
-          {isPre1986 && (
-            <>
-              {/* World Context First */}
-              <Pre1986WorldContext />
-              
-              {/* Vietnam Context with Visualization */}
-              <div className="bg-gradient-to-br from-orange-50 to-red-50 rounded-lg shadow-lg p-6 mb-8">
-                <h2 className="text-3xl font-bold text-center mb-6 text-gray-800">
-                  🇻🇳 Bối Cảnh Việt Nam
-                </h2>
-                <Pre1986VietnamVisualization />
-              </div>
-            </>
-          )}
+          {isPre1986 && <Pre1986Visualization />}
           
           <div className="prose prose-lg max-w-none bg-white rounded-lg shadow-md p-6">
             {formatDetails(event.details)}
