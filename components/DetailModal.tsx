@@ -10,6 +10,9 @@ interface DetailModalProps {
 const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
   if (!event) return null;
 
+  // Check if this is the "Trước 1986" event
+  const isPre1986 = event.period === "Trước 1986";
+
   // Enhanced formatter for better rendering
   const formatDetails = (details: string) => {
     const lines = details.split('\n');
@@ -104,13 +107,86 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
     return elements;
   };
 
+  // Component for Pre-1986 Visualization
+  const Pre1986Visualization = () => (
+    <div className="space-y-8 mb-8">
+      {/* Inflation Highlight */}
+      <div className="bg-white rounded-lg shadow-lg p-6 text-center border-2 border-red-100">
+        <h3 className="text-2xl font-bold mb-2 text-gray-800">Đỉnh Điểm Khủng Hoảng</h3>
+        <p className="text-gray-700 mb-4">
+          Cuộc cải cách "Giá - Lương - Tiền" năm 1985 thất bại đã đẩy lạm phát lên mức phi mã
+        </p>
+        <div className="text-7xl font-bold text-red-600 my-4">
+          774.7%
+        </div>
+        <p className="text-xl font-semibold text-gray-800">Tỷ lệ lạm phát năm 1986</p>
+      </div>
+
+      {/* Economic Model Diagram */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Mô Hình Kinh Tế "Bao Cấp"
+        </h3>
+        <p className="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
+          Giai đoạn này được đặc trưng bởi cơ chế kế hoạch hóa tập trung, quan liêu, bao cấp. 
+          Nhà nước quyết định mọi thứ từ sản xuất đến phân phối, triệt tiêu động lực phát triển.
+        </p>
+        
+        <div className="flex flex-col items-center space-y-4">
+          <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
+            <h4 className="text-xl font-semibold text-blue-700 mb-2">Nhà nước</h4>
+            <p className="text-gray-700">
+              Lập kế hoạch sản xuất, ấn định giá, và kiểm soát toàn bộ lưu thông hàng hóa
+            </p>
+          </div>
+          
+          <div className="text-4xl font-bold text-blue-600">↓</div>
+          
+          <div className="bg-green-50 border-2 border-green-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
+            <h4 className="text-xl font-semibold text-green-700 mb-2">Doanh nghiệp / Hợp tác xã</h4>
+            <p className="text-gray-700">
+              Thực hiện theo mệnh lệnh, không có quyền tự chủ trong sản xuất và kinh doanh
+            </p>
+          </div>
+          
+          <div className="text-4xl font-bold text-blue-600">↓</div>
+          
+          <div className="bg-orange-50 border-2 border-orange-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
+            <h4 className="text-xl font-semibold text-orange-700 mb-2">Người dân</h4>
+            <p className="text-gray-700">
+              Nhận phân phối theo tem phiếu, thiếu hàng hóa, không có động lực lao động
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Key Crisis Indicators */}
+      <div className="grid md:grid-cols-3 gap-4">
+        <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-6 shadow-md text-center">
+          <div className="text-3xl font-bold text-red-700 mb-2">300% → 774%</div>
+          <p className="text-gray-700 font-semibold">Lạm phát tăng vọt (1985-1986)</p>
+        </div>
+        
+        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 shadow-md text-center">
+          <div className="text-3xl font-bold text-yellow-700 mb-2">Tem phiếu</div>
+          <p className="text-gray-700 font-semibold">Hệ thống phân phối hàng hóa</p>
+        </div>
+        
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-md text-center">
+          <div className="text-3xl font-bold text-blue-700 mb-2">Vượt biên</div>
+          <p className="text-gray-700 font-semibold">Hiện tượng xã hội phổ biến</p>
+        </div>
+      </div>
+    </div>
+  );
+
   return (
     <div 
       className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center p-4 transition-opacity duration-300"
       onClick={onClose}
     >
       <div 
-        className="bg-white rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 animate-modal-enter"
+        className="bg-gray-50 rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 animate-modal-enter"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="sticky top-0 bg-gradient-to-r from-red-600 to-red-700 text-white p-6 border-b border-red-800 flex justify-between items-center shadow-md z-10">
@@ -137,8 +213,11 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
               className="w-full h-80 object-cover rounded-lg shadow-lg bg-gray-200"
             />
           </div>
+
+          {/* Show visualization for Pre-1986 event */}
+          {isPre1986 && <Pre1986Visualization />}
           
-          <div className="prose prose-lg max-w-none">
+          <div className="prose prose-lg max-w-none bg-white rounded-lg shadow-md p-6">
             {formatDetails(event.details)}
           </div>
         </div>
