@@ -8,7 +8,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-red-50 via-gray-50 to-blue-50 text-center p-4 animate-fade-in">
       <div className="mb-4">
-        <span className="text-6xl" role="img" aria-label="Vietnam flag">🇻🇳</span>
+        <img 
+          src="/attached_assets/logo_bgrm_1762119474497.png" 
+          alt="Logo Đổi Mới Việt Nam" 
+          className="w-32 h-32 object-contain"
+        />
       </div>
       <h1 className="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 leading-tight">
         Khám Phá Thành Tựu<br />
