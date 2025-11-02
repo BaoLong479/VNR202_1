@@ -110,173 +110,71 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
   // Component for Pre-1986 Visualization
   const Pre1986Visualization = () => (
     <div className="space-y-8 mb-8">
-      {/* Bối cảnh thế giới - Section đầu tiên */}
-      <div className="bg-gradient-to-br from-purple-50 to-blue-50 rounded-lg shadow-lg p-8">
-        <h3 className="text-3xl font-bold text-center mb-6 text-gray-800 border-b-4 border-purple-500 pb-3">
-          🌍 Bối Cảnh Thế Giới
+      {/* Inflation Highlight */}
+      <div className="bg-white rounded-lg shadow-lg p-6 text-center border-2 border-red-100">
+        <h3 className="text-2xl font-bold mb-2 text-gray-800">Đỉnh Điểm Khủng Hoảng</h3>
+        <p className="text-gray-700 mb-4">
+          Cuộc cải cách "Giá - Lương - Tiền" năm 1985 thất bại đã đẩy lạm phát lên mức phi mã
+        </p>
+        <div className="text-7xl font-bold text-red-600 my-4">
+          774.7%
+        </div>
+        <p className="text-xl font-semibold text-gray-800">Tỷ lệ lạm phát năm 1986</p>
+      </div>
+
+      {/* Economic Model Diagram */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Mô Hình Kinh Tế "Bao Cấp"
         </h3>
-        <div className="grid md:grid-cols-2 gap-6 mb-6">
-          <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-purple-500">
-            <h4 className="text-xl font-semibold text-purple-700 mb-3">
-              ⚙️ Cách mạng Khoa học - Kỹ thuật
-            </h4>
-            <p className="text-gray-700 leading-relaxed">
-              Phát triển mạnh mẽ, thúc đẩy toàn cầu hóa và hội nhập kinh tế
+        <p className="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
+          Giai đoạn này được đặc trưng bởi cơ chế kế hoạch hóa tập trung, quan liêu, bao cấp. 
+          Nhà nước quyết định mọi thứ từ sản xuất đến phân phối, triệt tiêu động lực phát triển.
+        </p>
+        
+        <div className="flex flex-col items-center space-y-4">
+          <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
+            <h4 className="text-xl font-semibold text-blue-700 mb-2">Nhà nước</h4>
+            <p className="text-gray-700">
+              Lập kế hoạch sản xuất, ấn định giá, và kiểm soát toàn bộ lưu thông hàng hóa
             </p>
           </div>
           
-          <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-blue-500">
-            <h4 className="text-xl font-semibold text-blue-700 mb-3">
-              ☮️ Đối thoại thay Đối đầu
-            </h4>
-            <p className="text-gray-700 leading-relaxed">
-              Chiến tranh Lạnh hạ nhiệt, xu thế hòa bình nổi lên
+          <div className="text-4xl font-bold text-blue-600">↓</div>
+          
+          <div className="bg-green-50 border-2 border-green-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
+            <h4 className="text-xl font-semibold text-green-700 mb-2">Doanh nghiệp / Hợp tác xã</h4>
+            <p className="text-gray-700">
+              Thực hiện theo mệnh lệnh, không có quyền tự chủ trong sản xuất và kinh doanh
             </p>
           </div>
           
-          <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-green-500">
-            <h4 className="text-xl font-semibold text-green-700 mb-3">
-              🔄 Đổi mới - Xu thế thời đại
-            </h4>
-            <p className="text-gray-700 leading-relaxed">
-              Nhiều quốc gia tìm kiếm con đường phát triển mới
-            </p>
-          </div>
+          <div className="text-4xl font-bold text-blue-600">↓</div>
           
-          <div className="bg-white rounded-lg p-6 shadow-md border-l-4 border-red-500">
-            <h4 className="text-xl font-semibold text-red-700 mb-3">
-              🏛️ Cải tổ CNXH
-            </h4>
-            <p className="text-gray-700 leading-relaxed">
-              Liên Xô và Đông Âu tiến hành cải tổ, tạo áp lực thay đổi
+          <div className="bg-orange-50 border-2 border-orange-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
+            <h4 className="text-xl font-semibold text-orange-700 mb-2">Người dân</h4>
+            <p className="text-gray-700">
+              Nhận phân phối theo tem phiếu, thiếu hàng hóa, không có động lực lao động
             </p>
           </div>
         </div>
       </div>
 
-      {/* Bối cảnh Việt Nam - với các visualization */}
-      <div className="bg-gradient-to-br from-red-50 to-orange-50 rounded-lg shadow-lg p-8">
-        <h3 className="text-3xl font-bold text-center mb-6 text-gray-800 border-b-4 border-red-500 pb-3">
-          🇻🇳 Bối Cảnh Việt Nam
-        </h3>
+      {/* Key Crisis Indicators */}
+      <div className="grid md:grid-cols-3 gap-4">
+        <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-6 shadow-md text-center">
+          <div className="text-3xl font-bold text-red-700 mb-2">300% → 774%</div>
+          <p className="text-gray-700 font-semibold">Lạm phát tăng vọt (1985-1986)</p>
+        </div>
         
-        {/* Bao vây cấm vận */}
-        <div className="bg-white rounded-lg shadow-md p-6 mb-6 border-2 border-orange-300">
-          <h4 className="text-2xl font-bold text-orange-700 mb-4 text-center">
-            🚫 Bao vây - Cấm vận toàn diện
-          </h4>
-          <p className="text-gray-700 text-center mb-4">
-            Bị các đế quốc và thế lực thù địch cô lập về kinh tế và chính trị
-          </p>
-          <div className="flex justify-center items-center">
-            <div className="relative">
-              <div className="w-32 h-32 bg-red-600 rounded-full flex items-center justify-center text-white text-2xl font-bold">
-                VN
-              </div>
-              <div className="absolute -top-4 -left-4 w-40 h-40 border-4 border-red-300 rounded-full animate-pulse"></div>
-              <div className="absolute -top-8 -left-8 w-48 h-48 border-4 border-red-200 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-            </div>
-          </div>
+        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 shadow-md text-center">
+          <div className="text-3xl font-bold text-yellow-700 mb-2">Tem phiếu</div>
+          <p className="text-gray-700 font-semibold">Hệ thống phân phối hàng hóa</p>
         </div>
-
-        {/* Inflation Highlight */}
-        <div className="bg-white rounded-lg shadow-lg p-6 text-center border-2 border-red-100 mb-6">
-          <h4 className="text-2xl font-bold mb-2 text-gray-800">📈 Đỉnh Điểm Khủng Hoảng</h4>
-          <p className="text-gray-700 mb-4">
-            Cuộc cải cách "Giá - Lương - Tiền" năm 1985 thất bại đã đẩy lạm phát lên mức phi mã
-          </p>
-          <div className="text-7xl font-bold text-red-600 my-4">
-            774.7%
-          </div>
-          <p className="text-xl font-semibold text-gray-800">Tỷ lệ lạm phát năm 1986</p>
-        </div>
-
-        {/* Economic Crisis Indicators */}
-        <div className="grid md:grid-cols-3 gap-4 mb-6">
-          <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-6 shadow-md text-center">
-            <div className="text-4xl mb-2">🍚</div>
-            <div className="text-2xl font-bold text-red-700 mb-2">Thiếu lương thực</div>
-            <p className="text-gray-700 font-semibold">Khan hiếm trầm trọng</p>
-          </div>
-          
-          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 shadow-md text-center">
-            <div className="text-4xl mb-2">🎫</div>
-            <div className="text-2xl font-bold text-yellow-700 mb-2">Tem phiếu</div>
-            <p className="text-gray-700 font-semibold">Hệ thống phân phối</p>
-          </div>
-          
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-md text-center">
-            <div className="text-4xl mb-2">🚢</div>
-            <div className="text-2xl font-bold text-blue-700 mb-2">Vượt biên</div>
-            <p className="text-gray-700 font-semibold">Hiện tượng phổ biến</p>
-          </div>
-        </div>
-
-        {/* Economic Model Diagram */}
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-          <h4 className="text-2xl font-bold text-center mb-6 text-gray-800">
-            🏭 Mô Hình Kinh Tế "Bao Cấp"
-          </h4>
-          <p className="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
-            Giai đoạn này được đặc trưng bởi cơ chế kế hoạch hóa tập trung, quan liêu, bao cấp. 
-            Nhà nước quyết định mọi thứ từ sản xuất đến phân phối, triệt tiêu động lực phát triển.
-          </p>
-          
-          <div className="flex flex-col items-center space-y-4">
-            <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
-              <h5 className="text-xl font-semibold text-blue-700 mb-2">🏛️ Nhà nước</h5>
-              <p className="text-gray-700">
-                Lập kế hoạch sản xuất, ấn định giá, và kiểm soát toàn bộ lưu thông hàng hóa
-              </p>
-            </div>
-            
-            <div className="text-4xl font-bold text-blue-600">↓</div>
-            
-            <div className="bg-green-50 border-2 border-green-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
-              <h5 className="text-xl font-semibold text-green-700 mb-2">🏢 Doanh nghiệp / Hợp tác xã</h5>
-              <p className="text-gray-700">
-                Thực hiện theo mệnh lệnh, không có quyền tự chủ trong sản xuất và kinh doanh
-              </p>
-            </div>
-            
-            <div className="text-4xl font-bold text-blue-600">↓</div>
-            
-            <div className="bg-orange-50 border-2 border-orange-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
-              <h5 className="text-xl font-semibold text-orange-700 mb-2">👥 Người dân</h5>
-              <p className="text-gray-700">
-                Nhận phân phối theo tem phiếu, thiếu hàng hóa, không có động lực lao động
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Inflation Timeline */}
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h4 className="text-2xl font-bold text-center mb-6 text-gray-800">
-            📊 Diễn biến Lạm phát (1985-1986)
-          </h4>
-          <div className="flex items-end justify-around h-64">
-            <div className="flex flex-col items-center">
-              <div className="bg-orange-400 w-20 rounded-t-lg" style={{ height: '50%' }}></div>
-              <div className="text-center mt-2">
-                <div className="text-2xl font-bold text-orange-600">300%</div>
-                <div className="text-sm text-gray-600">1985</div>
-              </div>
-            </div>
-            
-            <div className="text-4xl font-bold text-red-600 self-center">→</div>
-            
-            <div className="flex flex-col items-center">
-              <div className="bg-red-600 w-20 rounded-t-lg animate-pulse" style={{ height: '100%' }}></div>
-              <div className="text-center mt-2">
-                <div className="text-2xl font-bold text-red-600">774.7%</div>
-                <div className="text-sm text-gray-600">1986</div>
-              </div>
-            </div>
-          </div>
-          <p className="text-center text-gray-700 mt-6 font-semibold">
-            ⚠️ Siêu lạm phát - Bài học xương máu về tôn trọng quy luật kinh tế
-          </p>
+        
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-md text-center">
+          <div className="text-3xl font-bold text-blue-700 mb-2">Vượt biên</div>
+          <p className="text-gray-700 font-semibold">Hiện tượng xã hội phổ biến</p>
         </div>
       </div>
     </div>
