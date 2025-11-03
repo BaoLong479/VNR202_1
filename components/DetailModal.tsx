@@ -25,7 +25,8 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
   // Helper function to parse inline markdown (bold text)
   const parseInlineMarkdown = (text: string): (string | JSX.Element)[] => {
     const parts: (string | JSX.Element)[] = [];
-    const regex = /\*\*(.*?)\*\*/g;
+    // Match both **text** and *text* patterns
+    const regex = /\*\*([^*]+?)\*\*|\*([^*]+?)\*/g;
     let lastIndex = 0;
     let match;
     let key = 0;
@@ -35,10 +36,11 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
       if (match.index > lastIndex) {
         parts.push(text.substring(lastIndex, match.index));
       }
-      // Add the bold part
+      // Add the bold part (match[1] for **, match[2] for *)
+      const boldText = match[1] || match[2];
       parts.push(
         <strong key={`bold-${key++}`} className="font-bold text-gray-900">
-          {match[1]}
+          {boldText}
         </strong>
       );
       lastIndex = regex.lastIndex;
