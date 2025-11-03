@@ -61,7 +61,7 @@ export const TIMELINE_DATA: TimelineEvent[] = [
     details:
       'Đại hội VI (12/1986) là một sự kiện có ý nghĩa lịch sử trọng đại, được coi là đại hội của Đổi Mới.\n- Nguyên nhân trực tiếp dẫn đến quyết định đổi mới toàn diện chính là sự thất bại của cuộc tổng cải cách Giá - Lương - Tiền năm 1985. Cuộc cải cách này dù có chủ trương đúng nhưng do chuẩn bị chưa chu đáo, thực hiện bằng các biện pháp hành chính đã gây ra siêu lạm phát (774.7% năm 1986), làm trầm trọng thêm khủng hoảng. Nó cho thấy không thể sửa chữa, chắp vá trong khuôn khổ cơ chế cũ mà phải thay đổi toàn diện.\n- Bài học xương máu rút ra là phải tôn trọng và hành động theo quy luật kinh tế khách quan; đổi mới phải toàn diện, đồng bộ, có bước đi vững chắc, không được chủ quan, duy ý chí.\n- Đại hội VI được gọi là đại hội "đổi mới" vì: (1) Đổi mới trong tư duy, trước hết là tư duy kinh tế, từ bỏ mô hình kinh tế kế hoạch hóa tập trung, chấp nhận kinh tế hàng hóa nhiều thành phần. (2) Đổi mới một cách toàn diện trên tất cả các lĩnh vực: kinh tế, chính trị, đối ngoại... (3) Đổi mới có phương châm rõ ràng: "Nhìn thẳng vào sự thật, đánh giá đúng sự thật, nói rõ sự thật".',
     image_description: "Đại hội đại biểu toàn quốc lần thứ VI của Đảng",
-    imageUrl: "/attached_assets/image_1762120002368.png",
+    imageUrl: "/images/image_1762120002368.png",
     quiz: [
       {
         question:
