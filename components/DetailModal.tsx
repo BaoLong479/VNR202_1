@@ -19,6 +19,9 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
   // Check if this is the "1991" event
   const is1991 = event.period === "1991";
 
+  // Check if this is the "Ngày nay" event
+  const isNgayNay = event.period === "Ngày nay";
+
   // Helper function to parse inline markdown (bold text)
   const parseInlineMarkdown = (text: string): (string | JSX.Element)[] => {
     const parts: (string | JSX.Element)[] = [];
@@ -584,6 +587,366 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
     </div>
   );
 
+  // Component for Ngày nay Visualization
+  const NgayNayVisualization = () => (
+    <div className="space-y-8 mb-8">
+      {/* GDP Growth Timeline */}
+      <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-green-100">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Tăng Trưởng GDP Vượt Bậc
+        </h3>
+        <div className="grid md:grid-cols-3 gap-4 mb-6">
+          <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-sm text-gray-600 mb-1">1986</div>
+            <div className="text-3xl font-bold text-red-700 mb-2">430,2 USD</div>
+            <p className="text-gray-700 text-sm font-semibold">GDP/người</p>
+          </div>
+          
+          <div className="flex items-center justify-center">
+            <div className="text-4xl font-bold text-green-600">→</div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-sm text-gray-600 mb-1">2023</div>
+            <div className="text-3xl font-bold text-green-700 mb-2">4.282 USD</div>
+            <p className="text-gray-700 text-sm font-semibold">Gấp hơn 10 lần</p>
+          </div>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 shadow-md text-center">
+            <div className="text-4xl font-bold text-blue-700 mb-2">430 tỷ USD</div>
+            <p className="text-gray-700 font-semibold">GDP 2023</p>
+            <p className="text-gray-600 text-sm">Thứ 5 ASEAN, thứ 35 thế giới</p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-4 shadow-md text-center">
+            <div className="text-4xl font-bold text-yellow-700 mb-2">7,09%</div>
+            <p className="text-gray-700 font-semibold">Tăng trưởng 2024</p>
+            <p className="text-gray-600 text-sm">Cao nhất khu vực</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Trade Achievement */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Thương Mại Quốc Tế
+        </h3>
+        <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-lg p-6 shadow-md border-2 border-indigo-300 mb-4">
+          <div className="text-center">
+            <div className="text-5xl font-bold text-indigo-700 mb-3">786,29 tỷ USD</div>
+            <p className="text-gray-800 font-semibold text-lg">Tổng kim ngạch xuất nhập khẩu 2024</p>
+            <p className="text-indigo-600 mt-2">Tăng 15,4% so với 2023</p>
+          </div>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-3xl font-bold text-green-700 mb-2">405,53 tỷ USD</div>
+            <p className="text-gray-700 font-semibold">Xuất khẩu 2024</p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-3xl font-bold text-blue-700 mb-2">25,35 tỷ USD</div>
+            <p className="text-gray-700 font-semibold">Vốn FDI thực hiện 2024</p>
+            <p className="text-gray-600 text-sm mt-1">Cao nhất từ trước đến nay</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Digital Economy */}
+      <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg shadow-lg p-6 border-2 border-purple-300">
+        <h3 className="text-2xl font-bold text-center mb-4 text-purple-800">
+          Kinh Tế Số - Động Lực Tương Lai
+        </h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="bg-white rounded-lg p-4 shadow-md text-center">
+            <div className="text-4xl font-bold text-purple-700 mb-2">20%</div>
+            <p className="text-gray-700 font-semibold">Tăng trưởng/năm</p>
+            <p className="text-gray-600 text-sm">Gấp 3 lần GDP</p>
+          </div>
+          
+          <div className="bg-white rounded-lg p-4 shadow-md text-center">
+            <div className="text-4xl font-bold text-purple-700 mb-2">16,5%</div>
+            <p className="text-gray-700 font-semibold">% GDP (2023)</p>
+          </div>
+          
+          <div className="bg-white rounded-lg p-4 shadow-md text-center">
+            <div className="text-2xl font-bold text-purple-700 mb-2">Nhanh nhất</div>
+            <p className="text-gray-700 font-semibold">Đông Nam Á</p>
+            <p className="text-gray-600 text-sm">2022-2023</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Innovation Index */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Chỉ Số Đổi Mới Sáng Tạo (GII)
+        </h3>
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-4">
+          <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4 text-center shadow-md">
+            <div className="text-sm text-gray-600 mb-1">2016</div>
+            <div className="text-4xl font-bold text-red-700 mb-2">59</div>
+            <p className="text-gray-700 font-semibold">Xếp hạng</p>
+          </div>
+          
+          <div className="text-4xl font-bold text-green-600">→</div>
+          
+          <div className="bg-green-50 border-2 border-green-300 rounded-lg p-4 text-center shadow-md">
+            <div className="text-sm text-gray-600 mb-1">2024</div>
+            <div className="text-4xl font-bold text-green-700 mb-2">44</div>
+            <p className="text-gray-700 font-semibold">Xếp hạng / 133 nước</p>
+          </div>
+        </div>
+        
+        <div className="bg-gradient-to-r from-green-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-green-500 text-center">
+          <p className="text-gray-800 font-semibold">
+            14 năm liên tiếp có thành tích đổi mới vượt trội so với mức phát triển
+          </p>
+        </div>
+      </div>
+
+      {/* Poverty Reduction */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Xóa Đói Giảm Nghèo Lịch Sử
+        </h3>
+        <div className="grid md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-sm text-gray-600 mb-1">1993</div>
+            <div className="text-5xl font-bold text-red-700 mb-2">66,7%</div>
+            <p className="text-gray-700 font-semibold">Hộ nghèo nông thôn</p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-sm text-gray-600 mb-1">2024</div>
+            <div className="text-5xl font-bold text-green-700 mb-2">4,06%</div>
+            <p className="text-gray-700 font-semibold">Nghèo đa chiều</p>
+          </div>
+        </div>
+        
+        <div className="bg-gradient-to-r from-blue-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-blue-500 text-center">
+          <p className="text-gray-800">
+            Nhiều địa phương như TP.HCM, Bà Rịa-Vũng Tàu đạt tỷ lệ nghèo 0%
+          </p>
+        </div>
+      </div>
+
+      {/* HDI Achievement */}
+      <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg shadow-lg p-6 border-2 border-blue-300">
+        <h3 className="text-2xl font-bold text-center mb-4 text-blue-800">
+          Chỉ Số Phát Triển Con Người (HDI)
+        </h3>
+        <div className="grid md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-white rounded-lg p-5 shadow-md text-center">
+            <div className="text-sm text-gray-600 mb-1">1990</div>
+            <div className="text-4xl font-bold text-gray-700 mb-2">0,499</div>
+            <p className="text-gray-700 font-semibold">Mức thấp</p>
+          </div>
+          
+          <div className="bg-white rounded-lg p-5 shadow-md text-center">
+            <div className="text-sm text-gray-600 mb-1">2023</div>
+            <div className="text-4xl font-bold text-blue-700 mb-2">0,766</div>
+            <p className="text-gray-700 font-semibold">Mức cao (≥0,700)</p>
+          </div>
+        </div>
+        
+        <div className="text-center">
+          <div className="text-5xl font-bold text-blue-700 mb-2">107/193</div>
+          <p className="text-gray-800 font-semibold">Xếp hạng thế giới (2022)</p>
+          <p className="text-blue-600">Tăng 8 bậc so với năm trước</p>
+        </div>
+      </div>
+
+      {/* UNESCO Heritage */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Di Sản UNESCO
+        </h3>
+        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 shadow-md border-2 border-yellow-300 mb-4">
+          <div className="text-center">
+            <div className="text-6xl font-bold text-yellow-700 mb-3">39</div>
+            <p className="text-gray-800 font-semibold text-lg">Di sản được UNESCO vinh danh</p>
+          </div>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-3">
+          <div className="bg-gradient-to-r from-red-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-red-500">
+            <div className="text-2xl font-bold text-red-700 mb-1">9</div>
+            <p className="text-gray-700 text-sm">Di sản văn hóa và thiên nhiên thế giới</p>
+          </div>
+          
+          <div className="bg-gradient-to-r from-blue-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-blue-500">
+            <div className="text-2xl font-bold text-blue-700 mb-1">16</div>
+            <p className="text-gray-700 text-sm">Di sản văn hóa phi vật thể</p>
+          </div>
+          
+          <div className="bg-gradient-to-r from-green-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-green-500">
+            <div className="text-2xl font-bold text-green-700 mb-1">9</div>
+            <p className="text-gray-700 text-sm">Khu dự trữ sinh quyển</p>
+          </div>
+          
+          <div className="bg-gradient-to-r from-purple-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-purple-500">
+            <div className="text-2xl font-bold text-purple-700 mb-1">7</div>
+            <p className="text-gray-700 text-sm">Di sản tư liệu</p>
+          </div>
+        </div>
+      </div>
+
+      {/* UN Security Council */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Vai Trò Tại Liên Hợp Quốc
+        </h3>
+        <div className="space-y-4">
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md border-l-4 border-blue-500">
+            <div className="flex items-center justify-between">
+              <div>
+                <h4 className="font-bold text-blue-700 mb-1">HĐBA LHQ 2008-2009</h4>
+                <p className="text-gray-700 text-sm">Ủy viên không thường trực - Nhiệm kỳ đầu</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md border-l-4 border-green-500">
+            <div className="flex items-center justify-between">
+              <div>
+                <h4 className="font-bold text-green-700 mb-1">HĐBA LHQ 2020-2021</h4>
+                <p className="text-gray-700 text-sm">Được bầu với 192/193 phiếu</p>
+              </div>
+              <div className="bg-green-600 text-white font-bold rounded-lg px-4 py-2">
+                192/193
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-indigo-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-indigo-500">
+            <h4 className="font-bold text-indigo-700 mb-2">Nghị quyết 2573</h4>
+            <p className="text-gray-700 text-sm">Bảo vệ cơ sở hạ tầng thiết yếu - 15/15 nước đồng bảo trợ</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Strategic Partnerships */}
+      <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg shadow-lg p-6 border-2 border-red-300">
+        <h3 className="text-2xl font-bold text-center mb-4 text-red-800">
+          Đối Tác Chiến Lược Toàn Diện
+        </h3>
+        <div className="bg-white rounded-lg p-4 shadow-md mb-4 text-center">
+          <div className="text-5xl font-bold text-red-700 mb-2">8</div>
+          <p className="text-gray-800 font-semibold">Quan hệ Đối tác Chiến lược Toàn diện</p>
+          <p className="text-gray-600 text-sm mt-2">Bao gồm tất cả 5 Ủy viên thường trực HĐBA LHQ</p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-3">
+          <div className="bg-gradient-to-r from-yellow-50 to-white rounded-lg p-3 shadow-sm border-l-4 border-yellow-500">
+            <p className="text-gray-800 font-semibold">Trung Quốc (2008)</p>
+          </div>
+          <div className="bg-gradient-to-r from-blue-50 to-white rounded-lg p-3 shadow-sm border-l-4 border-blue-500">
+            <p className="text-gray-800 font-semibold">Nga (2012)</p>
+          </div>
+          <div className="bg-gradient-to-r from-green-50 to-white rounded-lg p-3 shadow-sm border-l-4 border-green-500">
+            <p className="text-gray-800 font-semibold">Ấn Độ (2016)</p>
+          </div>
+          <div className="bg-gradient-to-r from-purple-50 to-white rounded-lg p-3 shadow-sm border-l-4 border-purple-500">
+            <p className="text-gray-800 font-semibold">Hàn Quốc (2022)</p>
+          </div>
+          <div className="bg-gradient-to-r from-red-50 to-white rounded-lg p-3 shadow-sm border-l-4 border-red-500">
+            <p className="text-gray-800 font-semibold">Hoa Kỳ (9/2023)</p>
+          </div>
+          <div className="bg-gradient-to-r from-indigo-50 to-white rounded-lg p-3 shadow-sm border-l-4 border-indigo-500">
+            <p className="text-gray-800 font-semibold">Nhật Bản (11/2023)</p>
+          </div>
+          <div className="bg-gradient-to-r from-orange-50 to-white rounded-lg p-3 shadow-sm border-l-4 border-orange-500">
+            <p className="text-gray-800 font-semibold">Australia (3/2024)</p>
+          </div>
+          <div className="bg-gradient-to-r from-pink-50 to-white rounded-lg p-3 shadow-sm border-l-4 border-pink-500">
+            <p className="text-gray-800 font-semibold">Pháp (10/2024)</p>
+          </div>
+        </div>
+      </div>
+
+      {/* National Brand Value */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Thương Hiệu Quốc Gia
+        </h3>
+        <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 shadow-md border-2 border-green-300 mb-4">
+          <div className="text-center mb-4">
+            <div className="text-sm text-gray-600 mb-2">Tăng trưởng giá trị 2019-2023</div>
+            <div className="text-6xl font-bold text-green-700 mb-2">102%</div>
+            <p className="text-gray-800 font-semibold text-lg">Nhanh nhất thế giới</p>
+          </div>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-sm text-gray-600 mb-1">2023</div>
+            <div className="text-3xl font-bold text-blue-700 mb-2">498,13 tỷ USD</div>
+            <p className="text-gray-700 font-semibold">Xếp thứ 33/121</p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-sm text-gray-600 mb-1">2024</div>
+            <div className="text-3xl font-bold text-indigo-700 mb-2">507 tỷ USD</div>
+            <p className="text-gray-700 font-semibold">Xếp thứ 32</p>
+          </div>
+        </div>
+      </div>
+
+      {/* UN Peacekeeping */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Gìn Giữ Hòa Bình Liên Hợp Quốc
+        </h3>
+        <div className="grid md:grid-cols-2 gap-4 mb-4">
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-sm text-gray-600 mb-1">Bắt đầu</div>
+            <div className="text-3xl font-bold text-blue-700 mb-2">5/2014</div>
+            <p className="text-gray-700 font-semibold">Sĩ quan đầu tiên</p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-sm text-gray-600 mb-1">Đến nay</div>
+            <div className="text-3xl font-bold text-green-700 mb-2">1.083</div>
+            <p className="text-gray-700 font-semibold">Lượt sĩ quan, quân nhân</p>
+          </div>
+        </div>
+        
+        <div className="space-y-3">
+          <div className="bg-gradient-to-r from-indigo-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-indigo-500">
+            <p className="text-gray-800">Triển khai Bệnh viện dã chiến cấp 2, Đội Công binh</p>
+          </div>
+          <div className="bg-gradient-to-r from-purple-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-purple-500">
+            <p className="text-gray-800">Được LHQ đánh giá cao về chuyên nghiệp, tinh thần nhân văn</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Military Power */}
+      <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg shadow-lg p-6 border-2 border-gray-300">
+        <h3 className="text-2xl font-bold text-center mb-4 text-gray-800">
+          Năng Lực Quốc Phòng
+        </h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-white rounded-lg p-5 shadow-md text-center">
+            <div className="text-4xl font-bold text-gray-700 mb-2">22/145</div>
+            <p className="text-gray-700 font-semibold">Global Firepower 2024</p>
+            <p className="text-gray-600 text-sm">Xếp hạng thế giới</p>
+          </div>
+          
+          <div className="bg-white rounded-lg p-5 shadow-md text-center">
+            <div className="text-4xl font-bold text-gray-700 mb-2">Thứ 2</div>
+            <p className="text-gray-700 font-semibold">Đông Nam Á</p>
+            <p className="text-gray-600 text-sm">Nhóm vượt trội</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
   // Component for 1986 Visualization
   const Event1986Visualization = () => (
     <div className="space-y-8 mb-8">
@@ -807,6 +1170,9 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           
           {/* Show visualization for 1991 event */}
           {is1991 && <Event1991Visualization />}
+          
+          {/* Show visualization for Ngày nay event */}
+          {isNgayNay && <NgayNayVisualization />}
           
           <div className="prose prose-lg max-w-none bg-white rounded-lg shadow-md p-6">
             {formatDetails(isPre1986 ? getVietnamContextAndRest(event.details) : event.details)}
