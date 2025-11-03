@@ -114,7 +114,7 @@ export const TIMELINE_DATA: TimelineEvent[] = [
     summary:
       "Thông qua Cương lĩnh 1991, khẳng định con đường đi lên CNXH trong bối cảnh quốc tế biến động. Đánh dấu bước phát triển về nhận thức dân chủ và xây dựng Nhà nước pháp quyền.",
     details:
-      'Diễn ra trong bối cảnh Liên Xô và Đông Âu sụp đổ, Đại hội VII (6/1991) đã thể hiện bản lĩnh chính trị vững vàng và có bước phát triển vượt bậc về tư duy lý luận, đặc biệt là về nhà nước và dân chủ.\n- Trước đây, mô hình nhà nước gắn liền với khái niệm "chuyên chính vô sản". Trải qua thực tiễn, Đảng nhận thấy mô hình này không còn phù hợp, dễ dẫn đến quan liêu, xa dân. Nhận thức mới về "làm chủ tập thể" của nhân dân đã dần hình thành.\n- Đại hội VII, thông qua Cương lĩnh 1991, đã có bước nhảy vọt trong nhận thức. Thay vì dùng khái niệm "chuyên chính vô sản", Cương lĩnh khẳng định xây dựng "Nhà nước xã hội chủ nghĩa của nhân dân, do nhân dân, vì nhân dân".\n- Đây là nền tảng quan trọng cho việc hình thành tư duy về "Nhà nước pháp quyền xã hội chủ nghĩa". Cương lĩnh nhấn mạnh: Nhà nước quản lý xã hội bằng pháp luật, mọi cơ quan, tổ chức, cán bộ, công dân phải sống và làm việc theo Hiến pháp và pháp luật. Quá trình này đã thể chế hóa quyền làm chủ của nhân dân, đặt nền móng cho một nhà nước thượng tôn pháp luật, thay vì một nhà nước chuyên chính.',
+      'Diễn ra trong bối cảnh Liên Xô và Đông Âu sụp đổ, Đại hội VII (6/1991) đã thể hiện bản lĩnh chính trị vững vàng và có bước phát triển vượt bậc về tư duy lý luận, đặc biệt là về nhà nước và dân chủ.\n- Trước đây, mô hình nhà nước gắn liền với khái niệm "chuyên chính vô sản". Trải qua thực tiễn, Đảng nhận thấy mô hình này không còn phù hợp, dễ dẫn đến quan liêu, xa dân. Nhận thức mới về "làm chủ tập thể" của nhân dân đã dần hình thành.\n- Đại hội VII, thông qua Cương lĩnh 1991, đã có bước nhảy vọt trong nhận thức. Thay vì dùng khái niệm "chuyên chính vô sản", Cương lĩnh khẳng định xây dựng "Nhà nước xã hội chủ nghĩa của nhân dân, do nhân dân, vì nhân dân".\n- Đây là nền tảng quan trọng cho việc hình thành tư duy về "Nhà nước pháp quyền xã hội chủ nghĩa". Cương lĩnh nhấn mạnh: Nhà nước quản lý xã hội bằng pháp luật, mọi cơ quan, tổ chức, cán bộ, công dân phải sống và làm việc theo Hiến pháp và pháp luật. Quá trình này đã thể chế hóa quyền làm chủ của nhân dân, đặt nền móng cho một nhà nước thượng tôn pháp luật, thay vì một nhà nước chuyên chính.\n\n**Hội nghị Giữa nhiệm kỳ khóa VII (1994):**\n\nHội nghị đại biểu toàn quốc giữa nhiệm kỳ khóa VII (1/1994) là một sinh hoạt chính trị quan trọng, thể hiện tinh thần đổi mới và tự phê bình của Đảng.\n- Hội nghị đã đánh giá lại chặng đường đầu của công cuộc Đổi Mới, khẳng định những thành tựu quan trọng nhưng cũng thẳng thắn chỉ ra 4 nguy cơ, thách thức lớn của đất nước: (1) Nguy cơ tụt hậu xa hơn về kinh tế so với nhiều nước trong khu vực và trên thế giới. (2) Nguy cơ chệch hướng xã hội chủ nghĩa. (3) Nạn tham nhũng và các tệ nạn xã hội khác. (4) Âm mưu và hành động "diễn biến hòa bình" của các thế lực thù địch.\n- Việc nhận diện rõ các nguy cơ cho thấy một tầm nhìn xa và tinh thần không né tránh sự thật.\n- Trên cơ sở đó, Hội nghị đã đề ra những chủ trương, giải pháp lớn, trong đó nhấn mạnh nhiệm vụ trọng tâm là phải đẩy mạnh một bước công nghiệp hóa, hiện đại hóa (CNH-HĐH) đất nước, coi đây là con đường tất yếu để thoát khỏi nguy cơ tụt hậu.',
     image_description:
       "Đồng chí Đỗ Mười và các đại biểu dự Đại hội VII của Đảng",
     imageUrl: "images/image_1762201114884.png",
@@ -143,74 +143,18 @@ export const TIMELINE_DATA: TimelineEvent[] = [
       },
       {
         question:
-          "Sự thay đổi trong tư duy chính trị tại Đại hội VII thể hiện qua việc nhấn mạnh điều gì?",
-        options: [
-          "Vai trò lãnh đạo tuyệt đối của cá nhân",
-          "Tăng cường dân chủ và thượng tôn pháp luật",
-          "Mở rộng quyền lực cho quân đội",
-          "Chỉ tập trung vào kinh tế",
-        ],
-        correctAnswerIndex: 1,
-      },
-      {
-        question: "Đại hội VII diễn ra trong bối cảnh quốc tế đặc biệt nào?",
-        options: [
-          "Khủng hoảng tài chính châu Á",
-          "Sự tan rã của Liên Xô và hệ thống XHCN Đông Âu",
-          "Sự bùng nổ của Internet",
-          "Chiến tranh Lạnh lên đến đỉnh điểm",
-        ],
-        correctAnswerIndex: 1,
-      },
-    ],
-  },
-  {
-    period: "1994",
-    title: "Hội nghị Giữa nhiệm kỳ: Xác định Nguy cơ và Đẩy mạnh CNH-HĐH",
-    summary:
-      "Lần đầu tiên tổ chức Hội nghị giữa nhiệm kỳ, thẳng thắn chỉ ra 4 nguy cơ lớn, đồng thời xác định các nhiệm vụ trọng tâm nhằm đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước.",
-    details:
-      'Hội nghị đại biểu toàn quốc giữa nhiệm kỳ khóa VII (1/1994) là một sinh hoạt chính trị quan trọng, thể hiện tinh thần đổi mới và tự phê bình của Đảng.\n- Hội nghị đã đánh giá lại chặng đường đầu của công cuộc Đổi Mới, khẳng định những thành tựu quan trọng nhưng cũng thẳng thắn chỉ ra 4 nguy cơ, thách thức lớn của đất nước: (1) Nguy cơ tụt hậu xa hơn về kinh tế so với nhiều nước trong khu vực và trên thế giới. (2) Nguy cơ chệch hướng xã hội chủ nghĩa. (3) Nạn tham nhũng và các tệ nạn xã hội khác. (4) Âm mưu và hành động "diễn biến hòa bình" của các thế lực thù địch.\n- Việc nhận diện rõ các nguy cơ cho thấy một tầm nhìn xa và tinh thần không né tránh sự thật.\n- Trên cơ sở đó, Hội nghị đã đề ra những chủ trương, giải pháp lớn, trong đó nhấn mạnh nhiệm vụ trọng tâm là phải đẩy mạnh một bước công nghiệp hóa, hiện đại hóa (CNH-HĐH) đất nước, coi đây là con đường tất yếu để thoát khỏi nguy cơ tụt hậu.',
-    image_description:
-      "Một khu công nghiệp mới được xây dựng, thể hiện quyết tâm đẩy mạnh công nghiệp hóa, hiện đại hóa đất nước từ những năm 90.",
-    imageUrl:
-      "https://images.unsplash.com/photo-1575882521128-2ab0a7e0acb6?q=80&w=1200&auto=format&fit=crop",
-    quiz: [
-      {
-        question:
           "Hội nghị giữa nhiệm kỳ khóa VII (1994) đã chỉ ra bao nhiêu nguy cơ lớn đối với sự phát triển của đất nước?",
         options: ["2 nguy cơ", "3 nguy cơ", "4 nguy cơ", "5 nguy cơ"],
         correctAnswerIndex: 2,
       },
       {
-        question: "Đâu là một trong bốn nguy cơ được Hội nghị xác định?",
-        options: [
-          "Hội nhập quốc tế quá sâu rộng",
-          "Dân số tăng quá nhanh",
-          "Tụt hậu xa hơn về kinh tế",
-          "Cạn kiệt tài nguyên thiên nhiên",
-        ],
-        correctAnswerIndex: 2,
-      },
-      {
         question:
-          "Chủ trương lớn được Hội nghị nhấn mạnh để phát triển đất nước là gì?",
+          "Chủ trương lớn được Hội nghị giữa nhiệm kỳ 1994 nhấn mạnh để phát triển đất nước là gì?",
         options: [
           "Tập trung hoàn toàn vào nông nghiệp",
           "Đẩy mạnh một bước công nghiệp hóa, hiện đại hóa",
           "Đóng cửa, hạn chế giao thương",
           "Ưu tiên phát triển du lịch",
-        ],
-        correctAnswerIndex: 1,
-      },
-      {
-        question:
-          "Việc thẳng thắn chỉ ra các nguy cơ tại Hội nghị thể hiện điều gì trong tinh thần của Đảng?",
-        options: [
-          "Sự bi quan, mất phương hướng",
-          "Tinh thần tự phê bình và tầm nhìn xa",
-          "Sự yếu kém trong lãnh đạo",
-          "Sự nhượng bộ trước các thế lực thù địch",
         ],
         correctAnswerIndex: 1,
       },
