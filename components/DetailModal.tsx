@@ -108,10 +108,11 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
       // List items
       if (trimmedLine.startsWith('- ')) {
         const content = trimmedLine.substring(2);
+        const parsedContent = parseInlineMarkdown(content);
         listItems.push(
           <li key={`item-${index}`} className="text-gray-700 leading-relaxed">
             <span className="text-red-500 font-bold mr-2">•</span>
-            <span>{parseInlineMarkdown(content)}</span>
+            {parsedContent}
           </li>
         );
         return;
