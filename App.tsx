@@ -11,7 +11,7 @@ const App: React.FC = () => {
   const [timelineData, setTimelineData] = useState<TimelineEvent[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [selectedEvent, setSelectedEvent] = useState<TimelineEvent | null>(null);
-  
+
   // Game State
   const [gameStarted, setGameStarted] = useState(false);
   const [unlockedStates, setUnlockedStates] = useState<Record<string, boolean[]>>({});
@@ -56,7 +56,7 @@ const App: React.FC = () => {
   const handleCloseDetailModal = () => {
     setSelectedEvent(null);
   };
-  
+
   const handlePieceClick = (event: TimelineEvent, questionIndex: number) => {
     if (!unlockedStates[event.period][questionIndex]) {
       setActiveQuiz({ event, questionIndex });
@@ -109,7 +109,7 @@ const App: React.FC = () => {
       </div>
     );
   };
-  
+
   if (!gameStarted) {
     return <LandingPage onStart={() => setGameStarted(true)} />;
   }
@@ -120,7 +120,7 @@ const App: React.FC = () => {
       <section className="container mx-auto px-4 py-12 text-center">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Hành Trình Vẫn Tiếp Nối</h2>
         <p className="max-w-3xl mx-auto text-gray-600 leading-relaxed">
-            Hơn ba thập kỷ Đổi Mới là một chặng đường đầy thử thách nhưng cũng vô cùng tự hào của dân tộc Việt Nam. Từ một quốc gia bị tàn phá bởi chiến tranh, Việt Nam đã vươn lên mạnh mẽ, hội nhập sâu rộng với thế giới và khẳng định vị thế của mình trên trường quốc tế.
+            Gần bốn thập kỷ Đổi Mới là một chặng đường đầy thử thách nhưng cũng vô cùng tự hào của dân tộc Việt Nam. Từ một quốc gia bị tàn phá bởi chiến tranh, Việt Nam đã vươn lên mạnh mẽ, hội nhập sâu rộng với thế giới và khẳng định vị thế của mình trên trường quốc tế.
         </p>
         <p className="max-w-3xl mx-auto text-gray-600 leading-relaxed mt-4">
             Những thành tựu đã đạt được là nền tảng vững chắc, là động lực to lớn để chúng ta tiếp tục con đường phía trước, hiện thực hóa khát vọng xây dựng một Việt Nam hùng cường, thịnh vượng, "dân giàu, nước mạnh, dân chủ, công bằng, văn minh" vào năm 2045.
