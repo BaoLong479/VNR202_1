@@ -117,7 +117,7 @@ export const TIMELINE_DATA: TimelineEvent[] = [
       'Diễn ra trong bối cảnh Liên Xô và Đông Âu sụp đổ, Đại hội VII (6/1991) đã thể hiện bản lĩnh chính trị vững vàng và có bước phát triển vượt bậc về tư duy lý luận, đặc biệt là về nhà nước và dân chủ.\n- Trước đây, mô hình nhà nước gắn liền với khái niệm "chuyên chính vô sản". Trải qua thực tiễn, Đảng nhận thấy mô hình này không còn phù hợp, dễ dẫn đến quan liêu, xa dân. Nhận thức mới về "làm chủ tập thể" của nhân dân đã dần hình thành.\n- Đại hội VII, thông qua Cương lĩnh 1991, đã có bước nhảy vọt trong nhận thức. Thay vì dùng khái niệm "chuyên chính vô sản", Cương lĩnh khẳng định xây dựng "Nhà nước xã hội chủ nghĩa của nhân dân, do nhân dân, vì nhân dân".\n- Đây là nền tảng quan trọng cho việc hình thành tư duy về "Nhà nước pháp quyền xã hội chủ nghĩa". Cương lĩnh nhấn mạnh: Nhà nước quản lý xã hội bằng pháp luật, mọi cơ quan, tổ chức, cán bộ, công dân phải sống và làm việc theo Hiến pháp và pháp luật. Quá trình này đã thể chế hóa quyền làm chủ của nhân dân, đặt nền móng cho một nhà nước thượng tôn pháp luật, thay vì một nhà nước chuyên chính.',
     image_description:
       "Đồng chí Đỗ Mười và các đại biểu dự Đại hội VII của Đảng",
-    imageUrl: "/images/dai_hoi_vii.png",
+    imageUrl: "images/image_1762201114884.png",
     quiz: [
       {
         question:
