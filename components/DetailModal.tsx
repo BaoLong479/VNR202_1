@@ -16,6 +16,36 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
   // Check if this is the "1986" event
   const is1986 = event.period === "1986";
 
+  // Helper function to parse inline markdown (bold text)
+  const parseInlineMarkdown = (text: string): (string | JSX.Element)[] => {
+    const parts: (string | JSX.Element)[] = [];
+    const regex = /\*\*(.*?)\*\*/g;
+    let lastIndex = 0;
+    let match;
+    let key = 0;
+
+    while ((match = regex.exec(text)) !== null) {
+      // Add text before the bold part
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+      // Add the bold part
+      parts.push(
+        <strong key={`bold-${key++}`} className="font-bold text-gray-900">
+          {match[1]}
+        </strong>
+      );
+      lastIndex = regex.lastIndex;
+    }
+
+    // Add remaining text
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    return parts.length > 0 ? parts : [text];
+  };
+
   // Enhanced formatter for better rendering
   const formatDetails = (details: string) => {
     const lines = details.split('\n');
@@ -75,7 +105,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         listItems.push(
           <li key={`item-${index}`} className="text-gray-700 leading-relaxed">
             <span className="text-red-500 font-bold mr-2">•</span>
-            {content}
+            {parseInlineMarkdown(content)}
           </li>
         );
         return;
@@ -93,7 +123,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
       
       elements.push(
         <p key={`para-${index}`} className="mb-3 text-gray-700 leading-relaxed">
-          {trimmedLine}
+          {parseInlineMarkdown(trimmedLine)}
         </p>
       );
     });
