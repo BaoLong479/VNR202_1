@@ -12,7 +12,6 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
 
   // Check if this is the "Trước 1986" event
   const isPre1986 = event.period === "Trước 1986";
-  const is1986 = event.period === "1986";
 
   // Enhanced formatter for better rendering
   const formatDetails = (details: string) => {
@@ -155,176 +154,74 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
     return filteredLines.join('\n');
   };
 
-  // Component for 1986 Visualization
-  const Event1986Visualization = () => (
+  // Component for Pre-1986 Visualization
+  const Pre1986Visualization = () => (
     <div className="space-y-8 mb-8">
-      {/* Đại hội VI Banner */}
-      <div className="bg-gradient-to-r from-red-600 to-red-700 rounded-lg shadow-lg p-8 text-center text-white">
-        <div className="text-sm font-semibold mb-2 text-red-100">15 - 18 tháng 12, 1986</div>
-        <h3 className="text-3xl md:text-4xl font-bold mb-4">ĐẠI HỘI ĐẠI BIỂU TOÀN QUỐC LẦN THỨ VI</h3>
-        <p className="text-xl mb-3">Đại hội của sự Đổi Mới</p>
-        <div className="inline-block bg-white text-red-700 px-6 py-3 rounded-lg font-bold text-lg">
-          Tổng Bí thư: Nguyễn Văn Linh
+      {/* Inflation Highlight */}
+      <div className="bg-white rounded-lg shadow-lg p-6 text-center border-2 border-red-100">
+        <h3 className="text-2xl font-bold mb-2 text-gray-800">Đỉnh Điểm Khủng Hoảng</h3>
+        <p className="text-gray-700 mb-4">
+          Cuộc cải cách "Giá - Lương - Tiền" năm 1985 thất bại đã đẩy lạm phát lên mức phi mã
+        </p>
+        <div className="text-7xl font-bold text-red-600 my-4">
+          774.7%
         </div>
+        <p className="text-xl font-semibold text-gray-800">Tỷ lệ lạm phát năm 1986</p>
       </div>
 
-      {/* Bốn bài học quý báu */}
+      {/* Economic Model Diagram */}
       <div className="bg-white rounded-lg shadow-lg p-6">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800 border-b-2 border-red-500 pb-3">
-          Bốn Bài Học Quý Báu
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Mô Hình Kinh Tế "Bao Cấp"
         </h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 border-l-4 border-blue-500">
-            <div className="flex items-start">
-              <span className="text-3xl font-bold text-blue-600 mr-4">1</span>
-              <div>
-                <h4 className="font-bold text-blue-800 mb-2">Lấy dân làm gốc</h4>
-                <p className="text-gray-700 text-sm">Trong toàn bộ hoạt động của mình, Đảng phải quán triệt tư tưởng "lấy dân làm gốc"</p>
-              </div>
-            </div>
+        <p className="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
+          Giai đoạn này được đặc trưng bởi cơ chế kế hoạch hóa tập trung, quan liêu, bao cấp. 
+          Nhà nước quyết định mọi thứ từ sản xuất đến phân phối, triệt tiêu động lực phát triển.
+        </p>
+        
+        <div className="flex flex-col items-center space-y-4">
+          <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
+            <h4 className="text-xl font-semibold text-blue-700 mb-2">Nhà nước</h4>
+            <p className="text-gray-700">
+              Lập kế hoạch sản xuất, ấn định giá, và kiểm soát toàn bộ lưu thông hàng hóa
+            </p>
           </div>
-          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 border-l-4 border-green-500">
-            <div className="flex items-start">
-              <span className="text-3xl font-bold text-green-600 mr-4">2</span>
-              <div>
-                <h4 className="font-bold text-green-800 mb-2">Tôn trọng quy luật</h4>
-                <p className="text-gray-700 text-sm">Đảng phải luôn xuất phát từ thực tế, tôn trọng và hành động theo quy luật khách quan</p>
-              </div>
-            </div>
+          
+          <div className="text-4xl font-bold text-blue-600">↓</div>
+          
+          <div className="bg-green-50 border-2 border-green-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
+            <h4 className="text-xl font-semibold text-green-700 mb-2">Doanh nghiệp / Hợp tác xã</h4>
+            <p className="text-gray-700">
+              Thực hiện theo mệnh lệnh, không có quyền tự chủ trong sản xuất và kinh doanh
+            </p>
           </div>
-          <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-6 border-l-4 border-purple-500">
-            <div className="flex items-start">
-              <span className="text-3xl font-bold text-purple-600 mr-4">3</span>
-              <div>
-                <h4 className="font-bold text-purple-800 mb-2">Kết hợp hai sức mạnh</h4>
-                <p className="text-gray-700 text-sm">Phải biết kết hợp sức mạnh dân tộc với sức mạnh thời đại trong điều kiện mới</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-6 border-l-4 border-orange-500">
-            <div className="flex items-start">
-              <span className="text-3xl font-bold text-orange-600 mr-4">4</span>
-              <div>
-                <h4 className="font-bold text-orange-800 mb-2">Xây dựng Đảng</h4>
-                <p className="text-gray-700 text-sm">Chăm lo xây dựng Đảng ngang tầm một đảng cầm quyền lãnh đạo nhân dân tiến hành cách mạng XHCN</p>
-              </div>
-            </div>
+          
+          <div className="text-4xl font-bold text-blue-600">↓</div>
+          
+          <div className="bg-orange-50 border-2 border-orange-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
+            <h4 className="text-xl font-semibold text-orange-700 mb-2">Người dân</h4>
+            <p className="text-gray-700">
+              Nhận phân phối theo tem phiếu, thiếu hàng hóa, không có động lực lao động
+            </p>
           </div>
         </div>
       </div>
 
-      {/* Ba chương trình kinh tế lớn */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800 border-b-2 border-red-500 pb-3">
-          Ba Chương Trình Kinh Tế Lớn
-        </h3>
-        <div className="grid md:grid-cols-3 gap-4">
-          <div className="text-center p-6 bg-gradient-to-b from-green-50 to-green-100 rounded-lg shadow-md">
-            <div className="text-5xl mb-3">🌾</div>
-            <h4 className="font-bold text-green-800 mb-2">Lương thực - Thực phẩm</h4>
-            <p className="text-sm text-gray-700">Đảm bảo an ninh lương thực quốc gia</p>
-          </div>
-          <div className="text-center p-6 bg-gradient-to-b from-blue-50 to-blue-100 rounded-lg shadow-md">
-            <div className="text-5xl mb-3">🏭</div>
-            <h4 className="font-bold text-blue-800 mb-2">Hàng tiêu dùng</h4>
-            <p className="text-sm text-gray-700">Phát triển sản xuất hàng tiêu dùng</p>
-          </div>
-          <div className="text-center p-6 bg-gradient-to-b from-yellow-50 to-yellow-100 rounded-lg shadow-md">
-            <div className="text-5xl mb-3">📦</div>
-            <h4 className="font-bold text-yellow-800 mb-2">Hàng xuất khẩu</h4>
-            <p className="text-sm text-gray-700">Tăng cường xuất khẩu, mở rộng thị trường</p>
-          </div>
+      {/* Key Crisis Indicators */}
+      <div className="grid md:grid-cols-3 gap-4">
+        <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-6 shadow-md text-center">
+          <div className="text-3xl font-bold text-red-700 mb-2">300% → 774%</div>
+          <p className="text-gray-700 font-semibold">Lạm phát tăng vọt (1985-1986)</p>
         </div>
-      </div>
-
-      {/* Năm phương hướng phát triển */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800 border-b-2 border-red-500 pb-3">
-          Năm Phương Hướng Lớn Phát Triển Kinh Tế
-        </h3>
-        <div className="space-y-3">
-          {[
-            { icon: '📊', title: 'Bố trí lại cơ cấu sản xuất', color: 'blue' },
-            { icon: '🏗️', title: 'Điều chỉnh cơ cấu đầu tư xây dựng và củng cố quan hệ sản xuất XHCN', color: 'green' },
-            { icon: '🔄', title: 'Sử dụng và cải tạo đúng đắn các thành phần kinh tế', color: 'purple' },
-            { icon: '⚙️', title: 'Đổi mới cơ chế quản lý kinh tế, phát huy mạnh mẽ động lực khoa học kỹ thuật', color: 'orange' },
-            { icon: '🌍', title: 'Mở rộng và nâng cao hiệu quả kinh tế đối ngoại', color: 'red' }
-          ].map((item, index) => (
-            <div key={index} className={`flex items-center bg-gradient-to-r from-${item.color}-50 to-white p-4 rounded-lg border-l-4 border-${item.color}-500`}>
-              <span className="text-3xl mr-4">{item.icon}</span>
-              <p className={`text-${item.color}-900 font-semibold`}>{item.title}</p>
-            </div>
-          ))}
+        
+        <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 shadow-md text-center">
+          <div className="text-3xl font-bold text-yellow-700 mb-2">Tem phiếu</div>
+          <p className="text-gray-700 font-semibold">Hệ thống phân phối hàng hóa</p>
         </div>
-      </div>
-
-      {/* Timeline 1987-1991 */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800 border-b-2 border-red-500 pb-3">
-          Triển Khai Thực Hiện (1987-1991)
-        </h3>
-        <div className="relative">
-          <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-red-300"></div>
-          <div className="space-y-8">
-            {[
-              { year: '1987', title: 'Hội nghị TW 2', content: 'Biện pháp cấp bách về phân phối lưu thông, thực hiện "bốn giảm"' },
-              { year: '11/1987', title: 'Quyết định 217-HĐBT', content: 'Trao quyền tự chủ cho các doanh nghiệp' },
-              { year: '4/1988', title: 'Nghị quyết 10', content: 'Khoán sản phẩm đến hộ nông dân (Khoán 10)' },
-              { year: '1989', title: 'Đột phá lương thực', content: 'Từ nhập khẩu 450,000 tấn gạo → xuất khẩu' },
-              { year: '1991', title: 'Kết quả ấn tượng', content: 'Lạm phát giảm còn 67.1%, xóa bỏ tem phiếu' }
-            ].map((milestone, index) => (
-              <div key={index} className={`flex items-center ${index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'}`}>
-                <div className={`w-5/12 ${index % 2 === 0 ? 'text-right pr-8' : 'text-left pl-8'}`}>
-                  <div className="bg-gradient-to-br from-red-50 to-red-100 p-4 rounded-lg shadow-md border-2 border-red-200">
-                    <div className="font-bold text-red-700 mb-1">{milestone.year}</div>
-                    <div className="font-semibold text-gray-800 mb-1">{milestone.title}</div>
-                    <p className="text-sm text-gray-700">{milestone.content}</p>
-                  </div>
-                </div>
-                <div className="w-2/12 flex justify-center">
-                  <div className="w-4 h-4 bg-red-600 rounded-full border-4 border-white shadow-lg z-10"></div>
-                </div>
-                <div className="w-5/12"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/* Kết quả so sánh */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800 border-b-2 border-red-500 pb-3">
-          Thành Tựu Nổi Bật Đến 1991
-        </h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-6 shadow-md">
-            <h4 className="font-bold text-red-800 mb-3 text-center">Lạm phát</h4>
-            <div className="flex items-center justify-around">
-              <div className="text-center">
-                <div className="text-4xl font-bold text-red-600">774.7%</div>
-                <p className="text-sm text-gray-700 mt-1">1986</p>
-              </div>
-              <div className="text-3xl text-gray-400">→</div>
-              <div className="text-center">
-                <div className="text-4xl font-bold text-green-600">67.1%</div>
-                <p className="text-sm text-gray-700 mt-1">1991</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 shadow-md">
-            <h4 className="font-bold text-green-800 mb-3 text-center">Lương thực</h4>
-            <div className="flex items-center justify-around">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-red-600">Nhập khẩu</div>
-                <p className="text-sm text-gray-700 mt-1">450K tấn (1988)</p>
-              </div>
-              <div className="text-3xl text-gray-400">→</div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-600">Xuất khẩu</div>
-                <p className="text-sm text-gray-700 mt-1">(1989)</p>
-              </div>
-            </div>
-          </div>
+        
+        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-md text-center">
+          <div className="text-3xl font-bold text-blue-700 mb-2">Vượt biên</div>
+          <p className="text-gray-700 font-semibold">Hiện tượng xã hội phổ biến</p>
         </div>
       </div>
     </div>
@@ -378,9 +275,6 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
 
           {/* Show visualization for Pre-1986 event */}
           {isPre1986 && <Pre1986Visualization />}
-
-          {/* Show visualization for 1986 event */}
-          {is1986 && <Event1986Visualization />}
           
           <div className="prose prose-lg max-w-none bg-white rounded-lg shadow-md p-6">
             {formatDetails(isPre1986 ? getVietnamContextAndRest(event.details) : event.details)}
