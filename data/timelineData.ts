@@ -76,7 +76,7 @@ export const TIMELINE_DATA: TimelineEvent[] = [
       },
       {
         question:
-          "Bài học lớn nhất rút ra từ thất bại của cải cách Giá - Lương - Tiền là gì?",
+          "Bài học lớn nhất rút ra từ thất bại của cải cách Giá - Lương - Tiền là gg�?",
         options: [
           "Phải có sự giúp đỡ của nước ngoài",
           "Phải tôn trọng các quy luật kinh tế khách quan",
@@ -169,7 +169,7 @@ export const TIMELINE_DATA: TimelineEvent[] = [
       'Nhận định của Tổng Bí thư Nguyễn Phú Trọng: "Đất nước ta chưa bao giờ có được cơ đồ, tiềm lực, vị thế và uy tín quốc tế như ngày nay" được chứng minh bằng những luận cứ xác thực:\n- **Về cơ đồ, tiềm lực:** Từ một nước nghèo, bị tàn phá bởi chiến tranh, Việt Nam đã vươn lên trở thành nước đang phát triển có thu nhập trung bình. Quy mô GDP liên tục tăng, năm 2023 ước đạt 430 tỷ USD. Kinh tế vĩ mô ổn định, lạm phát được kiểm soát. An ninh chính trị, trật tự an toàn xã hội được giữ vững. Tiềm lực quốc phòng, an ninh được củng cố.\n- **Về vị thế, uy tín quốc tế:** Việt Nam đã thiết lập quan hệ ngoại giao với 193 quốc gia, có quan hệ đối tác chiến lược và đối tác toàn diện với nhiều đối tác chủ chốt, bao gồm tất cả các nước Thường trực Hội đồng Bảo an Liên Hợp Quốc. Việt Nam là một thành viên tích cực, có trách nhiệm của cộng đồng quốc tế, đã hai lần đảm nhiệm thành công vai trò Ủy viên không thường trực HĐBA LHQ, tổ chức thành công nhiều sự kiện quốc tế lớn. Việt Nam được xem là một hình mẫu về phát triển và là điểm đến đầu tư an toàn, hấp dẫn.',
     image_description:
       "Cố Tổng Bí thư, Chủ tịch nước Nguyễn Phú Trọng đọc Báo cáo chính trị của Ban Chấp hành Trung ương khóa XII và các văn kiện trình Đại hội",
-    imageUrl: "/images/ngay_nay.png",
+    imageUrl: "images/image_1762207384926.png",
     quiz: [
       {
         question:
