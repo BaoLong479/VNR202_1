@@ -76,7 +76,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         return;
       }
 
-      // Headers (bold text with **)
+      // Headers (bold text with ** at start and end)
       if (trimmedLine.startsWith('**') && trimmedLine.endsWith('**')) {
         // Close any open list
         if (listItems.length > 0) {
@@ -111,7 +111,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         listItems.push(
           <li key={`item-${index}`} className="text-gray-700 leading-relaxed">
             <span className="text-red-500 font-bold mr-2">•</span>
-            {parseInlineMarkdown(content)}
+            <span>{parseInlineMarkdown(content)}</span>
           </li>
         );
         return;
