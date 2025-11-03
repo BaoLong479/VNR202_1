@@ -16,6 +16,9 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
   // Check if this is the "1986" event
   const is1986 = event.period === "1986";
 
+  // Check if this is the "1991" event
+  const is1991 = event.period === "1991";
+
   // Helper function to parse inline markdown (bold text)
   const parseInlineMarkdown = (text: string): (string | JSX.Element)[] => {
     const parts: (string | JSX.Element)[] = [];
@@ -260,6 +263,327 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
     </div>
   );
 
+  // Component for 1991 Visualization
+  const Event1991Visualization = () => (
+    <div className="space-y-8 mb-8">
+      {/* Đại hội VII Timeline */}
+      <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-blue-100">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Đại hội VII của Đảng
+        </h3>
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
+          <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-4 text-center shadow-md">
+            <div className="text-3xl font-bold text-blue-700 mb-2">24-27/6/1991</div>
+            <p className="text-gray-700 font-semibold">Thời gian diễn ra</p>
+          </div>
+          <div className="text-4xl font-bold text-blue-600 hidden md:block">→</div>
+          <div className="bg-green-50 border-2 border-green-300 rounded-lg p-4 text-center shadow-md">
+            <div className="text-2xl font-bold text-green-700 mb-2">Hà Nội</div>
+            <p className="text-gray-700 font-semibold">Địa điểm</p>
+          </div>
+          <div className="text-4xl font-bold text-blue-600 hidden md:block">→</div>
+          <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4 text-center shadow-md">
+            <div className="text-lg font-bold text-red-700 mb-2">Đỗ Mười</div>
+            <p className="text-gray-700 font-semibold">Tổng Bí thư</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Economic Achievement */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Thành tựu Kinh tế
+        </h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-4xl font-bold text-green-700 mb-2">393.3% → 67.4%</div>
+            <p className="text-gray-700 font-semibold">Lạm phát giảm mạnh (1988-1990)</p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-2xl font-bold text-blue-700 mb-2">Kinh tế thị trường</div>
+            <p className="text-gray-700 font-semibold">Hàng hóa nhiều thành phần</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Năm bài học lớn */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Năm Bài Học Lớn
+        </h3>
+        <div className="space-y-3">
+          {[
+            'Nắm vững ngọn cờ độc lập dân tộc và chủ nghĩa xã hội',
+            'Sự nghiệp cách mạng là của nhân dân, do nhân dân, vì nhân dân',
+            'Không ngừng củng cố, tăng cường đoàn kết: toàn Đảng, toàn dân, dân tộc, quốc tế',
+            'Kết hợp sức mạnh dân tộc với sức mạnh thời đại',
+            'Sự lãnh đạo đúng đắn của Đảng bảo đảm thắng lợi của cách mạng Việt Nam'
+          ].map((item, index) => (
+            <div key={index} className="bg-gradient-to-r from-blue-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-blue-500 flex items-center gap-3">
+              <div className="bg-blue-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
+                {index + 1}
+              </div>
+              <p className="text-gray-800">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Sáu đặc trưng XHCN */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Sáu Đặc Trưng Cơ Bản của Xã Hội XHCN
+        </h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md border-l-4 border-red-500">
+            <div className="flex items-start gap-3">
+              <div className="bg-red-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">1</div>
+              <div>
+                <h4 className="font-bold text-red-700 mb-1">Chính trị</h4>
+                <p className="text-gray-700 text-sm">Do nhân dân lao động làm chủ</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md border-l-4 border-blue-500">
+            <div className="flex items-start gap-3">
+              <div className="bg-blue-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">2</div>
+              <div>
+                <h4 className="font-bold text-blue-700 mb-1">Kinh tế</h4>
+                <p className="text-gray-700 text-sm">Nền kinh tế phát triển cao, lực lượng sản xuất hiện đại, công hữu về TLSX</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md border-l-4 border-green-500">
+            <div className="flex items-start gap-3">
+              <div className="bg-green-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">3</div>
+              <div>
+                <h4 className="font-bold text-green-700 mb-1">Văn hóa</h4>
+                <p className="text-gray-700 text-sm">Nền văn hóa tiên tiến, đậm đà bản sắc dân tộc</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-5 shadow-md border-l-4 border-yellow-500">
+            <div className="flex items-start gap-3">
+              <div className="bg-yellow-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">4</div>
+              <div>
+                <h4 className="font-bold text-yellow-700 mb-1">Xã hội</h4>
+                <p className="text-gray-700 text-sm">Con người được giải phóng, làm theo năng lực, hưởng theo lao động</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-5 shadow-md border-l-4 border-purple-500">
+            <div className="flex items-start gap-3">
+              <div className="bg-purple-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">5</div>
+              <div>
+                <h4 className="font-bold text-purple-700 mb-1">Đoàn kết dân tộc</h4>
+                <p className="text-gray-700 text-sm">Các dân tộc bình đẳng, đoàn kết và giúp đỡ lẫn nhau cùng tiến bộ</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-lg p-5 shadow-md border-l-4 border-indigo-500">
+            <div className="flex items-start gap-3">
+              <div className="bg-indigo-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">6</div>
+              <div>
+                <h4 className="font-bold text-indigo-700 mb-1">Quan hệ quốc tế</h4>
+                <p className="text-gray-700 text-sm">Hữu nghị và hợp tác với nhân dân tất cả các nước</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Bảy phương hướng lớn */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Bảy Phương Hướng Lớn Xây Dựng CNXH
+        </h3>
+        <div className="space-y-3">
+          {[
+            'Xây dựng Nhà nước XHCN',
+            'Công nghiệp hóa gắn liền với phát triển nông nghiệp toàn diện',
+            'Thiết lập quan hệ sản xuất XHCN đa dạng về hình thức sở hữu',
+            'Phát triển nền kinh tế hàng hóa nhiều thành phần theo định hướng XHCN',
+            'Tiến hành cách mạng XHCN trên lĩnh vực tư tưởng, văn hóa',
+            'Thực hiện chính sách đại đoàn kết dân tộc',
+            'Thực hiện hai nhiệm vụ chiến lược xây dựng và bảo vệ Tổ quốc'
+          ].map((item, index) => (
+            <div key={index} className="bg-gradient-to-r from-green-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-green-500 flex items-center gap-3">
+              <div className="bg-green-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
+                {index + 1}
+              </div>
+              <p className="text-gray-800">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Nhà nước pháp quyền */}
+      <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg shadow-lg p-6 border-2 border-blue-300">
+        <h3 className="text-2xl font-bold text-center mb-4 text-blue-800">
+          Nhà Nước Pháp Quyền XHCN
+        </h3>
+        <p className="text-gray-800 text-center mb-6 max-w-3xl mx-auto font-semibold">
+          "Nhà nước của nhân dân, do nhân dân, vì nhân dân"
+        </p>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-white rounded-lg p-4 shadow-md">
+            <h4 className="font-bold text-blue-700 mb-2">Quyền lực thống nhất</h4>
+            <p className="text-gray-700 text-sm">Phân công và phối hợp ba quyền: lập pháp, hành pháp, tư pháp</p>
+          </div>
+          <div className="bg-white rounded-lg p-4 shadow-md">
+            <h4 className="font-bold text-blue-700 mb-2">Quản lý bằng pháp luật</h4>
+            <p className="text-gray-700 text-sm">Kết hợp với giáo dục, nâng cao đạo đức xã hội</p>
+          </div>
+          <div className="bg-white rounded-lg p-4 shadow-md">
+            <h4 className="font-bold text-blue-700 mb-2">Kết hợp biện pháp</h4>
+            <p className="text-gray-700 text-sm">Hành chính với giáo dục tư tưởng, nâng cao dân trí</p>
+          </div>
+          <div className="bg-white rounded-lg p-4 shadow-md">
+            <h4 className="font-bold text-blue-700 mb-2">Kết hợp sức mạnh</h4>
+            <p className="text-gray-700 text-sm">Sức mạnh pháp luật với sức mạnh quần chúng</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Bốn nguy cơ */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Bốn Nguy Cơ Lớn (Hội nghị Giữa Nhiệm kỳ 1994)
+        </h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md border-l-4 border-red-500">
+            <div className="flex items-start gap-3">
+              <div className="bg-red-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">1</div>
+              <div>
+                <h4 className="font-bold text-red-700 mb-1">Tụt hậu về kinh tế</h4>
+                <p className="text-gray-700 text-sm">Nguy cơ tụt hậu xa hơn so với khu vực và thế giới</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-5 shadow-md border-l-4 border-orange-500">
+            <div className="flex items-start gap-3">
+              <div className="bg-orange-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">2</div>
+              <div>
+                <h4 className="font-bold text-orange-700 mb-1">Chệch hướng XHCN</h4>
+                <p className="text-gray-700 text-sm">Nếu không khắc phục lệch lạc trong chủ trương, chính sách</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-5 shadow-md border-l-4 border-yellow-500">
+            <div className="flex items-start gap-3">
+              <div className="bg-yellow-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">3</div>
+              <div>
+                <h4 className="font-bold text-yellow-700 mb-1">Tham nhũng, quan liêu</h4>
+                <p className="text-gray-700 text-sm">Nạn tham nhũng và tệ quan liêu</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-5 shadow-md border-l-4 border-purple-500">
+            <div className="flex items-start gap-3">
+              <div className="bg-purple-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">4</div>
+              <div>
+                <h4 className="font-bold text-purple-700 mb-1">Diễn biến hòa bình</h4>
+                <p className="text-gray-700 text-sm">Các thế lực thù địch</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Kết quả 1991-1995 */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Kết Quả Giai Đoạn 1991-1995
+        </h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-4xl font-bold text-green-700 mb-2">8,2%</div>
+            <p className="text-gray-700 font-semibold">Tăng trưởng GDP</p>
+            <p className="text-gray-600 text-sm mt-1">(Kế hoạch: 5,5-6,5%)</p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-4xl font-bold text-blue-700 mb-2">67,1% → 12,7%</div>
+            <p className="text-gray-700 font-semibold">Lạm phát giảm</p>
+            <p className="text-gray-600 text-sm mt-1">(1991-1995)</p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-3xl font-bold text-yellow-700 mb-2">Tích lũy nội bộ</div>
+            <p className="text-gray-700 font-semibold">Bắt đầu có tích lũy</p>
+            <p className="text-gray-600 text-sm mt-1">Từ nội bộ nền kinh tế</p>
+          </div>
+          
+          <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-3xl font-bold text-red-700 mb-2">28/7/1995</div>
+            <p className="text-gray-700 font-semibold">Gia nhập ASEAN</p>
+            <p className="text-gray-600 text-sm mt-1">Thành viên đầy đủ</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Thành tựu đối ngoại */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Thành Tựu Đối Ngoại
+        </h3>
+        <div className="space-y-3">
+          <div className="bg-gradient-to-r from-red-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-red-500">
+            <div className="flex items-center gap-3">
+              <div className="bg-red-500 text-white font-bold rounded-lg px-3 py-1 text-sm">11/1991</div>
+              <p className="text-gray-800">Bình thường hóa quan hệ Việt Nam - Trung Quốc</p>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-blue-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-blue-500">
+            <div className="flex items-center gap-3">
+              <div className="bg-blue-500 text-white font-bold rounded-lg px-3 py-1 text-sm">28/7/1995</div>
+              <p className="text-gray-800">Gia nhập ASEAN (thành viên thứ 7)</p>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-green-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-green-500">
+            <div className="flex items-center gap-3">
+              <div className="bg-green-500 text-white font-bold rounded-lg px-3 py-1 text-sm">11/7/1995</div>
+              <p className="text-gray-800">Thiết lập quan hệ ngoại giao Việt Nam - Hoa Kỳ</p>
+            </div>
+          </div>
+          
+          <div className="bg-gradient-to-r from-yellow-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-yellow-500">
+            <div className="flex items-center gap-3">
+              <div className="bg-yellow-500 text-white font-bold rounded-lg px-3 py-1 text-sm">Cuối 1995</div>
+              <p className="text-gray-800">Quan hệ ngoại giao với 160 nước, buôn bán trên 100 nước</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* CNH-HĐH Highlight */}
+      <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-lg shadow-lg p-6 border-2 border-indigo-300">
+        <h3 className="text-2xl font-bold text-center mb-4 text-indigo-800">
+          Nhiệm Vụ Trọng Tâm
+        </h3>
+        <div className="text-center">
+          <div className="text-4xl font-bold text-indigo-700 mb-3">
+            Công Nghiệp Hóa - Hiện Đại Hóa
+          </div>
+          <p className="text-gray-800 max-w-2xl mx-auto">
+            Con đường tất yếu để thoát khỏi nguy cơ tụt hậu, đưa đất nước phát triển
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+
   // Component for 1986 Visualization
   const Event1986Visualization = () => (
     <div className="space-y-8 mb-8">
@@ -480,6 +804,9 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           
           {/* Show visualization for 1986 event */}
           {is1986 && <Event1986Visualization />}
+          
+          {/* Show visualization for 1991 event */}
+          {is1991 && <Event1991Visualization />}
           
           <div className="prose prose-lg max-w-none bg-white rounded-lg shadow-md p-6">
             {formatDetails(isPre1986 ? getVietnamContextAndRest(event.details) : event.details)}
