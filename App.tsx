@@ -117,15 +117,39 @@ const App: React.FC = () => {
   return (
     <main>
       {renderContent()}
-      <section className="container mx-auto px-4 py-12 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Hành Trình Vẫn Tiếp Nối</h2>
-        <p className="max-w-3xl mx-auto text-gray-600 leading-relaxed">
-            Gần bốn thập kỷ Đổi Mới là một chặng đường đầy thử thách nhưng cũng vô cùng tự hào của dân tộc Việt Nam. Từ một quốc gia bị tàn phá bởi chiến tranh, Việt Nam đã vươn lên mạnh mẽ, hội nhập sâu rộng với thế giới và khẳng định vị thế của mình trên trường quốc tế.
-        </p>
-        <p className="max-w-3xl mx-auto text-gray-600 leading-relaxed mt-4">
-            Những thành tựu đã đạt được là nền tảng vững chắc, là động lực to lớn để chúng ta tiếp tục con đường phía trước, hiện thực hóa khát vọng xây dựng một Việt Nam hùng cường, thịnh vượng, "dân giàu, nước mạnh, dân chủ, công bằng, văn minh" vào năm 2045.
-        </p>
-    </section>
+      <section className="container mx-auto px-4 py-16 mb-8">
+        <div className="max-w-5xl mx-auto">
+          <div className="bg-gradient-to-br from-red-50 via-white to-yellow-50 rounded-2xl shadow-2xl p-8 md:p-12 border-t-4 border-red-600">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-yellow-600 mb-6">
+                Hành Trình Vẫn Tiếp Nối
+              </h2>
+              <div className="w-24 h-1 bg-gradient-to-r from-red-600 to-yellow-600 mx-auto rounded-full"></div>
+            </div>
+            
+            <div className="space-y-6">
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-red-500">
+                <p className="text-gray-800 text-lg leading-relaxed">
+                  Gần bốn thập kỷ Đổi Mới là một chặng đường đầy thử thách nhưng cũng vô cùng tự hào của dân tộc Việt Nam. Từ một quốc gia bị tàn phá bởi chiến tranh, Việt Nam đã vươn lên mạnh mẽ, hội nhập sâu rộng với thế giới và khẳng định vị thế của mình trên trường quốc tế.
+                </p>
+              </div>
+              
+              <div className="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-yellow-500">
+                <p className="text-gray-800 text-lg leading-relaxed">
+                  Những thành tựu đã đạt được là nền tảng vững chắc, là động lực to lớn để chúng ta tiếp tục con đường phía trước, hiện thực hóa khát vọng xây dựng một Việt Nam hùng cường, thịnh vượng, <span className="font-bold text-red-700">"dân giàu, nước mạnh, dân chủ, công bằng, văn minh"</span> vào năm 2045.
+                </p>
+              </div>
+            </div>
+            
+            <div className="mt-8 text-center">
+              <div className="inline-block bg-gradient-to-r from-red-600 to-yellow-600 text-white font-bold px-8 py-3 rounded-full shadow-lg">
+                <span className="text-2xl">2045</span>
+                <span className="ml-2 text-sm">Kỷ niệm 100 năm thành lập nước</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <DetailModal event={selectedEvent} onClose={handleCloseDetailModal} />
       {activeQuiz && (
         <QuizModal 
