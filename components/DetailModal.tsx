@@ -1138,38 +1138,38 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
 
   return (
     <div 
-      className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center p-4 transition-opacity duration-300"
+      className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center transition-opacity duration-300"
       onClick={onClose}
     >
       <div 
-        className="bg-gray-50 rounded-lg shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 animate-modal-enter"
+        className="bg-gray-50 w-full h-full overflow-y-auto transform transition-all duration-300 animate-modal-enter"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 bg-gradient-to-r from-red-600 to-red-700 text-white p-6 border-b border-red-800 flex justify-between items-center shadow-md z-10">
+        <div className="sticky top-0 bg-gradient-to-r from-red-600 to-red-700 text-white p-8 border-b border-red-800 flex justify-between items-center shadow-md z-10">
           <div>
-            <p className="text-sm font-semibold text-red-100 mb-1">{event.period}</p>
-            <h2 className="text-2xl font-bold">{event.title}</h2>
+            <p className="text-base font-semibold text-red-100 mb-2">{event.period}</p>
+            <h2 className="text-4xl font-bold">{event.title}</h2>
           </div>
           <button 
             onClick={onClose} 
-            className="text-white hover:text-red-200 transition-colors p-2 hover:bg-red-800 rounded-full"
+            className="text-white hover:text-red-200 transition-colors p-3 hover:bg-red-800 rounded-full"
             aria-label="Đóng"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
         </div>
 
-        <div className="p-8">
-          <div className="mb-8">
+        <div className="px-12 py-10 max-w-7xl mx-auto">
+          <div className="mb-10">
             <img 
               src={event.imageUrl}
               alt={event.title} 
-              className="w-full h-auto object-contain rounded-lg shadow-lg bg-gray-100"
+              className="w-full h-auto max-h-[500px] object-contain rounded-lg shadow-lg bg-gray-100 mx-auto"
             />
             {event.image_description && (
-              <p className="text-sm text-gray-600 italic mt-2 text-center">
+              <p className="text-base text-gray-600 italic mt-3 text-center">
                 {event.image_description}
               </p>
             )}
@@ -1199,10 +1199,10 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           </div>
         </div>
 
-        <div className="sticky bottom-0 bg-gray-50 p-4 border-t border-gray-200 text-center">
+        <div className="sticky bottom-0 bg-gray-50 p-6 border-t border-gray-200 text-center shadow-lg">
           <button
             onClick={onClose}
-            className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2 rounded-lg transition-colors duration-200"
+            className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200 text-lg"
           >
             Đóng
           </button>
