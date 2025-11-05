@@ -1145,17 +1145,17 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         className="bg-gray-50 w-full h-full overflow-y-auto transform transition-all duration-300 animate-modal-enter"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="sticky top-0 bg-gradient-to-r from-red-600 to-red-700 text-white p-8 border-b border-red-800 flex justify-between items-center shadow-md z-10">
+        <div className="sticky top-0 bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-5 border-b border-red-800 flex justify-between items-center shadow-md z-10">
           <div>
-            <p className="text-base font-semibold text-red-100 mb-2">{event.period}</p>
-            <h2 className="text-4xl font-bold">{event.title}</h2>
+            <p className="text-sm font-medium text-red-100 mb-1">{event.period}</p>
+            <h2 className="text-2xl font-bold">{event.title}</h2>
           </div>
           <button 
             onClick={onClose} 
-            className="text-white hover:text-red-200 transition-colors p-3 hover:bg-red-800 rounded-full"
+            className="text-white hover:text-red-200 transition-colors p-2 hover:bg-red-800 rounded-full"
             aria-label="Đóng"
           >
-            <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
           </button>
@@ -1199,10 +1199,10 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           </div>
         </div>
 
-        <div className="sticky bottom-0 bg-gray-50 p-6 border-t border-gray-200 text-center shadow-lg">
+        <div className="sticky bottom-0 bg-gray-50 px-8 py-4 border-t border-gray-200 text-center shadow-md">
           <button
             onClick={onClose}
-            className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-3 rounded-lg transition-colors duration-200 text-lg"
+            className="bg-red-600 hover:bg-red-700 text-white font-medium px-6 py-2 rounded-lg transition-colors duration-200"
           >
             Đóng
           </button>
