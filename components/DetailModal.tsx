@@ -21,27 +21,42 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
   // Check if this is the "Ngày nay" event
   const isNgayNay = event.period === "Ngày nay";
 
-  // Helper function to parse inline markdown (bold text)
+  // Helper function to parse inline markdown (bold text and images)
   const parseInlineMarkdown = (text: string): (string | JSX.Element)[] => {
     const parts: (string | JSX.Element)[] = [];
-    // Match both **text** and *text* patterns
-    const regex = /\*\*([^*]+?)\*\*|\*([^*]+?)\*/g;
+    // Match both **text** and *text* patterns, and ![alt](url) for images
+    const regex = /!\[([^\]]*)\]\(([^)]+)\)|\*\*([^*]+?)\*\*|\*([^*]+?)\*/g;
     let lastIndex = 0;
     let match;
     let key = 0;
 
     while ((match = regex.exec(text)) !== null) {
-      // Add text before the bold part
+      // Add text before the match
       if (match.index > lastIndex) {
         parts.push(text.substring(lastIndex, match.index));
       }
-      // Add the bold part (match[1] for **, match[2] for *)
-      const boldText = match[1] || match[2];
-      parts.push(
-        <strong key={`bold-${key++}`} className="font-bold text-gray-900">
-          {boldText}
-        </strong>,
-      );
+      
+      // Check if it's an image
+      if (match[0].startsWith('![')) {
+        const alt = match[1];
+        const src = match[2];
+        parts.push(
+          <img 
+            key={`img-${key++}`} 
+            src={src} 
+            alt={alt}
+            className="w-full max-w-2xl mx-auto rounded-lg shadow-md my-4"
+          />
+        );
+      } else {
+        // Add the bold part (match[3] for **, match[4] for *)
+        const boldText = match[3] || match[4];
+        parts.push(
+          <strong key={`bold-${key++}`} className="font-bold text-gray-900">
+            {boldText}
+          </strong>,
+        );
+      }
       lastIndex = regex.lastIndex;
     }
 
@@ -74,6 +89,46 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           );
           listItems = [];
         }
+        return;
+      }
+
+      // Check for markdown images: ![alt](url)
+      if (trimmedLine.startsWith('![')) {
+        const imageMatch = trimmedLine.match(/!\[([^\]]*)\]\(([^)]+)\)/);
+        if (imageMatch) {
+          // Close any open list
+          if (listItems.length > 0) {
+            elements.push(
+              <ul key={`list-${index}`} className="mb-4 ml-6 space-y-2">
+                {listItems}
+              </ul>,
+            );
+            listItems = [];
+          }
+          
+          const alt = imageMatch[1];
+          const src = imageMatch[2];
+          elements.push(
+            <div key={`img-container-${index}`} className="my-6">
+              <img 
+                src={src} 
+                alt={alt}
+                className="w-full max-w-3xl mx-auto rounded-lg shadow-lg"
+              />
+            </div>
+          );
+          return;
+        }
+      }
+
+      // Check for image captions (italic text starting with *)
+      if (trimmedLine.startsWith('*') && trimmedLine.endsWith('*') && !trimmedLine.startsWith('**')) {
+        const caption = trimmedLine.slice(1, -1);
+        elements.push(
+          <p key={`caption-${index}`} className="text-center text-gray-600 italic text-sm -mt-4 mb-6">
+            {caption}
+          </p>
+        );
         return;
       }
 
