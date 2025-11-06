@@ -125,9 +125,10 @@ const App: React.FC = () => {
   }
 
   return (
-    <main>
+    <main className="pb-16">
       {renderContent()}
-      <section className="mt-16 pt-16 pb-16 px-4 bg-gradient-to-b from-amber-50/30 to-red-50/30">
+      <div className="h-16"></div>
+      <section className="pt-16 pb-16 px-4 bg-gradient-to-b from-amber-50/30 to-red-50/30">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center">
             <div className="mb-8">
