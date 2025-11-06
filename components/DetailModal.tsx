@@ -200,48 +200,6 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
   // Component for Pre-1986 Visualization
   const Pre1986Visualization = () => (
     <div className="space-y-8 mb-8">
-      {/* Historical Images Gallery */}
-      <div className="grid md:grid-cols-3 gap-6 mb-8">
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img
-            src="images/Tem phiếu thời bao cấp_1762456357079.jpg"
-            alt="Tem phiếu thời bao cấp"
-            className="w-full h-64 object-cover"
-          />
-          <div className="p-4">
-            <p className="text-gray-700 text-sm text-center font-semibold">
-              Sổ mua lương thực và tem phiếu - Biểu tượng của thời kỳ bao cấp
-            </p>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img
-            src="images/Mua bán ở cửa hàng mậu dịch_1762456357079.jpg"
-            alt="Mua bán ở cửa hàng mậu dịch"
-            className="w-full h-64 object-cover"
-          />
-          <div className="p-4">
-            <p className="text-gray-700 text-sm text-center font-semibold">
-              Cảnh mua bán tại cửa hàng mậu dịch - Hàng hóa khan hiếm
-            </p>
-          </div>
-        </div>
-
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img
-            src="images/Hà Nội thập niên 80_1762456357080.jpg"
-            alt="Hà Nội thập niên 80"
-            className="w-full h-64 object-cover"
-          />
-          <div className="p-4">
-            <p className="text-gray-700 text-sm text-center font-semibold">
-              Một góc phố Hà Nội thập niên 80 - Đời sống khó khăn, thiếu thốn
-            </p>
-          </div>
-        </div>
-      </div>
-
       {/* Inflation Highlight */}
       <div className="bg-white rounded-lg shadow-lg p-6 text-center border-2 border-red-100">
         <h3 className="text-2xl font-bold mb-2 text-gray-800">
@@ -1486,6 +1444,65 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
             </div>
           )}
 
+          {/* Vietnam context details */}
+          {isPre1986 && (
+            <div className="prose prose-lg max-w-none bg-white rounded-lg shadow-md p-6 mb-8">
+              {formatDetails(
+                getVietnamContextAndRest(event.details)
+                  .split("\n")
+                  .slice(0, getVietnamContextAndRest(event.details).split("\n").findIndex(line => 
+                    line.trim().startsWith("**") && 
+                    !line.trim().startsWith("**Bối cảnh Việt Nam:**")
+                  ))
+                  .join("\n")
+              )}
+            </div>
+          )}
+
+          {/* Historical Images Gallery - after Vietnam context */}
+          {isPre1986 && (
+            <div className="grid md:grid-cols-3 gap-6 mb-8">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img
+                  src="images/Tem phiếu thời bao cấp_1762456357079.jpg"
+                  alt="Tem phiếu thời bao cấp"
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-4">
+                  <p className="text-gray-700 text-sm text-center font-semibold">
+                    Sổ mua lương thực và tem phiếu - Biểu tượng của thời kỳ bao cấp
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img
+                  src="images/Mua bán ở cửa hàng mậu dịch_1762456357079.jpg"
+                  alt="Mua bán ở cửa hàng mậu dịch"
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-4">
+                  <p className="text-gray-700 text-sm text-center font-semibold">
+                    Cảnh mua bán tại cửa hàng mậu dịch - Hàng hóa khan hiếm
+                  </p>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+                <img
+                  src="images/Hà Nội thập niên 80_1762456357080.jpg"
+                  alt="Hà Nội thập niên 80"
+                  className="w-full h-64 object-cover"
+                />
+                <div className="p-4">
+                  <p className="text-gray-700 text-sm text-center font-semibold">
+                    Một góc phố Hà Nội thập niên 80 - Đời sống khó khăn, thiếu thốn
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
           {/* Show visualization for Pre-1986 event */}
           {isPre1986 && <Pre1986Visualization />}
 
@@ -1502,6 +1519,12 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
             {formatDetails(
               isPre1986
                 ? getVietnamContextAndRest(event.details)
+                    .split("\n")
+                    .slice(getVietnamContextAndRest(event.details).split("\n").findIndex(line => 
+                      line.trim().startsWith("**") && 
+                      !line.trim().startsWith("**Bối cảnh Việt Nam:**")
+                    ))
+                    .join("\n")
                 : event.details,
             )}
           </div>
