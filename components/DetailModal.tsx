@@ -1347,6 +1347,53 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </div>
       </div>
 
+      {/* Historical Images Gallery - 1986 */}
+      <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Hình Ảnh Lịch Sử
+        </h3>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img
+              src="images/Tổng bí thư Nguyễn Văn Linh_1762457106399.jpg"
+              alt="Tổng Bí thư Nguyễn Văn Linh"
+              className="w-full h-64 object-cover"
+            />
+            <div className="p-4">
+              <p className="text-gray-700 text-sm text-center font-semibold">
+                Đồng chí Nguyễn Văn Linh - Tổng Bí thư Đảng khóa VI
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img
+              src="images/Nông dân trên đồng ruộng_1762457106399.jpg"
+              alt="Nông dân trên đồng ruộng"
+              className="w-full h-64 object-cover"
+            />
+            <div className="p-4">
+              <p className="text-gray-700 text-sm text-center font-semibold">
+                Nông dân cấy lúa - Nông nghiệp là mặt trận hàng đầu
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img
+              src="images/Nhà máy nhiệt điện Phả Lại chính thức phát điện_1762457106400.jpg"
+              alt="Nhà máy nhiệt điện Phả Lại"
+              className="w-full h-64 object-cover"
+            />
+            <div className="p-4">
+              <p className="text-gray-700 text-sm text-center font-semibold">
+                Nhà máy nhiệt điện Phả Lại - Biểu tượng phát triển công nghiệp
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Kết quả ấn tượng */}
       <div className="bg-white rounded-lg shadow-lg p-6">
         <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
