@@ -53,6 +53,118 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
     return parts.length > 0 ? parts : [text];
   };
 
+  // Helper function to insert images for 1991 event
+  const insertImagesFor1991 = (elements: JSX.Element[], currentSection: string, index: number) => {
+    if (!is1991) return;
+    
+    // Insert Hà Nội image after "Thành tựu Kinh tế" section
+    if (currentSection.includes("Kết quả giai đoạn 1991-1995")) {
+      elements.push(
+        <div key={`hanoi-image-${index}`} className="bg-white rounded-lg shadow-lg overflow-hidden my-6">
+          <img
+            src="images/Hà Nội 1991_1762457375271.jpg"
+            alt="Hà Nội năm 1991"
+            className="w-full h-auto object-contain"
+            style={{ maxHeight: '500px' }}
+          />
+          <div className="p-4">
+            <p className="text-gray-700 text-sm text-center italic">
+              Hà Nội đầu thập niên 90 - Bước vào giai đoạn phát triển mới
+            </p>
+          </div>
+        </div>
+      );
+    }
+    
+    // Insert Vietnam-China image after mentioning normalization
+    if (currentSection.includes("Thành tựu đối ngoại") && line.includes("Bình thường hóa quan hệ Việt Nam - Trung Quốc")) {
+      elements.push(
+        <div key={`vietnam-china-${index}`} className="bg-white rounded-lg shadow-lg overflow-hidden my-6">
+          <img
+            src="images/Tổng bí thư Đỗ Mười tại buổi ký kết bình thường hóa quan hệ với Trung Quốc 1991_1762457375271.jpg"
+            alt="Bình thường hóa quan hệ Việt-Trung 1991"
+            className="w-full h-auto object-contain"
+            style={{ maxHeight: '500px' }}
+          />
+          <div className="p-4">
+            <p className="text-gray-700 text-sm text-center font-semibold">
+              Tổng Bí thư Đỗ Mười tại buổi ký kết bình thường hóa quan hệ Việt Nam - Trung Quốc (tháng 11/1991)
+            </p>
+          </div>
+        </div>
+      );
+    }
+    
+    // Insert ASEAN image after mentioning ASEAN membership
+    if (currentSection.includes("Thành tựu đối ngoại") && line.includes("Gia nhập ASEAN")) {
+      elements.push(
+        <div key={`asean-${index}`} className="bg-white rounded-lg shadow-lg overflow-hidden my-6">
+          <img
+            src="images/Việt Nam tham gia ASEAN_1762457375272.jpg"
+            alt="Việt Nam gia nhập ASEAN"
+            className="w-full h-auto object-contain"
+            style={{ maxHeight: '500px' }}
+          />
+          <div className="p-4">
+            <p className="text-gray-700 text-sm text-center font-semibold">
+              Việt Nam chính thức trở thành thành viên thứ 7 của ASEAN (28/7/1995)
+            </p>
+          </div>
+        </div>
+      );
+    }
+    
+    // Insert Cương lĩnh image after CNH-HĐH section
+    if (currentSection.includes("Công nghiệp hóa - Hiện đại hóa")) {
+      elements.push(
+        <div key={`cuong-linh-${index}`} className="bg-white rounded-lg shadow-lg overflow-hidden my-6">
+          <img
+            src="images/Cương lĩnh_1762457375271.jpg"
+            alt="Cương lĩnh xây dựng đất nước 1991"
+            className="w-full h-auto object-contain"
+          />
+          <div className="p-4">
+            <p className="text-gray-700 text-sm text-center font-semibold">
+              Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội (1991)
+            </p>
+          </div>
+        </div>
+      );
+    }
+    
+    // Insert agricultural images after agriculture section
+    if (currentSection.includes("Coi nông nghiệp là mặt trận hàng đầu")) {
+      elements.push(
+        <div key={`agriculture-${index}`} className="grid md:grid-cols-2 gap-4 my-6">
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img 
+              src="images/Nông dân trên đồng ruộng_1762457106399.jpg" 
+              alt="Nông nghiệp" 
+              className="w-full h-64 object-cover"
+            />
+            <div className="p-4">
+              <p className="text-gray-700 text-sm text-center font-semibold">
+                Nông dân Việt Nam làm việc trên đồng ruộng - Nông nghiệp là mặt trận hàng đầu
+              </p>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img 
+              src="images/Nông nghiệp hiện đại_1762457375271.png" 
+              alt="Nông nghiệp hiện đại" 
+              className="w-full h-64 object-cover"
+            />
+            <div className="p-4">
+              <p className="text-gray-700 text-sm text-center font-semibold">
+                Phát triển nông nghiệp ứng dụng công nghệ hiện đại
+              </p>
+            </div>
+          </div>
+        </div>
+      );
+    }
+  };
+
   // Enhanced formatter for better rendering
   const formatDetails = (details: string) => {
     const lines = details.split("\n");
@@ -91,6 +203,10 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
 
         const headerText = trimmedLine.slice(2, -2);
         const isMainHeader = !currentSection;
+        
+        // Insert images for previous section before new header
+        insertImagesFor1991(elements, currentSection, index);
+        
         currentSection = headerText;
 
         elements.push(
@@ -146,6 +262,9 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </ul>,
       );
     }
+    
+    // Insert any remaining images for the last section
+    insertImagesFor1991(elements, currentSection, lines.length);
 
     return elements;
   };
@@ -348,21 +467,6 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
               Hàng hóa nhiều thành phần
             </p>
           </div>
-        </div>
-
-        {/* Hà Nội 1991 Image */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
-          <img
-            src="images/Hà Nội 1991_1762457375271.jpg"
-            alt="Hà Nội năm 1991"
-            className="max-w-full h-auto object-contain"
-            style={{ maxHeight: '500px' }}
-          />
-        </div>
-        <div className="text-center mb-8">
-          <p className="text-gray-700 text-sm italic">
-            Hà Nội đầu thập niên 90 - Bước vào giai đoạn phát triển mới
-          </p>
         </div>
       </div>
 
@@ -665,101 +769,6 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
             <p className="text-gray-600 text-sm mt-1">Thành viên đầy đủ</p>
           </div>
         </div>
-
-        {/* Hà Nội 1991 Image */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
-          <img
-            src="images/Hà Nội 1991_1762457375271.jpg"
-            alt="Hà Nội năm 1991"
-            className="max-w-full h-auto object-contain"
-            style={{ maxHeight: '500px' }}
-          />
-        </div>
-        <div className="text-center mb-8">
-          <p className="text-gray-700 text-sm italic">
-            Hà Nội đầu thập niên 90 - Bước vào giai đoạn phát triển mới
-          </p>
-        </div>
-      </div>
-
-      {/* Thành tựu đối ngoại */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Thành Tựu Đối Ngoại
-        </h3>
-        <div className="space-y-3">
-          <div className="bg-gradient-to-r from-red-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-red-500">
-            <div className="flex items-center gap-3">
-              <div className="bg-red-500 text-white font-bold rounded-lg px-3 py-1 text-sm">
-                11/1991
-              </div>
-              <p className="text-gray-800">
-                Bình thường hóa quan hệ Việt Nam - Trung Quốc
-              </p>
-            </div>
-          </div>
-
-          {/* Vietnam-China Relations Image */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col items-center">
-            <img
-              src="images/Tổng bí thư Đỗ Mười tại buổi ký kết bình thường hóa quan hệ với Trung Quốc 1991_1762457375271.jpg"
-              alt="Bình thường hóa quan hệ Việt-Trung 1991"
-              className="max-w-full h-auto object-contain"
-              style={{ maxHeight: '600px' }}
-            />
-            <div className="p-4">
-              <p className="text-gray-700 text-sm text-center font-semibold">
-                Tổng Bí thư Đỗ Mười tại buổi ký kết bình thường hóa quan hệ Việt Nam - Trung Quốc (tháng 11/1991)
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-r from-blue-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-blue-500">
-            <div className="flex items-center gap-3">
-              <div className="bg-blue-500 text-white font-bold rounded-lg px-3 py-1 text-sm">
-                28/7/1995
-              </div>
-              <p className="text-gray-800">Gia nhập ASEAN (thành viên thứ 7)</p>
-            </div>
-          </div>
-
-          {/* ASEAN Membership Image */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col items-center">
-            <img
-              src="images/Việt Nam tham gia ASEAN_1762457375272.jpg"
-              alt="Việt Nam gia nhập ASEAN"
-              className="max-w-full h-auto object-contain"
-              style={{ maxHeight: '600px' }}
-            />
-            <div className="p-4">
-              <p className="text-gray-700 text-sm text-center font-semibold">
-                Việt Nam chính thức trở thành thành viên thứ 7 của ASEAN (28/7/1995)
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-r from-green-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-green-500">
-            <div className="flex items-center gap-3">
-              <div className="bg-green-500 text-white font-bold rounded-lg px-3 py-1 text-sm">
-                11/7/1995
-              </div>
-              <p className="text-gray-800">
-                Thiết lập quan hệ ngoại giao Việt Nam - Hoa Kỳ
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-r from-yellow-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-yellow-500">
-            <div className="flex items-center gap-3">
-              <div className="bg-yellow-500 text-white font-bold rounded-lg px-3 py-1 text-sm">
-                Cuối 1995
-              </div>
-              <p className="text-gray-800">
-                Quan hệ ngoại giao với 160 nước, buôn bán trên 100 nước
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* CNH-HĐH Highlight */}
@@ -777,32 +786,6 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           </p>
         </div>
       </div>
-
-      {/* Cương lĩnh Image */}
-      <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
-        <img
-          src="images/Cương lĩnh_1762457375271.jpg"
-          alt="Cương lĩnh xây dựng đất nước 1991"
-          className="w-full h-auto object-contain"
-        />
-        <div className="p-4">
-          <p className="text-gray-700 text-sm text-center font-semibold">
-            Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội (1991)
-          </p>
-        </div>
-      </div>
-
-       {/* Agricultural Images - Placeholder */}
-       <div className="grid md:grid-cols-2 gap-4 mb-8">
-         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-           <img src="images/Nông dân trên đồng ruộng_1762457106399.jpg" alt="Nông nghiệp" className="w-full h-64 object-cover"/>
-           <div className="p-4"><p className="text-gray-700 text-sm text-center font-semibold">Nông dân Việt Nam làm việc trên đồng ruộng - Nông nghiệp là mặt trận hàng đầu</p></div>
-         </div>
-         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-           <img src="images/Nông nghiệp hiện đại_1762457375271.png" alt="Nông nghiệp" className="w-full h-64 object-cover"/>
-           <div className="p-4"><p className="text-gray-700 text-sm text-center font-semibold">Phát triển nông nghiệp ứng dụng công nghệ hiện đại</p></div>
-         </div>
-       </div>
 
     </div>
   );
