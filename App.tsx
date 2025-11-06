@@ -176,32 +176,24 @@ const App: React.FC = () => {
                 <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
                   <h3 className="font-bold text-blue-800 mb-2">Google Gemini AI</h3>
                   <p className="text-sm">
-                    Ứng dụng này sử dụng Google Gemini AI để tạo nội dung dòng thời gian lịch sử về thành tựu Đổi Mới của Việt Nam.
+                    Ứng dụng này sử dụng Google Gemini AI để tổng hợp thông tin về dòng thời gian lịch sử và thành tựu Đổi Mới của Việt Nam.
                   </p>
                 </div>
 
                 <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded">
-                  <h3 className="font-bold text-green-800 mb-2">Mục đích sử dụng</h3>
+                  <h3 className="font-bold text-green-800 mb-2">Mục đích của Gemini</h3>
                   <ul className="list-disc list-inside text-sm space-y-1">
-                    <li>Tạo nội dung giáo dục về lịch sử Việt Nam</li>
+                    <li>Tổng hợp thông tin giáo dục về lịch sử Việt Nam</li>
                     <li>Sinh câu hỏi quiz tương tác</li>
-                    <li>Tổng hợp thông tin từ các nguồn lịch sử đáng tin cậy</li>
+                    <li>Tổng hợp dữ liệu từ các nguồn lịch sử đáng tin cậy</li>
                   </ul>
                 </div>
 
-                <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded">
-                  <h3 className="font-bold text-yellow-800 mb-2">Lưu ý</h3>
+                <div className="bg-purple-50 border-l-4 border-purple-500 p-4 rounded">
+                  <h3 className="font-bold text-purple-800 mb-2">AI hỗ trợ làm web</h3>
                   <p className="text-sm">
-                    Nội dung được tạo bởi AI có thể cần được xác minh với các nguồn lịch sử chính thống. 
-                    Đây là công cụ học tập hỗ trợ, không thay thế tài liệu học tập chính thức.
-                  </p>
-                </div>
-
-                <div className="bg-gray-50 border-l-4 border-gray-500 p-4 rounded">
-                  <h3 className="font-bold text-gray-800 mb-2">Quyền riêng tư</h3>
-                  <p className="text-sm">
-                    Ứng dụng không thu thập thông tin cá nhân của người dùng. 
-                    Tương tác với AI chỉ phục vụ mục đích hiển thị nội dung giáo dục.
+                    Ứng dụng web này được phát triển với sự hỗ trợ của Replit AI Agent, 
+                    giúp xây dựng giao diện tương tác và tối ưu trải nghiệm người dùng.
                   </p>
                 </div>
               </div>
