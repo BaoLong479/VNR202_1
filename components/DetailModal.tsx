@@ -349,6 +349,20 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
             </p>
           </div>
         </div>
+
+        {/* Hà Nội 1991 Image */}
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+          <img
+            src="images/Hà Nội 1991_1762457375271.jpg"
+            alt="Hà Nội năm 1991"
+            className="w-full h-auto object-contain"
+          />
+          <div className="p-4">
+            <p className="text-gray-700 text-sm text-center font-semibold">
+              Hà Nội đầu thập niên 90 - Bước vào giai đoạn phát triển mới
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Năm bài học lớn */}
@@ -650,6 +664,20 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
             <p className="text-gray-600 text-sm mt-1">Thành viên đầy đủ</p>
           </div>
         </div>
+
+        {/* Hà Nội 1991 Image */}
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+          <img
+            src="images/Hà Nội 1991_1762457375271.jpg"
+            alt="Hà Nội năm 1991"
+            className="w-full h-auto object-contain"
+          />
+          <div className="p-4">
+            <p className="text-gray-700 text-sm text-center font-semibold">
+              Hà Nội đầu thập niên 90 - Bước vào giai đoạn phát triển mới
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Thành tựu đối ngoại */}
@@ -669,12 +697,40 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
             </div>
           </div>
 
+          {/* Vietnam-China Relations Image */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+            <img
+              src="images/Tổng bí thư Đỗ Mười tại buổi ký kết bình thường hóa quan hệ với Trung Quốc 1991_1762457375271.jpg"
+              alt="Bình thường hóa quan hệ Việt-Trung 1991"
+              className="w-full h-auto object-contain"
+            />
+            <div className="p-4">
+              <p className="text-gray-700 text-sm text-center font-semibold">
+                Tổng Bí thư Đỗ Mười tại buổi ký kết bình thường hóa quan hệ Việt Nam - Trung Quốc (tháng 11/1991)
+              </p>
+            </div>
+          </div>
+
           <div className="bg-gradient-to-r from-blue-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-blue-500">
             <div className="flex items-center gap-3">
               <div className="bg-blue-500 text-white font-bold rounded-lg px-3 py-1 text-sm">
                 28/7/1995
               </div>
               <p className="text-gray-800">Gia nhập ASEAN (thành viên thứ 7)</p>
+            </div>
+          </div>
+
+          {/* ASEAN Membership Image */}
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+            <img
+              src="images/Việt Nam tham gia ASEAN_1762457375272.jpg"
+              alt="Việt Nam gia nhập ASEAN"
+              className="w-full h-auto object-contain"
+            />
+            <div className="p-4">
+              <p className="text-gray-700 text-sm text-center font-semibold">
+                Việt Nam chính thức trở thành thành viên thứ 7 của ASEAN (28/7/1995)
+              </p>
             </div>
           </div>
 
@@ -720,7 +776,282 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
     </div>
   );
 
-  // Component for Ngày nay Visualization
+  // Component for 1986 Visualization
+  const Event1986Visualization = () => (
+    <div className="space-y-8 mb-8">
+      {/* Đại hội VI Timeline */}
+      <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-red-100">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Đại hội VI của Đảng
+        </h3>
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
+          <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4 text-center shadow-md">
+            <div className="text-3xl font-bold text-red-700 mb-2">
+              15-18/12/1986
+            </div>
+            <p className="text-gray-700 font-semibold">Thời gian diễn ra</p>
+          </div>
+          <div className="text-4xl font-bold text-red-600 hidden md:block">
+            →
+          </div>
+          <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-4 text-center shadow-md">
+            <div className="text-2xl font-bold text-blue-700 mb-2">Hà Nội</div>
+            <p className="text-gray-700 font-semibold">Địa điểm</p>
+          </div>
+          <div className="text-4xl font-bold text-red-600 hidden md:block">
+            →
+          </div>
+          <div className="bg-green-50 border-2 border-green-300 rounded-lg p-4 text-center shadow-md">
+            <div className="text-lg font-bold text-green-700 mb-2">
+              Nguyễn Văn Linh
+            </div>
+            <p className="text-gray-700 font-semibold">Tổng Bí thư</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Bốn bài học quý báu */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Bốn Bài Học Quý Báu
+        </h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md border-l-4 border-blue-500">
+            <div className="flex items-start gap-3">
+              <div className="bg-blue-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                1
+              </div>
+              <p className="text-gray-800 leading-relaxed">
+                Quán triệt tư tưởng{" "}
+                <span className="font-bold text-blue-700">
+                  "lấy dân làm gốc"
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md border-l-4 border-green-500">
+            <div className="flex items-start gap-3">
+              <div className="bg-green-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                2
+              </div>
+              <p className="text-gray-800 leading-relaxed">
+                Xuất phát từ thực tế, tôn trọng{" "}
+                <span className="font-bold text-green-700">
+                  quy luật khách quan
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-5 shadow-md border-l-4 border-yellow-500">
+            <div className="flex items-start gap-3">
+              <div className="bg-yellow-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                3
+              </div>
+              <p className="text-gray-800 leading-relaxed">
+                Kết hợp{" "}
+                <span className="font-bold text-yellow-700">
+                  sức mạnh dân tộc
+                </span>{" "}
+                với{" "}
+                <span className="font-bold text-yellow-700">
+                  sức mạnh thời đại
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md border-l-4 border-red-500">
+            <div className="flex items-start gap-3">
+              <div className="bg-red-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                4
+              </div>
+              <p className="text-gray-800 leading-relaxed">
+                Xây dựng Đảng ngang tầm đảng{" "}
+                <span className="font-bold text-red-700">
+                  cầm quyền lãnh đạo XHCN
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Ba chương trình kinh tế lớn */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          BaChương Trình Kinh Tế Lớn
+        </h3>
+        <div className="grid md:grid-cols-3 gap-4">
+          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 shadow-md text-center">
+            <div className="text-5xl mb-3">🌾</div>
+            <h4 className="text-xl font-bold text-green-700 mb-2">
+              Lương thực - Thực phẩm
+            </h4>
+            <p className="text-gray-700 text-sm">
+              Đảm bảo an ninh lương thực quốc gia
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-md text-center">
+            <div className="text-5xl mb-3">🏭</div>
+            <h4 className="text-xl font-bold text-blue-700 mb-2">
+              Hàng tiêu dùng
+            </h4>
+            <p className="text-gray-700 text-sm">
+              Phát triển công nghiệp sản xuất hàng tiêu dùng
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 shadow-md text-center">
+            <div className="text-5xl mb-3">📦</div>
+            <h4 className="text-xl font-bold text-yellow-700 mb-2">
+              Hàng xuất khẩu
+            </h4>
+            <p className="text-gray-700 text-sm">
+              Mở rộng quan hệ kinh tế đối ngoại
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Năm phương hướng phát triển */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Năm Phương Hướng Phát Triển Kinh Tế
+        </h3>
+        <div className="space-y-3">
+          {[
+            "Bố trí lại cơ cấu sản xuất",
+            "Điều chỉnh cơ cấu đầu tư xây dựng và củng cố quan hệ sản xuất XHCN",
+            "Sử dụng và cải tạo đúng đắn các thành phần kinh tế",
+            "Đổi mới cơ chế quản lý kinh tế, phát huy động lực khoa học kỹ thuật",
+            "Mở rộng và nâng cao hiệu quả kinh tế đối ngoại",
+          ].map((item, index) => (
+            <div
+              key={index}
+              className="bg-gradient-to-r from-red-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-red-500 flex items-center gap-3"
+            >
+              <div className="bg-red-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
+                {index + 1}
+              </div>
+              <p className="text-gray-800">{item}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Nghị quyết 10 - Highlight */}
+      <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg shadow-lg p-6 border-2 border-green-300">
+        <h3 className="text-2xl font-bold text-center mb-4 text-green-800">
+          Nghị quyết 10 - Khoán 10 (5/4/1988)
+        </h3>
+        <p className="text-gray-800 text-center mb-4 max-w-3xl mx-auto">
+          Bước đột phá trong cải cách nông nghiệp, giải phóng sức sản xuất
+        </p>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-white rounded-lg p-4 shadow-md">
+            <h4 className="font-bold text-green-700 mb-2">
+              Khoán sản phẩm cuối cùng
+            </h4>
+            <p className="text-gray-700 text-sm">Đến nhóm hộ và hộ xã viên</p>
+          </div>
+          <div className="bg-white rounded-lg p-4 shadow-md">
+            <h4 className="font-bold text-green-700 mb-2">Ổn định 15 năm</h4>
+            <p className="text-gray-700 text-sm">
+              Người nông dân được canh tác lâu dài
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Historical Images Gallery - 1986 */}
+      <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Hình Ảnh Lịch Sử
+        </h3>
+        <div className="grid md:grid-cols-3 gap-6">
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img
+              src="images/Tổng bí thư Nguyễn Văn Linh_1762457106399.jpg"
+              alt="Tổng Bí thư Nguyễn Văn Linh"
+              className="w-full h-64 object-cover"
+            />
+            <div className="p-4">
+              <p className="text-gray-700 text-sm text-center font-semibold">
+                Đồng chí Nguyễn Văn Linh - Tổng Bí thư Đảng khóa VI
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img
+              src="images/Nông dân trên đồng ruộng_1762457106399.jpg"
+              alt="Nông dân trên đồng ruộng"
+              className="w-full h-64 object-cover"
+            />
+            <div className="p-4">
+              <p className="text-gray-700 text-sm text-center font-semibold">
+                Nông dân cấy lúa - Nông nghiệp là mặt trận hàng đầu
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+            <img
+              src="images/Nhà máy nhiệt điện Phả Lại chính thức phát điện_1762457106400.jpg"
+              alt="Nhà máy nhiệt điện Phả Lại"
+              className="w-full h-64 object-cover"
+            />
+            <div className="p-4">
+              <p className="text-gray-700 text-sm text-center font-semibold">
+                Nhà máy nhiệt điện Phả Lại - Biểu tượng phát triển công nghiệp
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Kết quả ấn tượng */}
+      <div className="bg-white rounded-lg shadow-lg p-6">
+        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
+          Kết Quả Đến Năm 1991
+        </h3>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-4xl font-bold text-red-700 mb-2">
+              774.7% → 67.1%
+            </div>
+            <p className="text-gray-700 font-semibold">Lạm phát giảm mạnh</p>
+          </div>
+
+          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-3xl font-bold text-green-700 mb-2">1989</div>
+            <p className="text-gray-700 font-semibold">
+              Tự chủ lương thực, có xuất khẩu
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-3xl font-bold text-blue-700 mb-2">1988</div>
+            <p className="text-gray-700 font-semibold">
+              Xóa bỏ chế độ tem phiếu
+            </p>
+          </div>
+
+          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-5 shadow-md text-center">
+            <div className="text-2xl font-bold text-yellow-700 mb-2">
+              Kinh tế thị trường
+            </div>
+            <p className="text-gray-700 font-semibold">Cơ chế mới hình thành</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Component for Ngay nay Visualization
   const NgayNayVisualization = () => (
     <div className="space-y-8 mb-8">
       {/* GDP Growth Timeline */}
@@ -1151,281 +1482,6 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
             <div className="text-4xl font-bold text-gray-700 mb-2">Thứ 2</div>
             <p className="text-gray-700 font-semibold">Đông Nam Á</p>
             <p className="text-gray-600 text-sm">Nhóm vượt trội</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-
-  // Component for 1986 Visualization
-  const Event1986Visualization = () => (
-    <div className="space-y-8 mb-8">
-      {/* Đại hội VI Timeline */}
-      <div className="bg-white rounded-lg shadow-lg p-6 border-2 border-red-100">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Đại hội VI của Đảng
-        </h3>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
-          <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4 text-center shadow-md">
-            <div className="text-3xl font-bold text-red-700 mb-2">
-              15-18/12/1986
-            </div>
-            <p className="text-gray-700 font-semibold">Thời gian diễn ra</p>
-          </div>
-          <div className="text-4xl font-bold text-red-600 hidden md:block">
-            →
-          </div>
-          <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-4 text-center shadow-md">
-            <div className="text-2xl font-bold text-blue-700 mb-2">Hà Nội</div>
-            <p className="text-gray-700 font-semibold">Địa điểm</p>
-          </div>
-          <div className="text-4xl font-bold text-red-600 hidden md:block">
-            →
-          </div>
-          <div className="bg-green-50 border-2 border-green-300 rounded-lg p-4 text-center shadow-md">
-            <div className="text-lg font-bold text-green-700 mb-2">
-              Nguyễn Văn Linh
-            </div>
-            <p className="text-gray-700 font-semibold">Tổng Bí thư</p>
-          </div>
-        </div>
-      </div>
-
-      {/* Bốn bài học quý báu */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Bốn Bài Học Quý Báu
-        </h3>
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md border-l-4 border-blue-500">
-            <div className="flex items-start gap-3">
-              <div className="bg-blue-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                1
-              </div>
-              <p className="text-gray-800 leading-relaxed">
-                Quán triệt tư tưởng{" "}
-                <span className="font-bold text-blue-700">
-                  "lấy dân làm gốc"
-                </span>
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md border-l-4 border-green-500">
-            <div className="flex items-start gap-3">
-              <div className="bg-green-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                2
-              </div>
-              <p className="text-gray-800 leading-relaxed">
-                Xuất phát từ thực tế, tôn trọng{" "}
-                <span className="font-bold text-green-700">
-                  quy luật khách quan
-                </span>
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-5 shadow-md border-l-4 border-yellow-500">
-            <div className="flex items-start gap-3">
-              <div className="bg-yellow-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                3
-              </div>
-              <p className="text-gray-800 leading-relaxed">
-                Kết hợp{" "}
-                <span className="font-bold text-yellow-700">
-                  sức mạnh dân tộc
-                </span>{" "}
-                với{" "}
-                <span className="font-bold text-yellow-700">
-                  sức mạnh thời đại
-                </span>
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md border-l-4 border-red-500">
-            <div className="flex items-start gap-3">
-              <div className="bg-red-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
-                4
-              </div>
-              <p className="text-gray-800 leading-relaxed">
-                Xây dựng Đảng ngang tầm đảng{" "}
-                <span className="font-bold text-red-700">
-                  cầm quyền lãnh đạo XHCN
-                </span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Ba chương trình kinh tế lớn */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Ba Chương Trình Kinh Tế Lớn
-        </h3>
-        <div className="grid md:grid-cols-3 gap-4">
-          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 shadow-md text-center">
-            <div className="text-5xl mb-3">🌾</div>
-            <h4 className="text-xl font-bold text-green-700 mb-2">
-              Lương thực - Thực phẩm
-            </h4>
-            <p className="text-gray-700 text-sm">
-              Đảm bảo an ninh lương thực quốc gia
-            </p>
-          </div>
-
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-md text-center">
-            <div className="text-5xl mb-3">🏭</div>
-            <h4 className="text-xl font-bold text-blue-700 mb-2">
-              Hàng tiêu dùng
-            </h4>
-            <p className="text-gray-700 text-sm">
-              Phát triển công nghiệp sản xuất hàng tiêu dùng
-            </p>
-          </div>
-
-          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 shadow-md text-center">
-            <div className="text-5xl mb-3">📦</div>
-            <h4 className="text-xl font-bold text-yellow-700 mb-2">
-              Hàng xuất khẩu
-            </h4>
-            <p className="text-gray-700 text-sm">
-              Mở rộng quan hệ kinh tế đối ngoại
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Năm phương hướng phát triển */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Năm Phương Hướng Phát Triển Kinh Tế
-        </h3>
-        <div className="space-y-3">
-          {[
-            "Bố trí lại cơ cấu sản xuất",
-            "Điều chỉnh cơ cấu đầu tư xây dựng và củng cố quan hệ sản xuất XHCN",
-            "Sử dụng và cải tạo đúng đắn các thành phần kinh tế",
-            "Đổi mới cơ chế quản lý kinh tế, phát huy động lực khoa học kỹ thuật",
-            "Mở rộng và nâng cao hiệu quả kinh tế đối ngoại",
-          ].map((item, index) => (
-            <div
-              key={index}
-              className="bg-gradient-to-r from-red-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-red-500 flex items-center gap-3"
-            >
-              <div className="bg-red-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
-                {index + 1}
-              </div>
-              <p className="text-gray-800">{item}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Nghị quyết 10 - Highlight */}
-      <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg shadow-lg p-6 border-2 border-green-300">
-        <h3 className="text-2xl font-bold text-center mb-4 text-green-800">
-          Nghị quyết 10 - Khoán 10 (5/4/1988)
-        </h3>
-        <p className="text-gray-800 text-center mb-4 max-w-3xl mx-auto">
-          Bước đột phá trong cải cách nông nghiệp, giải phóng sức sản xuất
-        </p>
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="bg-white rounded-lg p-4 shadow-md">
-            <h4 className="font-bold text-green-700 mb-2">
-              Khoán sản phẩm cuối cùng
-            </h4>
-            <p className="text-gray-700 text-sm">Đến nhóm hộ và hộ xã viên</p>
-          </div>
-          <div className="bg-white rounded-lg p-4 shadow-md">
-            <h4 className="font-bold text-green-700 mb-2">Ổn định 15 năm</h4>
-            <p className="text-gray-700 text-sm">
-              Người nông dân được canh tác lâu dài
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Historical Images Gallery - 1986 */}
-      <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Hình Ảnh Lịch Sử
-        </h3>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <img
-              src="images/Tổng bí thư Nguyễn Văn Linh_1762457106399.jpg"
-              alt="Tổng Bí thư Nguyễn Văn Linh"
-              className="w-full h-64 object-cover"
-            />
-            <div className="p-4">
-              <p className="text-gray-700 text-sm text-center font-semibold">
-                Đồng chí Nguyễn Văn Linh - Tổng Bí thư Đảng khóa VI
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <img
-              src="images/Nông dân trên đồng ruộng_1762457106399.jpg"
-              alt="Nông dân trên đồng ruộng"
-              className="w-full h-64 object-cover"
-            />
-            <div className="p-4">
-              <p className="text-gray-700 text-sm text-center font-semibold">
-                Nông dân cấy lúa - Nông nghiệp là mặt trận hàng đầu
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <img
-              src="images/Nhà máy nhiệt điện Phả Lại chính thức phát điện_1762457106400.jpg"
-              alt="Nhà máy nhiệt điện Phả Lại"
-              className="w-full h-64 object-cover"
-            />
-            <div className="p-4">
-              <p className="text-gray-700 text-sm text-center font-semibold">
-                Nhà máy nhiệt điện Phả Lại - Biểu tượng phát triển công nghiệp
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Kết quả ấn tượng */}
-      <div className="bg-white rounded-lg shadow-lg p-6">
-        <h3 className="text-2xl font-bold text-center mb-6 text-gray-800">
-          Kết Quả Đến Năm 1991
-        </h3>
-        <div className="grid md:grid-cols-2 gap-4">
-          <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md text-center">
-            <div className="text-4xl font-bold text-red-700 mb-2">
-              774.7% → 67.1%
-            </div>
-            <p className="text-gray-700 font-semibold">Lạm phát giảm mạnh</p>
-          </div>
-
-          <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md text-center">
-            <div className="text-3xl font-bold text-green-700 mb-2">1989</div>
-            <p className="text-gray-700 font-semibold">
-              Tự chủ lương thực, có xuất khẩu
-            </p>
-          </div>
-
-          <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md text-center">
-            <div className="text-3xl font-bold text-blue-700 mb-2">1988</div>
-            <p className="text-gray-700 font-semibold">
-              Xóa bỏ chế độ tem phiếu
-            </p>
-          </div>
-
-          <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-5 shadow-md text-center">
-            <div className="text-2xl font-bold text-yellow-700 mb-2">
-              Kinh tế thị trường
-            </div>
-            <p className="text-gray-700 font-semibold">Cơ chế mới hình thành</p>
           </div>
         </div>
       </div>
