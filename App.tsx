@@ -175,13 +175,9 @@ const App: React.FC = () => {
               <div className="space-y-4 text-gray-700">
                 <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
                   <h3 className="font-bold text-blue-800 mb-2">Google Gemini AI</h3>
-                  <p className="text-sm">
+                  <p className="text-sm mb-2">
                     Ứng dụng này sử dụng Google Gemini AI để tổng hợp thông tin về dòng thời gian lịch sử và thành tựu Đổi Mới của Việt Nam.
                   </p>
-                </div>
-
-                <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded">
-                  <h3 className="font-bold text-green-800 mb-2">Mục đích của Gemini</h3>
                   <ul className="list-disc list-inside text-sm space-y-1">
                     <li>Tổng hợp thông tin giáo dục về lịch sử Việt Nam</li>
                     <li>Sinh câu hỏi quiz tương tác</li>
@@ -190,7 +186,7 @@ const App: React.FC = () => {
                 </div>
 
                 <div className="bg-purple-50 border-l-4 border-purple-500 p-4 rounded">
-                  <h3 className="font-bold text-purple-800 mb-2">AI hỗ trợ làm web</h3>
+                  <h3 className="font-bold text-purple-800 mb-2">Công Nghệ Phát Triển</h3>
                   <p className="text-sm">
                     Ứng dụng web này được phát triển với sự hỗ trợ của Replit AI Agent, 
                     giúp xây dựng giao diện tương tác và tối ưu trải nghiệm người dùng.
