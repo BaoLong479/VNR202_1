@@ -1,5 +1,5 @@
-import React from 'react';
-import type { TimelineEvent } from '../types';
+import React from "react";
+import type { TimelineEvent } from "../types";
 
 interface DetailModalProps {
   event: TimelineEvent | null;
@@ -40,7 +40,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
       parts.push(
         <strong key={`bold-${key++}`} className="font-bold text-gray-900">
           {boldText}
-        </strong>
+        </strong>,
       );
       lastIndex = regex.lastIndex;
     }
@@ -55,10 +55,10 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
 
   // Enhanced formatter for better rendering
   const formatDetails = (details: string) => {
-    const lines = details.split('\n');
+    const lines = details.split("\n");
     const elements: JSX.Element[] = [];
     let listItems: JSX.Element[] = [];
-    let currentSection = '';
+    let currentSection = "";
 
     lines.forEach((line, index) => {
       const trimmedLine = line.trim();
@@ -70,7 +70,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           elements.push(
             <ul key={`list-${index}`} className="mb-4 ml-6 space-y-2">
               {listItems}
-            </ul>
+            </ul>,
           );
           listItems = [];
         }
@@ -78,13 +78,13 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
       }
 
       // Headers (bold text with ** at start and end)
-      if (trimmedLine.startsWith('**') && trimmedLine.endsWith('**')) {
+      if (trimmedLine.startsWith("**") && trimmedLine.endsWith("**")) {
         // Close any open list
         if (listItems.length > 0) {
           elements.push(
             <ul key={`list-${index}`} className="mb-4 ml-6 space-y-2">
               {listItems}
-            </ul>
+            </ul>,
           );
           listItems = [];
         }
@@ -94,27 +94,29 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         currentSection = headerText;
 
         elements.push(
-          <h3 
-            key={`header-${index}`} 
+          <h3
+            key={`header-${index}`}
             className={`font-bold text-gray-900 mb-3 mt-6 ${
-              isMainHeader ? 'text-xl border-b-2 border-red-500 pb-2' : 'text-lg text-red-700'
+              isMainHeader
+                ? "text-xl border-b-2 border-red-500 pb-2"
+                : "text-lg text-red-700"
             }`}
           >
             {headerText}
-          </h3>
+          </h3>,
         );
         return;
       }
 
       // List items
-      if (trimmedLine.startsWith('- ')) {
+      if (trimmedLine.startsWith("- ")) {
         const content = trimmedLine.substring(2);
         const parsedContent = parseInlineMarkdown(content);
         listItems.push(
           <li key={`item-${index}`} className="text-gray-700 leading-relaxed">
             <span className="text-red-500 font-bold mr-2">•</span>
             {parsedContent}
-          </li>
+          </li>,
         );
         return;
       }
@@ -124,7 +126,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         elements.push(
           <ul key={`list-${index}`} className="mb-4 ml-6 space-y-2">
             {listItems}
-          </ul>
+          </ul>,
         );
         listItems = [];
       }
@@ -132,7 +134,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
       elements.push(
         <p key={`para-${index}`} className="mb-3 text-gray-700 leading-relaxed">
           {parseInlineMarkdown(trimmedLine)}
-        </p>
+        </p>,
       );
     });
 
@@ -141,7 +143,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
       elements.push(
         <ul key="final-list" className="mb-4 ml-6 space-y-2">
           {listItems}
-        </ul>
+        </ul>,
       );
     }
 
@@ -150,18 +152,18 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
 
   // Extract world context section from details for Pre-1986
   const getWorldContext = (details: string) => {
-    const lines = details.split('\n');
+    const lines = details.split("\n");
     const worldContextLines: string[] = [];
     let inWorldContext = false;
 
     for (const line of lines) {
       const trimmedLine = line.trim();
-      if (trimmedLine === '**Bối cảnh thế giới:**') {
+      if (trimmedLine === "**Bối cảnh thế giới:**") {
         inWorldContext = true;
         worldContextLines.push(line);
         continue;
       }
-      if (trimmedLine.startsWith('**Bối cảnh Việt Nam:**')) {
+      if (trimmedLine.startsWith("**Bối cảnh Việt Nam:**")) {
         break;
       }
       if (inWorldContext) {
@@ -169,22 +171,22 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
       }
     }
 
-    return worldContextLines.join('\n');
+    return worldContextLines.join("\n");
   };
 
   // Get Vietnam context and remaining details (excluding world context)
   const getVietnamContextAndRest = (details: string) => {
-    const lines = details.split('\n');
+    const lines = details.split("\n");
     const filteredLines: string[] = [];
     let skipWorldContext = false;
 
     for (const line of lines) {
       const trimmedLine = line.trim();
-      if (trimmedLine === '**Bối cảnh thế giới:**') {
+      if (trimmedLine === "**Bối cảnh thế giới:**") {
         skipWorldContext = true;
         continue;
       }
-      if (trimmedLine.startsWith('**Bối cảnh Việt Nam:**')) {
+      if (trimmedLine.startsWith("**Bối cảnh Việt Nam:**")) {
         skipWorldContext = false;
       }
       if (!skipWorldContext) {
@@ -192,7 +194,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
       }
     }
 
-    return filteredLines.join('\n');
+    return filteredLines.join("\n");
   };
 
   // Component for Pre-1986 Visualization
@@ -201,9 +203,9 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
       {/* Historical Images Gallery */}
       <div className="grid md:grid-cols-3 gap-6 mb-8">
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img 
-            src="/images/tem_phieu_1762456357079.jpg" 
-            alt="Tem phiếu thời bao cấp" 
+          <img
+            src="images/Tem phiếu thời bao cấp_1762456357079.jpg"
+            alt="Tem phiếu thời bao cấp"
             className="w-full h-64 object-cover"
           />
           <div className="p-4">
@@ -214,9 +216,9 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </div>
 
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img 
-            src="/images/mua_ban_mau_dich_1762456357079.jpg" 
-            alt="Mua bán ở cửa hàng mậu dịch" 
+          <img
+            src="images/Mua bán ở cửa hàng mậu dịch_1762456357079.jpg"
+            alt="Mua bán ở cửa hàng mậu dịch"
             className="w-full h-64 object-cover"
           />
           <div className="p-4">
@@ -227,9 +229,9 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </div>
 
         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-          <img 
-            src="/images/ha_noi_thap_nien_80_1762456357080.jpg" 
-            alt="Hà Nội thập niên 80" 
+          <img
+            src="images/Hà Nội thập niên 80_1762456357080.jpg"
+            alt="Hà Nội thập niên 80"
             className="w-full h-64 object-cover"
           />
           <div className="p-4">
@@ -242,14 +244,17 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
 
       {/* Inflation Highlight */}
       <div className="bg-white rounded-lg shadow-lg p-6 text-center border-2 border-red-100">
-        <h3 className="text-2xl font-bold mb-2 text-gray-800">Đỉnh Điểm Khủng Hoảng</h3>
+        <h3 className="text-2xl font-bold mb-2 text-gray-800">
+          Đỉnh Điểm Khủng Hoảng
+        </h3>
         <p className="text-gray-700 mb-4">
-          Cuộc cải cách "Giá - Lương - Tiền" năm 1985 thất bại đã đẩy lạm phát lên mức phi mã
+          Cuộc cải cách "Giá - Lương - Tiền" năm 1985 thất bại đã đẩy lạm phát
+          lên mức phi mã
         </p>
-        <div className="text-7xl font-bold text-red-600 my-4">
-          774.7%
-        </div>
-        <p className="text-xl font-semibold text-gray-800">Tỷ lệ lạm phát năm 1986</p>
+        <div className="text-7xl font-bold text-red-600 my-4">774.7%</div>
+        <p className="text-xl font-semibold text-gray-800">
+          Tỷ lệ lạm phát năm 1986
+        </p>
       </div>
 
       {/* Economic Model Diagram */}
@@ -258,33 +263,43 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           Mô Hình Kinh Tế "Bao Cấp"
         </h3>
         <p className="text-gray-700 mb-8 text-center max-w-3xl mx-auto">
-          Giai đoạn này được đặc trưng bởi cơ chế kế hoạch hóa tập trung, quan liêu, bao cấp. 
-          Nhà nước quyết định mọi thứ từ sản xuất đến phân phối, triệt tiêu động lực phát triển.
+          Giai đoạn này được đặc trưng bởi cơ chế kế hoạch hóa tập trung, quan
+          liêu, bao cấp. Nhà nước quyết định mọi thứ từ sản xuất đến phân phối,
+          triệt tiêu động lực phát triển.
         </p>
 
         <div className="flex flex-col items-center space-y-4">
           <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
-            <h4 className="text-xl font-semibold text-blue-700 mb-2">Nhà nước</h4>
+            <h4 className="text-xl font-semibold text-blue-700 mb-2">
+              Nhà nước
+            </h4>
             <p className="text-gray-700">
-              Lập kế hoạch sản xuất, ấn định giá, và kiểm soát toàn bộ lưu thông hàng hóa
+              Lập kế hoạch sản xuất, ấn định giá, và kiểm soát toàn bộ lưu thông
+              hàng hóa
             </p>
           </div>
 
           <div className="text-4xl font-bold text-blue-600">↓</div>
 
           <div className="bg-green-50 border-2 border-green-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
-            <h4 className="text-xl font-semibold text-green-700 mb-2">Doanh nghiệp / Hợp tác xã</h4>
+            <h4 className="text-xl font-semibold text-green-700 mb-2">
+              Doanh nghiệp / Hợp tác xã
+            </h4>
             <p className="text-gray-700">
-              Thực hiện theo mệnh lệnh, không có quyền tự chủ trong sản xuất và kinh doanh
+              Thực hiện theo mệnh lệnh, không có quyền tự chủ trong sản xuất và
+              kinh doanh
             </p>
           </div>
 
           <div className="text-4xl font-bold text-blue-600">↓</div>
 
           <div className="bg-orange-50 border-2 border-orange-300 rounded-lg p-6 w-full md:w-3/4 text-center shadow-md">
-            <h4 className="text-xl font-semibold text-orange-700 mb-2">Người dân</h4>
+            <h4 className="text-xl font-semibold text-orange-700 mb-2">
+              Người dân
+            </h4>
             <p className="text-gray-700">
-              Nhận phân phối theo tem phiếu, thiếu hàng hóa, không có động lực lao động
+              Nhận phân phối theo tem phiếu, thiếu hàng hóa, không có động lực
+              lao động
             </p>
           </div>
         </div>
@@ -293,18 +308,28 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
       {/* Key Crisis Indicators */}
       <div className="grid md:grid-cols-3 gap-4">
         <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-6 shadow-md text-center">
-          <div className="text-3xl font-bold text-red-700 mb-2">300% → 774%</div>
-          <p className="text-gray-700 font-semibold">Lạm phát tăng vọt (1985-1986)</p>
+          <div className="text-3xl font-bold text-red-700 mb-2">
+            300% → 774%
+          </div>
+          <p className="text-gray-700 font-semibold">
+            Lạm phát tăng vọt (1985-1986)
+          </p>
         </div>
 
         <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 shadow-md text-center">
-          <div className="text-3xl font-bold text-yellow-700 mb-2">Tem phiếu</div>
-          <p className="text-gray-700 font-semibold">Hệ thống phân phối hàng hóa</p>
+          <div className="text-3xl font-bold text-yellow-700 mb-2">
+            Tem phiếu
+          </div>
+          <p className="text-gray-700 font-semibold">
+            Hệ thống phân phối hàng hóa
+          </p>
         </div>
 
         <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-md text-center">
           <div className="text-3xl font-bold text-blue-700 mb-2">Vượt biên</div>
-          <p className="text-gray-700 font-semibold">Hiện tượng xã hội phổ biến</p>
+          <p className="text-gray-700 font-semibold">
+            Hiện tượng xã hội phổ biến
+          </p>
         </div>
       </div>
     </div>
@@ -320,15 +345,21 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </h3>
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
           <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-4 text-center shadow-md">
-            <div className="text-3xl font-bold text-blue-700 mb-2">24-27/6/1991</div>
+            <div className="text-3xl font-bold text-blue-700 mb-2">
+              24-27/6/1991
+            </div>
             <p className="text-gray-700 font-semibold">Thời gian diễn ra</p>
           </div>
-          <div className="text-4xl font-bold text-blue-600 hidden md:block">→</div>
+          <div className="text-4xl font-bold text-blue-600 hidden md:block">
+            →
+          </div>
           <div className="bg-green-50 border-2 border-green-300 rounded-lg p-4 text-center shadow-md">
             <div className="text-2xl font-bold text-green-700 mb-2">Hà Nội</div>
             <p className="text-gray-700 font-semibold">Địa điểm</p>
           </div>
-          <div className="text-4xl font-bold text-blue-600 hidden md:block">→</div>
+          <div className="text-4xl font-bold text-blue-600 hidden md:block">
+            →
+          </div>
           <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4 text-center shadow-md">
             <div className="text-lg font-bold text-red-700 mb-2">Đỗ Mười</div>
             <p className="text-gray-700 font-semibold">Tổng Bí thư</p>
@@ -343,13 +374,21 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </h3>
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md text-center">
-            <div className="text-4xl font-bold text-green-700 mb-2">393.3% → 67.4%</div>
-            <p className="text-gray-700 font-semibold">Lạm phát giảm mạnh (1988-1990)</p>
+            <div className="text-4xl font-bold text-green-700 mb-2">
+              393.3% → 67.4%
+            </div>
+            <p className="text-gray-700 font-semibold">
+              Lạm phát giảm mạnh (1988-1990)
+            </p>
           </div>
 
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md text-center">
-            <div className="text-2xl font-bold text-blue-700 mb-2">Kinh tế thị trường</div>
-            <p className="text-gray-700 font-semibold">Hàng hóa nhiều thành phần</p>
+            <div className="text-2xl font-bold text-blue-700 mb-2">
+              Kinh tế thị trường
+            </div>
+            <p className="text-gray-700 font-semibold">
+              Hàng hóa nhiều thành phần
+            </p>
           </div>
         </div>
       </div>
@@ -361,13 +400,16 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </h3>
         <div className="space-y-3">
           {[
-            'Nắm vững ngọn cờ độc lập dân tộc và chủ nghĩa xã hội',
-            'Sự nghiệp cách mạng là của nhân dân, do nhân dân, vì nhân dân',
-            'Không ngừng củng cố, tăng cường đoàn kết: toàn Đảng, toàn dân, dân tộc, quốc tế',
-            'Kết hợp sức mạnh dân tộc với sức mạnh thời đại',
-            'Sự lãnh đạo đúng đắn của Đảng bảo đảm thắng lợi của cách mạng Việt Nam'
+            "Nắm vững ngọn cờ độc lập dân tộc và chủ nghĩa xã hội",
+            "Sự nghiệp cách mạng là của nhân dân, do nhân dân, vì nhân dân",
+            "Không ngừng củng cố, tăng cường đoàn kết: toàn Đảng, toàn dân, dân tộc, quốc tế",
+            "Kết hợp sức mạnh dân tộc với sức mạnh thời đại",
+            "Sự lãnh đạo đúng đắn của Đảng bảo đảm thắng lợi của cách mạng Việt Nam",
           ].map((item, index) => (
-            <div key={index} className="bg-gradient-to-r from-blue-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-blue-500 flex items-center gap-3">
+            <div
+              key={index}
+              className="bg-gradient-to-r from-blue-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-blue-500 flex items-center gap-3"
+            >
               <div className="bg-blue-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
                 {index + 1}
               </div>
@@ -385,60 +427,91 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md border-l-4 border-red-500">
             <div className="flex items-start gap-3">
-              <div className="bg-red-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">1</div>
+              <div className="bg-red-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                1
+              </div>
               <div>
                 <h4 className="font-bold text-red-700 mb-1">Chính trị</h4>
-                <p className="text-gray-700 text-sm">Do nhân dân lao động làm chủ</p>
+                <p className="text-gray-700 text-sm">
+                  Do nhân dân lao động làm chủ
+                </p>
               </div>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md border-l-4 border-blue-500">
             <div className="flex items-start gap-3">
-              <div className="bg-blue-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">2</div>
+              <div className="bg-blue-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                2
+              </div>
               <div>
                 <h4 className="font-bold text-blue-700 mb-1">Kinh tế</h4>
-                <p className="text-gray-700 text-sm">Nền kinh tế phát triển cao, lực lượng sản xuất hiện đại, công hữu về TLSX</p>
+                <p className="text-gray-700 text-sm">
+                  Nền kinh tế phát triển cao, lực lượng sản xuất hiện đại, công
+                  hữu về TLSX
+                </p>
               </div>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md border-l-4 border-green-500">
             <div className="flex items-start gap-3">
-              <div className="bg-green-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">3</div>
+              <div className="bg-green-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                3
+              </div>
               <div>
                 <h4 className="font-bold text-green-700 mb-1">Văn hóa</h4>
-                <p className="text-gray-700 text-sm">Nền văn hóa tiên tiến, đậm đà bản sắc dân tộc</p>
+                <p className="text-gray-700 text-sm">
+                  Nền văn hóa tiên tiến, đậm đà bản sắc dân tộc
+                </p>
               </div>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-5 shadow-md border-l-4 border-yellow-500">
             <div className="flex items-start gap-3">
-              <div className="bg-yellow-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">4</div>
+              <div className="bg-yellow-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                4
+              </div>
               <div>
                 <h4 className="font-bold text-yellow-700 mb-1">Xã hội</h4>
-                <p className="text-gray-700 text-sm">Con người được giải phóng, làm theo năng lực, hưởng theo lao động</p>
+                <p className="text-gray-700 text-sm">
+                  Con người được giải phóng, làm theo năng lực, hưởng theo lao
+                  động
+                </p>
               </div>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-5 shadow-md border-l-4 border-purple-500">
             <div className="flex items-start gap-3">
-              <div className="bg-purple-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">5</div>
+              <div className="bg-purple-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                5
+              </div>
               <div>
-                <h4 className="font-bold text-purple-700 mb-1">Đoàn kết dân tộc</h4>
-                <p className="text-gray-700 text-sm">Các dân tộc bình đẳng, đoàn kết và giúp đỡ lẫn nhau cùng tiến bộ</p>
+                <h4 className="font-bold text-purple-700 mb-1">
+                  Đoàn kết dân tộc
+                </h4>
+                <p className="text-gray-700 text-sm">
+                  Các dân tộc bình đẳng, đoàn kết và giúp đỡ lẫn nhau cùng tiến
+                  bộ
+                </p>
               </div>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-lg p-5 shadow-md border-l-4 border-indigo-500">
             <div className="flex items-start gap-3">
-              <div className="bg-indigo-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">6</div>
+              <div className="bg-indigo-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                6
+              </div>
               <div>
-                <h4 className="font-bold text-indigo-700 mb-1">Quan hệ quốc tế</h4>
-                <p className="text-gray-700 text-sm">Hữu nghị và hợp tác với nhân dân tất cả các nước</p>
+                <h4 className="font-bold text-indigo-700 mb-1">
+                  Quan hệ quốc tế
+                </h4>
+                <p className="text-gray-700 text-sm">
+                  Hữu nghị và hợp tác với nhân dân tất cả các nước
+                </p>
               </div>
             </div>
           </div>
@@ -452,15 +525,18 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </h3>
         <div className="space-y-3">
           {[
-            'Xây dựng Nhà nước XHCN',
-            'Công nghiệp hóa gắn liền với phát triển nông nghiệp toàn diện',
-            'Thiết lập quan hệ sản xuất XHCN đa dạng về hình thức sở hữu',
-            'Phát triển nền kinh tế hàng hóa nhiều thành phần theo định hướng XHCN',
-            'Tiến hành cách mạng XHCN trên lĩnh vực tư tưởng, văn hóa',
-            'Thực hiện chính sách đại đoàn kết dân tộc',
-            'Thực hiện hai nhiệm vụ chiến lược xây dựng và bảo vệ Tổ quốc'
+            "Xây dựng Nhà nước XHCN",
+            "Công nghiệp hóa gắn liền với phát triển nông nghiệp toàn diện",
+            "Thiết lập quan hệ sản xuất XHCN đa dạng về hình thức sở hữu",
+            "Phát triển nền kinh tế hàng hóa nhiều thành phần theo định hướng XHCN",
+            "Tiến hành cách mạng XHCN trên lĩnh vực tư tưởng, văn hóa",
+            "Thực hiện chính sách đại đoàn kết dân tộc",
+            "Thực hiện hai nhiệm vụ chiến lược xây dựng và bảo vệ Tổ quốc",
           ].map((item, index) => (
-            <div key={index} className="bg-gradient-to-r from-green-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-green-500 flex items-center gap-3">
+            <div
+              key={index}
+              className="bg-gradient-to-r from-green-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-green-500 flex items-center gap-3"
+            >
               <div className="bg-green-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
                 {index + 1}
               </div>
@@ -480,20 +556,32 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </p>
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-white rounded-lg p-4 shadow-md">
-            <h4 className="font-bold text-blue-700 mb-2">Quyền lực thống nhất</h4>
-            <p className="text-gray-700 text-sm">Phân công và phối hợp ba quyền: lập pháp, hành pháp, tư pháp</p>
+            <h4 className="font-bold text-blue-700 mb-2">
+              Quyền lực thống nhất
+            </h4>
+            <p className="text-gray-700 text-sm">
+              Phân công và phối hợp ba quyền: lập pháp, hành pháp, tư pháp
+            </p>
           </div>
           <div className="bg-white rounded-lg p-4 shadow-md">
-            <h4 className="font-bold text-blue-700 mb-2">Quản lý bằng pháp luật</h4>
-            <p className="text-gray-700 text-sm">Kết hợp với giáo dục, nâng cao đạo đức xã hội</p>
+            <h4 className="font-bold text-blue-700 mb-2">
+              Quản lý bằng pháp luật
+            </h4>
+            <p className="text-gray-700 text-sm">
+              Kết hợp với giáo dục, nâng cao đạo đức xã hội
+            </p>
           </div>
           <div className="bg-white rounded-lg p-4 shadow-md">
             <h4 className="font-bold text-blue-700 mb-2">Kết hợp biện pháp</h4>
-            <p className="text-gray-700 text-sm">Hành chính với giáo dục tư tưởng, nâng cao dân trí</p>
+            <p className="text-gray-700 text-sm">
+              Hành chính với giáo dục tư tưởng, nâng cao dân trí
+            </p>
           </div>
           <div className="bg-white rounded-lg p-4 shadow-md">
             <h4 className="font-bold text-blue-700 mb-2">Kết hợp sức mạnh</h4>
-            <p className="text-gray-700 text-sm">Sức mạnh pháp luật với sức mạnh quần chúng</p>
+            <p className="text-gray-700 text-sm">
+              Sức mạnh pháp luật với sức mạnh quần chúng
+            </p>
           </div>
         </div>
       </div>
@@ -506,39 +594,61 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md border-l-4 border-red-500">
             <div className="flex items-start gap-3">
-              <div className="bg-red-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">1</div>
+              <div className="bg-red-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                1
+              </div>
               <div>
-                <h4 className="font-bold text-red-700 mb-1">Tụt hậu về kinh tế</h4>
-                <p className="text-gray-700 text-sm">Nguy cơ tụt hậu xa hơn so với khu vực và thế giới</p>
+                <h4 className="font-bold text-red-700 mb-1">
+                  Tụt hậu về kinh tế
+                </h4>
+                <p className="text-gray-700 text-sm">
+                  Nguy cơ tụt hậu xa hơn so với khu vực và thế giới
+                </p>
               </div>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg p-5 shadow-md border-l-4 border-orange-500">
             <div className="flex items-start gap-3">
-              <div className="bg-orange-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">2</div>
+              <div className="bg-orange-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                2
+              </div>
               <div>
-                <h4 className="font-bold text-orange-700 mb-1">Chệch hướng XHCN</h4>
-                <p className="text-gray-700 text-sm">Nếu không khắc phục lệch lạc trong chủ trương, chính sách</p>
+                <h4 className="font-bold text-orange-700 mb-1">
+                  Chệch hướng XHCN
+                </h4>
+                <p className="text-gray-700 text-sm">
+                  Nếu không khắc phục lệch lạc trong chủ trương, chính sách
+                </p>
               </div>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-5 shadow-md border-l-4 border-yellow-500">
             <div className="flex items-start gap-3">
-              <div className="bg-yellow-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">3</div>
+              <div className="bg-yellow-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                3
+              </div>
               <div>
-                <h4 className="font-bold text-yellow-700 mb-1">Tham nhũng, quan liêu</h4>
-                <p className="text-gray-700 text-sm">Nạn tham nhũng và tệ quan liêu</p>
+                <h4 className="font-bold text-yellow-700 mb-1">
+                  Tham nhũng, quan liêu
+                </h4>
+                <p className="text-gray-700 text-sm">
+                  Nạn tham nhũng và tệ quan liêu
+                </p>
               </div>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg p-5 shadow-md border-l-4 border-purple-500">
             <div className="flex items-start gap-3">
-              <div className="bg-purple-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">4</div>
+              <div className="bg-purple-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                4
+              </div>
               <div>
-                <h4 className="font-bold text-purple-700 mb-1">Diễn biến hòa bình</h4>
+                <h4 className="font-bold text-purple-700 mb-1">
+                  Diễn biến hòa bình
+                </h4>
                 <p className="text-gray-700 text-sm">Các thế lực thù địch</p>
               </div>
             </div>
@@ -559,19 +669,25 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           </div>
 
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md text-center">
-            <div className="text-4xl font-bold text-blue-700 mb-2">67,1% → 12,7%</div>
+            <div className="text-4xl font-bold text-blue-700 mb-2">
+              67,1% → 12,7%
+            </div>
             <p className="text-gray-700 font-semibold">Lạm phát giảm</p>
             <p className="text-gray-600 text-sm mt-1">(1991-1995)</p>
           </div>
 
           <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-5 shadow-md text-center">
-            <div className="text-3xl font-bold text-yellow-700 mb-2">Tích lũy nội bộ</div>
+            <div className="text-3xl font-bold text-yellow-700 mb-2">
+              Tích lũy nội bộ
+            </div>
             <p className="text-gray-700 font-semibold">Bắt đầu có tích lũy</p>
             <p className="text-gray-600 text-sm mt-1">Từ nội bộ nền kinh tế</p>
           </div>
 
           <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md text-center">
-            <div className="text-3xl font-bold text-red-700 mb-2">28/7/1995</div>
+            <div className="text-3xl font-bold text-red-700 mb-2">
+              28/7/1995
+            </div>
             <p className="text-gray-700 font-semibold">Gia nhập ASEAN</p>
             <p className="text-gray-600 text-sm mt-1">Thành viên đầy đủ</p>
           </div>
@@ -586,29 +702,43 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         <div className="space-y-3">
           <div className="bg-gradient-to-r from-red-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-red-500">
             <div className="flex items-center gap-3">
-              <div className="bg-red-500 text-white font-bold rounded-lg px-3 py-1 text-sm">11/1991</div>
-              <p className="text-gray-800">Bình thường hóa quan hệ Việt Nam - Trung Quốc</p>
+              <div className="bg-red-500 text-white font-bold rounded-lg px-3 py-1 text-sm">
+                11/1991
+              </div>
+              <p className="text-gray-800">
+                Bình thường hóa quan hệ Việt Nam - Trung Quốc
+              </p>
             </div>
           </div>
 
           <div className="bg-gradient-to-r from-blue-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-blue-500">
             <div className="flex items-center gap-3">
-              <div className="bg-blue-500 text-white font-bold rounded-lg px-3 py-1 text-sm">28/7/1995</div>
+              <div className="bg-blue-500 text-white font-bold rounded-lg px-3 py-1 text-sm">
+                28/7/1995
+              </div>
               <p className="text-gray-800">Gia nhập ASEAN (thành viên thứ 7)</p>
             </div>
           </div>
 
           <div className="bg-gradient-to-r from-green-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-green-500">
             <div className="flex items-center gap-3">
-              <div className="bg-green-500 text-white font-bold rounded-lg px-3 py-1 text-sm">11/7/1995</div>
-              <p className="text-gray-800">Thiết lập quan hệ ngoại giao Việt Nam - Hoa Kỳ</p>
+              <div className="bg-green-500 text-white font-bold rounded-lg px-3 py-1 text-sm">
+                11/7/1995
+              </div>
+              <p className="text-gray-800">
+                Thiết lập quan hệ ngoại giao Việt Nam - Hoa Kỳ
+              </p>
             </div>
           </div>
 
           <div className="bg-gradient-to-r from-yellow-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-yellow-500">
             <div className="flex items-center gap-3">
-              <div className="bg-yellow-500 text-white font-bold rounded-lg px-3 py-1 text-sm">Cuối 1995</div>
-              <p className="text-gray-800">Quan hệ ngoại giao với 160 nước, buôn bán trên 100 nước</p>
+              <div className="bg-yellow-500 text-white font-bold rounded-lg px-3 py-1 text-sm">
+                Cuối 1995
+              </div>
+              <p className="text-gray-800">
+                Quan hệ ngoại giao với 160 nước, buôn bán trên 100 nước
+              </p>
             </div>
           </div>
         </div>
@@ -624,7 +754,8 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
             Công Nghiệp Hóa - Hiện Đại Hóa
           </div>
           <p className="text-gray-800 max-w-2xl mx-auto">
-            Con đường tất yếu để thoát khỏi nguy cơ tụt hậu, đưa đất nước phát triển
+            Con đường tất yếu để thoát khỏi nguy cơ tụt hậu, đưa đất nước phát
+            triển
           </p>
         </div>
       </div>
@@ -642,7 +773,9 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         <div className="grid md:grid-cols-3 gap-4 mb-6">
           <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md text-center">
             <div className="text-sm text-gray-600 mb-1">1986</div>
-            <div className="text-3xl font-bold text-red-700 mb-2">430,2 USD</div>
+            <div className="text-3xl font-bold text-red-700 mb-2">
+              430,2 USD
+            </div>
             <p className="text-gray-700 text-sm font-semibold">GDP/người</p>
           </div>
 
@@ -652,16 +785,24 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
 
           <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md text-center">
             <div className="text-sm text-gray-600 mb-1">2023</div>
-            <div className="text-3xl font-bold text-green-700 mb-2">4.282 USD</div>
-            <p className="text-gray-700 text-sm font-semibold">Gấp hơn 10 lần</p>
+            <div className="text-3xl font-bold text-green-700 mb-2">
+              4.282 USD
+            </div>
+            <p className="text-gray-700 text-sm font-semibold">
+              Gấp hơn 10 lần
+            </p>
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-4 shadow-md text-center">
-            <div className="text-4xl font-bold text-blue-700 mb-2">430 tỷ USD</div>
+            <div className="text-4xl font-bold text-blue-700 mb-2">
+              430 tỷ USD
+            </div>
             <p className="text-gray-700 font-semibold">GDP 2023</p>
-            <p className="text-gray-600 text-sm">Thứ 5 ASEAN, thứ 35 thế giới</p>
+            <p className="text-gray-600 text-sm">
+              Thứ 5 ASEAN, thứ 35 thế giới
+            </p>
           </div>
 
           <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-4 shadow-md text-center">
@@ -679,22 +820,34 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </h3>
         <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-lg p-6 shadow-md border-2 border-indigo-300 mb-4">
           <div className="text-center">
-            <div className="text-5xl font-bold text-indigo-700 mb-3">786,29 tỷ USD</div>
-            <p className="text-gray-800 font-semibold text-lg">Tổng kim ngạch xuất nhập khẩu 2024</p>
+            <div className="text-5xl font-bold text-indigo-700 mb-3">
+              786,29 tỷ USD
+            </div>
+            <p className="text-gray-800 font-semibold text-lg">
+              Tổng kim ngạch xuất nhập khẩu 2024
+            </p>
             <p className="text-indigo-600 mt-2">Tăng 15,4% so với 2023</p>
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md text-center">
-            <div className="text-3xl font-bold text-green-700 mb-2">405,53 tỷ USD</div>
+            <div className="text-3xl font-bold text-green-700 mb-2">
+              405,53 tỷ USD
+            </div>
             <p className="text-gray-700 font-semibold">Xuất khẩu 2024</p>
           </div>
 
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md text-center">
-            <div className="text-3xl font-bold text-blue-700 mb-2">25,35 tỷ USD</div>
-            <p className="text-gray-700 font-semibold">Vốn FDI thực hiện 2024</p>
-            <p className="text-gray-600 text-sm mt-1">Cao nhất từ trước đến nay</p>
+            <div className="text-3xl font-bold text-blue-700 mb-2">
+              25,35 tỷ USD
+            </div>
+            <p className="text-gray-700 font-semibold">
+              Vốn FDI thực hiện 2024
+            </p>
+            <p className="text-gray-600 text-sm mt-1">
+              Cao nhất từ trước đến nay
+            </p>
           </div>
         </div>
       </div>
@@ -717,7 +870,9 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           </div>
 
           <div className="bg-white rounded-lg p-4 shadow-md text-center">
-            <div className="text-2xl font-bold text-purple-700 mb-2">Nhanh nhất</div>
+            <div className="text-2xl font-bold text-purple-700 mb-2">
+              Nhanh nhất
+            </div>
             <p className="text-gray-700 font-semibold">Đông Nam Á</p>
             <p className="text-gray-600 text-sm">2022-2023</p>
           </div>
@@ -747,7 +902,8 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
 
         <div className="bg-gradient-to-r from-green-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-green-500 text-center">
           <p className="text-gray-800 font-semibold">
-            14 năm liên tiếp có thành tích đổi mới vượt trội so với mức phát triển
+            14 năm liên tiếp có thành tích đổi mới vượt trội so với mức phát
+            triển
           </p>
         </div>
       </div>
@@ -799,7 +955,9 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
 
         <div className="text-center">
           <div className="text-5xl font-bold text-blue-700 mb-2">107/193</div>
-          <p className="text-gray-800 font-semibold">Xếp hạng thế giới (2022)</p>
+          <p className="text-gray-800 font-semibold">
+            Xếp hạng thế giới (2022)
+          </p>
           <p className="text-blue-600">Tăng 8 bậc so với năm trước</p>
         </div>
       </div>
@@ -812,14 +970,18 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 shadow-md border-2 border-yellow-300 mb-4">
           <div className="text-center">
             <div className="text-6xl font-bold text-yellow-700 mb-3">39</div>
-            <p className="text-gray-800 font-semibold text-lg">Di sản được UNESCO vinh danh</p>
+            <p className="text-gray-800 font-semibold text-lg">
+              Di sản được UNESCO vinh danh
+            </p>
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-3">
           <div className="bg-gradient-to-r from-red-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-red-500">
             <div className="text-2xl font-bold text-red-700 mb-1">9</div>
-            <p className="text-gray-700 text-sm">Di sản văn hóa và thiên nhiên thế giới</p>
+            <p className="text-gray-700 text-sm">
+              Di sản văn hóa và thiên nhiên thế giới
+            </p>
           </div>
 
           <div className="bg-gradient-to-r from-blue-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-blue-500">
@@ -848,8 +1010,12 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md border-l-4 border-blue-500">
             <div className="flex items-center justify-between">
               <div>
-                <h4 className="font-bold text-blue-700 mb-1">HĐBA LHQ 2008-2009</h4>
-                <p className="text-gray-700 text-sm">Ủy viên không thường trực - Nhiệm kỳ đầu</p>
+                <h4 className="font-bold text-blue-700 mb-1">
+                  HĐBA LHQ 2008-2009
+                </h4>
+                <p className="text-gray-700 text-sm">
+                  Ủy viên không thường trực - Nhiệm kỳ đầu
+                </p>
               </div>
             </div>
           </div>
@@ -857,8 +1023,12 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md border-l-4 border-green-500">
             <div className="flex items-center justify-between">
               <div>
-                <h4 className="font-bold text-green-700 mb-1">HĐBA LHQ 2020-2021</h4>
-                <p className="text-gray-700 text-sm">Được bầu với 192/193 phiếu</p>
+                <h4 className="font-bold text-green-700 mb-1">
+                  HĐBA LHQ 2020-2021
+                </h4>
+                <p className="text-gray-700 text-sm">
+                  Được bầu với 192/193 phiếu
+                </p>
               </div>
               <div className="bg-green-600 text-white font-bold rounded-lg px-4 py-2">
                 192/193
@@ -868,7 +1038,9 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
 
           <div className="bg-gradient-to-r from-indigo-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-indigo-500">
             <h4 className="font-bold text-indigo-700 mb-2">Nghị quyết 2573</h4>
-            <p className="text-gray-700 text-sm">Bảo vệ cơ sở hạ tầng thiết yếu - 15/15 nước đồng bảo trợ</p>
+            <p className="text-gray-700 text-sm">
+              Bảo vệ cơ sở hạ tầng thiết yếu - 15/15 nước đồng bảo trợ
+            </p>
           </div>
         </div>
       </div>
@@ -880,8 +1052,12 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </h3>
         <div className="bg-white rounded-lg p-4 shadow-md mb-4 text-center">
           <div className="text-5xl font-bold text-red-700 mb-2">14</div>
-          <p className="text-gray-800 font-semibold">Quan hệ Đối tác Chiến lược Toàn diện</p>
-          <p className="text-gray-600 text-sm mt-2">Bao gồm tất cả 5 Ủy viên thường trực HĐBA LHQ</p>
+          <p className="text-gray-800 font-semibold">
+            Quan hệ Đối tác Chiến lược Toàn diện
+          </p>
+          <p className="text-gray-600 text-sm mt-2">
+            Bao gồm tất cả 5 Ủy viên thường trực HĐBA LHQ
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-7 gap-3">
@@ -937,22 +1113,30 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </h3>
         <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 shadow-md border-2 border-green-300 mb-4">
           <div className="text-center mb-4">
-            <div className="text-sm text-gray-600 mb-2">Tăng trưởng giá trị 2019-2023</div>
+            <div className="text-sm text-gray-600 mb-2">
+              Tăng trưởng giá trị 2019-2023
+            </div>
             <div className="text-6xl font-bold text-green-700 mb-2">102%</div>
-            <p className="text-gray-800 font-semibold text-lg">Nhanh nhất thế giới</p>
+            <p className="text-gray-800 font-semibold text-lg">
+              Nhanh nhất thế giới
+            </p>
           </div>
         </div>
 
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md text-center">
             <div className="text-sm text-gray-600 mb-1">2023</div>
-            <div className="text-3xl font-bold text-blue-700 mb-2">498,13 tỷ USD</div>
+            <div className="text-3xl font-bold text-blue-700 mb-2">
+              498,13 tỷ USD
+            </div>
             <p className="text-gray-700 font-semibold">Xếp thứ 33/121</p>
           </div>
 
           <div className="bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-lg p-5 shadow-md text-center">
             <div className="text-sm text-gray-600 mb-1">2024</div>
-            <div className="text-3xl font-bold text-indigo-700 mb-2">507 tỷ USD</div>
+            <div className="text-3xl font-bold text-indigo-700 mb-2">
+              507 tỷ USD
+            </div>
             <p className="text-gray-700 font-semibold">Xếp thứ 32</p>
           </div>
         </div>
@@ -973,16 +1157,22 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md text-center">
             <div className="text-sm text-gray-600 mb-1">Đến nay</div>
             <div className="text-3xl font-bold text-green-700 mb-2">1.083</div>
-            <p className="text-gray-700 font-semibold">Lượt sĩ quan, quân nhân</p>
+            <p className="text-gray-700 font-semibold">
+              Lượt sĩ quan, quân nhân
+            </p>
           </div>
         </div>
 
         <div className="space-y-3">
           <div className="bg-gradient-to-r from-indigo-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-indigo-500">
-            <p className="text-gray-800">Triển khai Bệnh viện dã chiến cấp 2, Đội Công binh</p>
+            <p className="text-gray-800">
+              Triển khai Bệnh viện dã chiến cấp 2, Đội Công binh
+            </p>
           </div>
           <div className="bg-gradient-to-r from-purple-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-purple-500">
-            <p className="text-gray-800">Được LHQ đánh giá cao về chuyên nghiệp, tinh thần nhân văn</p>
+            <p className="text-gray-800">
+              Được LHQ đánh giá cao về chuyên nghiệp, tinh thần nhân văn
+            </p>
           </div>
         </div>
       </div>
@@ -1019,17 +1209,25 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </h3>
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-6">
           <div className="bg-red-50 border-2 border-red-300 rounded-lg p-4 text-center shadow-md">
-            <div className="text-3xl font-bold text-red-700 mb-2">15-18/12/1986</div>
+            <div className="text-3xl font-bold text-red-700 mb-2">
+              15-18/12/1986
+            </div>
             <p className="text-gray-700 font-semibold">Thời gian diễn ra</p>
           </div>
-          <div className="text-4xl font-bold text-red-600 hidden md:block">→</div>
+          <div className="text-4xl font-bold text-red-600 hidden md:block">
+            →
+          </div>
           <div className="bg-blue-50 border-2 border-blue-300 rounded-lg p-4 text-center shadow-md">
             <div className="text-2xl font-bold text-blue-700 mb-2">Hà Nội</div>
             <p className="text-gray-700 font-semibold">Địa điểm</p>
           </div>
-          <div className="text-4xl font-bold text-red-600 hidden md:block">→</div>
+          <div className="text-4xl font-bold text-red-600 hidden md:block">
+            →
+          </div>
           <div className="bg-green-50 border-2 border-green-300 rounded-lg p-4 text-center shadow-md">
-            <div className="text-lg font-bold text-green-700 mb-2">Nguyễn Văn Linh</div>
+            <div className="text-lg font-bold text-green-700 mb-2">
+              Nguyễn Văn Linh
+            </div>
             <p className="text-gray-700 font-semibold">Tổng Bí thư</p>
           </div>
         </div>
@@ -1043,36 +1241,60 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md border-l-4 border-blue-500">
             <div className="flex items-start gap-3">
-              <div className="bg-blue-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">1</div>
+              <div className="bg-blue-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                1
+              </div>
               <p className="text-gray-800 leading-relaxed">
-                Quán triệt tư tưởng <span className="font-bold text-blue-700">"lấy dân làm gốc"</span>
+                Quán triệt tư tưởng{" "}
+                <span className="font-bold text-blue-700">
+                  "lấy dân làm gốc"
+                </span>
               </p>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md border-l-4 border-green-500">
             <div className="flex items-start gap-3">
-              <div className="bg-green-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">2</div>
+              <div className="bg-green-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                2
+              </div>
               <p className="text-gray-800 leading-relaxed">
-                Xuất phát từ thực tế, tôn trọng <span className="font-bold text-green-700">quy luật khách quan</span>
+                Xuất phát từ thực tế, tôn trọng{" "}
+                <span className="font-bold text-green-700">
+                  quy luật khách quan
+                </span>
               </p>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-5 shadow-md border-l-4 border-yellow-500">
             <div className="flex items-start gap-3">
-              <div className="bg-yellow-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">3</div>
+              <div className="bg-yellow-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                3
+              </div>
               <p className="text-gray-800 leading-relaxed">
-                Kết hợp <span className="font-bold text-yellow-700">sức mạnh dân tộc</span> với <span className="font-bold text-yellow-700">sức mạnh thời đại</span>
+                Kết hợp{" "}
+                <span className="font-bold text-yellow-700">
+                  sức mạnh dân tộc
+                </span>{" "}
+                với{" "}
+                <span className="font-bold text-yellow-700">
+                  sức mạnh thời đại
+                </span>
               </p>
             </div>
           </div>
 
           <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md border-l-4 border-red-500">
             <div className="flex items-start gap-3">
-              <div className="bg-red-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">4</div>
+              <div className="bg-red-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0 mt-1">
+                4
+              </div>
               <p className="text-gray-800 leading-relaxed">
-                Xây dựng Đảng ngang tầm đảng <span className="font-bold text-red-700">cầm quyền lãnh đạo XHCN</span>
+                Xây dựng Đảng ngang tầm đảng{" "}
+                <span className="font-bold text-red-700">
+                  cầm quyền lãnh đạo XHCN
+                </span>
               </p>
             </div>
           </div>
@@ -1087,20 +1309,32 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         <div className="grid md:grid-cols-3 gap-4">
           <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-6 shadow-md text-center">
             <div className="text-5xl mb-3">🌾</div>
-            <h4 className="text-xl font-bold text-green-700 mb-2">Lương thực - Thực phẩm</h4>
-            <p className="text-gray-700 text-sm">Đảm bảo an ninh lương thực quốc gia</p>
+            <h4 className="text-xl font-bold text-green-700 mb-2">
+              Lương thực - Thực phẩm
+            </h4>
+            <p className="text-gray-700 text-sm">
+              Đảm bảo an ninh lương thực quốc gia
+            </p>
           </div>
 
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-6 shadow-md text-center">
             <div className="text-5xl mb-3">🏭</div>
-            <h4 className="text-xl font-bold text-blue-700 mb-2">Hàng tiêu dùng</h4>
-            <p className="text-gray-700 text-sm">Phát triển công nghiệp sản xuất hàng tiêu dùng</p>
+            <h4 className="text-xl font-bold text-blue-700 mb-2">
+              Hàng tiêu dùng
+            </h4>
+            <p className="text-gray-700 text-sm">
+              Phát triển công nghiệp sản xuất hàng tiêu dùng
+            </p>
           </div>
 
           <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-6 shadow-md text-center">
             <div className="text-5xl mb-3">📦</div>
-            <h4 className="text-xl font-bold text-yellow-700 mb-2">Hàng xuất khẩu</h4>
-            <p className="text-gray-700 text-sm">Mở rộng quan hệ kinh tế đối ngoại</p>
+            <h4 className="text-xl font-bold text-yellow-700 mb-2">
+              Hàng xuất khẩu
+            </h4>
+            <p className="text-gray-700 text-sm">
+              Mở rộng quan hệ kinh tế đối ngoại
+            </p>
           </div>
         </div>
       </div>
@@ -1112,13 +1346,16 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </h3>
         <div className="space-y-3">
           {[
-            'Bố trí lại cơ cấu sản xuất',
-            'Điều chỉnh cơ cấu đầu tư xây dựng và củng cố quan hệ sản xuất XHCN',
-            'Sử dụng và cải tạo đúng đắn các thành phần kinh tế',
-            'Đổi mới cơ chế quản lý kinh tế, phát huy động lực khoa học kỹ thuật',
-            'Mở rộng và nâng cao hiệu quả kinh tế đối ngoại'
+            "Bố trí lại cơ cấu sản xuất",
+            "Điều chỉnh cơ cấu đầu tư xây dựng và củng cố quan hệ sản xuất XHCN",
+            "Sử dụng và cải tạo đúng đắn các thành phần kinh tế",
+            "Đổi mới cơ chế quản lý kinh tế, phát huy động lực khoa học kỹ thuật",
+            "Mở rộng và nâng cao hiệu quả kinh tế đối ngoại",
           ].map((item, index) => (
-            <div key={index} className="bg-gradient-to-r from-red-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-red-500 flex items-center gap-3">
+            <div
+              key={index}
+              className="bg-gradient-to-r from-red-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-red-500 flex items-center gap-3"
+            >
               <div className="bg-red-500 text-white font-bold rounded-full w-8 h-8 flex items-center justify-center flex-shrink-0">
                 {index + 1}
               </div>
@@ -1138,12 +1375,16 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </p>
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-white rounded-lg p-4 shadow-md">
-            <h4 className="font-bold text-green-700 mb-2">Khoán sản phẩm cuối cùng</h4>
+            <h4 className="font-bold text-green-700 mb-2">
+              Khoán sản phẩm cuối cùng
+            </h4>
             <p className="text-gray-700 text-sm">Đến nhóm hộ và hộ xã viên</p>
           </div>
           <div className="bg-white rounded-lg p-4 shadow-md">
             <h4 className="font-bold text-green-700 mb-2">Ổn định 15 năm</h4>
-            <p className="text-gray-700 text-sm">Người nông dân được canh tác lâu dài</p>
+            <p className="text-gray-700 text-sm">
+              Người nông dân được canh tác lâu dài
+            </p>
           </div>
         </div>
       </div>
@@ -1155,22 +1396,30 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </h3>
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-lg p-5 shadow-md text-center">
-            <div className="text-4xl font-bold text-red-700 mb-2">774.7% → 67.1%</div>
+            <div className="text-4xl font-bold text-red-700 mb-2">
+              774.7% → 67.1%
+            </div>
             <p className="text-gray-700 font-semibold">Lạm phát giảm mạnh</p>
           </div>
 
           <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-lg p-5 shadow-md text-center">
             <div className="text-3xl font-bold text-green-700 mb-2">1989</div>
-            <p className="text-gray-700 font-semibold">Tự chủ lương thực, có xuất khẩu</p>
+            <p className="text-gray-700 font-semibold">
+              Tự chủ lương thực, có xuất khẩu
+            </p>
           </div>
 
           <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg p-5 shadow-md text-center">
             <div className="text-3xl font-bold text-blue-700 mb-2">1988</div>
-            <p className="text-gray-700 font-semibold">Xóa bỏ chế độ tem phiếu</p>
+            <p className="text-gray-700 font-semibold">
+              Xóa bỏ chế độ tem phiếu
+            </p>
           </div>
 
           <div className="bg-gradient-to-br from-yellow-50 to-yellow-100 rounded-lg p-5 shadow-md text-center">
-            <div className="text-2xl font-bold text-yellow-700 mb-2">Kinh tế thị trường</div>
+            <div className="text-2xl font-bold text-yellow-700 mb-2">
+              Kinh tế thị trường
+            </div>
             <p className="text-gray-700 font-semibold">Cơ chế mới hình thành</p>
           </div>
         </div>
@@ -1179,35 +1428,48 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
   );
 
   return (
-    <div 
+    <div
       className="fixed inset-0 bg-black bg-opacity-60 z-50 flex justify-center items-center transition-opacity duration-300"
       onClick={onClose}
     >
-      <div 
+      <div
         className="bg-gray-50 w-full h-full overflow-y-auto transform transition-all duration-300 animate-modal-enter"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="sticky top-0 bg-gradient-to-r from-red-600 to-red-700 text-white px-8 py-5 border-b border-red-800 flex justify-between items-center shadow-md z-10">
           <div>
-            <p className="text-sm font-medium text-red-100 mb-1">{event.period}</p>
+            <p className="text-sm font-medium text-red-100 mb-1">
+              {event.period}
+            </p>
             <h2 className="text-2xl font-bold">{event.title}</h2>
           </div>
-          <button 
-            onClick={onClose} 
+          <button
+            onClick={onClose}
             className="text-white hover:text-red-200 transition-colors p-2 hover:bg-red-800 rounded-full"
             aria-label="Đóng"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path>
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              ></path>
             </svg>
           </button>
         </div>
 
         <div className="px-12 py-10 max-w-7xl mx-auto">
           <div className="mb-10">
-            <img 
+            <img
               src={event.imageUrl}
-              alt={event.title} 
+              alt={event.title}
               className="w-full h-auto max-h-[500px] object-contain rounded-lg shadow-lg bg-gray-100 mx-auto"
             />
             {event.image_description && (
@@ -1237,7 +1499,11 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           {isNgayNay && <NgayNayVisualization />}
 
           <div className="prose prose-lg max-w-none bg-white rounded-lg shadow-md p-6">
-            {formatDetails(isPre1986 ? getVietnamContextAndRest(event.details) : event.details)}
+            {formatDetails(
+              isPre1986
+                ? getVietnamContextAndRest(event.details)
+                : event.details,
+            )}
           </div>
         </div>
 
