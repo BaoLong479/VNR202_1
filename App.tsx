@@ -117,15 +117,30 @@ const App: React.FC = () => {
   return (
     <main>
       {renderContent()}
-      <section className="container mx-auto px-4 py-12 text-center">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Hành Trình Vẫn Tiếp Nối</h2>
-        <p className="max-w-3xl mx-auto text-gray-600 leading-relaxed">
-            Gần bốn thập kỷ Đổi Mới là một chặng đường đầy thử thách nhưng cũng vô cùng tự hào của dân tộc Việt Nam. Từ một quốc gia bị tàn phá bởi chiến tranh, Việt Nam đã vươn lên mạnh mẽ, hội nhập sâu rộng với thế giới và khẳng định vị thế của mình trên trường quốc tế.
-        </p>
-        <p className="max-w-3xl mx-auto text-gray-600 leading-relaxed mt-4">
-            Những thành tựu đã đạt được là nền tảng vững chắc, là động lực to lớn để chúng ta tiếp tục con đường phía trước, hiện thực hóa khát vọng xây dựng một Việt Nam hùng cường, thịnh vượng, "dân giàu, nước mạnh, dân chủ, công bằng, văn minh" vào năm 2045.
-        </p>
-    </section>
+      <section className="relative py-16 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-red-50 via-amber-50 to-yellow-100 opacity-60"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-red-100/20 via-transparent to-yellow-100/20"></div>
+        
+        <div className="container mx-auto relative z-10">
+          <div className="max-w-4xl mx-auto bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 md:p-12 border border-red-100">
+            <div className="text-center mb-8">
+              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-red-600 to-yellow-600 mb-3">
+                Hành Trình Vẫn Tiếp Nối
+              </h2>
+              <div className="w-32 h-1.5 bg-gradient-to-r from-red-600 to-yellow-500 mx-auto rounded-full"></div>
+            </div>
+            
+            <div className="space-y-6 text-center">
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Gần bốn thập kỷ Đổi Mới là một chặng đường đầy thử thách nhưng cũng vô cùng tự hào của dân tộc Việt Nam. Từ một quốc gia bị tàn phá bởi chiến tranh, Việt Nam đã vươn lên mạnh mẽ, hội nhập sâu rộng với thế giới và khẳng định vị thế của mình trên trường quốc tế.
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                Những thành tựu đã đạt được là nền tảng vững chắc, là động lực to lớn để chúng ta tiếp tục con đường phía trước, hiện thực hóa khát vọng xây dựng một Việt Nam hùng cường, thịnh vượng, <span className="font-bold text-red-700">"dân giàu, nước mạnh, dân chủ, công bằng, văn minh"</span> vào năm <span className="font-bold text-yellow-700">2045</span>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
       <DetailModal event={selectedEvent} onClose={handleCloseDetailModal} />
       {activeQuiz && (
         <QuizModal 
