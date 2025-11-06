@@ -198,6 +198,48 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
   // Component for Pre-1986 Visualization
   const Pre1986Visualization = () => (
     <div className="space-y-8 mb-8">
+      {/* Historical Images Gallery */}
+      <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img 
+            src="/images/tem_phieu_1762456357079.jpg" 
+            alt="Tem phiếu thời bao cấp" 
+            className="w-full h-64 object-cover"
+          />
+          <div className="p-4">
+            <p className="text-gray-700 text-sm text-center font-semibold">
+              Sổ mua lương thực và tem phiếu - Biểu tượng của thời kỳ bao cấp
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img 
+            src="/images/mua_ban_mau_dich_1762456357079.jpg" 
+            alt="Mua bán ở cửa hàng mậu dịch" 
+            className="w-full h-64 object-cover"
+          />
+          <div className="p-4">
+            <p className="text-gray-700 text-sm text-center font-semibold">
+              Cảnh mua bán tại cửa hàng mậu dịch - Hàng hóa khan hiếm
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <img 
+            src="/images/ha_noi_thap_nien_80_1762456357080.jpg" 
+            alt="Hà Nội thập niên 80" 
+            className="w-full h-64 object-cover"
+          />
+          <div className="p-4">
+            <p className="text-gray-700 text-sm text-center font-semibold">
+              Một góc phố Hà Nội thập niên 80 - Đời sống khó khăn, thiếu thốn
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* Inflation Highlight */}
       <div className="bg-white rounded-lg shadow-lg p-6 text-center border-2 border-red-100">
         <h3 className="text-2xl font-bold mb-2 text-gray-800">Đỉnh Điểm Khủng Hoảng</h3>
