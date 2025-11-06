@@ -115,19 +115,18 @@ const App: React.FC = () => {
   }
 
   return (
-    <main className="pb-16">
+    <main>
       {renderContent()}
-      <div className="h-16"></div>
-      <section className="pt-16 pb-16 px-4 bg-gradient-to-b from-amber-50/30 to-red-50/30">
-        <div className="container mx-auto px-4">
+      <section className="py-16 px-4 bg-gradient-to-b from-amber-50/30 to-red-50/30">
+        <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-8 px-4">
-              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-red-600 to-yellow-600 mb-3 leading-tight">
+            <div className="mb-8">
+              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-red-600 to-yellow-600 mb-3">
                 Hành Trình Vẫn Tiếp Nối
               </h2>
               <div className="w-32 h-1 bg-gradient-to-r from-red-600 to-yellow-500 mx-auto rounded-full"></div>
             </div>
-
+            
             <div className="space-y-6">
               <p className="text-gray-700 text-lg leading-relaxed">
                 Gần bốn thập kỷ Đổi Mới là một chặng đường đầy thử thách nhưng cũng vô cùng tự hào của dân tộc Việt Nam. Từ một quốc gia bị tàn phá bởi chiến tranh, Việt Nam đã vươn lên mạnh mẽ, hội nhập sâu rộng với thế giới và khẳng định vị thế của mình trên trường quốc tế.
