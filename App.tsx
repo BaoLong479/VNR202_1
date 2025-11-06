@@ -120,8 +120,8 @@ const App: React.FC = () => {
       <section className="py-16 px-4 bg-gradient-to-b from-amber-50/30 to-red-50/30">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="mb-8">
-              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-red-600 to-yellow-600 mb-3">
+            <div className="mb-8 pt-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-700 via-red-600 to-yellow-600 mb-3" style={{ lineHeight: '1.3' }}>
                 Hành Trình Vẫn Tiếp Nối
               </h2>
               <div className="w-32 h-1 bg-gradient-to-r from-red-600 to-yellow-500 mx-auto rounded-full"></div>
