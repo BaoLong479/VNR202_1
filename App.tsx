@@ -16,6 +16,7 @@ const App: React.FC = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [unlockedStates, setUnlockedStates] = useState<Record<string, boolean[]>>({});
   const [activeQuiz, setActiveQuiz] = useState<{ event: TimelineEvent; questionIndex: number } | null>(null);
+  const [showAIUsageModal, setShowAIUsageModal] = useState(false);
 
   const initializeGameStates = (data: TimelineEvent[]) => {
     const initialStates: Record<string, boolean[]> = {};
@@ -146,6 +147,78 @@ const App: React.FC = () => {
           onCorrect={handleCorrectAnswer}
         />
       )}
+      
+      {/* Info Button */}
+      <button
+        onClick={() => setShowAIUsageModal(true)}
+        className="fixed bottom-6 right-6 w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 flex items-center justify-center text-xl font-bold z-50"
+        aria-label="AI Usage Information"
+      >
+        i
+      </button>
+
+      {/* AI Usage Modal */}
+      {showAIUsageModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+          <div className="bg-white rounded-lg shadow-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div className="p-6">
+              <div className="flex justify-between items-center mb-4">
+                <h2 className="text-2xl font-bold text-gray-800">AI Usage</h2>
+                <button
+                  onClick={() => setShowAIUsageModal(false)}
+                  className="text-gray-500 hover:text-gray-700 text-2xl font-bold"
+                >
+                  ×
+                </button>
+              </div>
+              
+              <div className="space-y-4 text-gray-700">
+                <div className="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                  <h3 className="font-bold text-blue-800 mb-2">Google Gemini AI</h3>
+                  <p className="text-sm">
+                    Ứng dụng này sử dụng Google Gemini AI để tạo nội dung dòng thời gian lịch sử về thành tựu Đổi Mới của Việt Nam.
+                  </p>
+                </div>
+
+                <div className="bg-green-50 border-l-4 border-green-500 p-4 rounded">
+                  <h3 className="font-bold text-green-800 mb-2">Mục đích sử dụng</h3>
+                  <ul className="list-disc list-inside text-sm space-y-1">
+                    <li>Tạo nội dung giáo dục về lịch sử Việt Nam</li>
+                    <li>Sinh câu hỏi quiz tương tác</li>
+                    <li>Tổng hợp thông tin từ các nguồn lịch sử đáng tin cậy</li>
+                  </ul>
+                </div>
+
+                <div className="bg-yellow-50 border-l-4 border-yellow-500 p-4 rounded">
+                  <h3 className="font-bold text-yellow-800 mb-2">Lưu ý</h3>
+                  <p className="text-sm">
+                    Nội dung được tạo bởi AI có thể cần được xác minh với các nguồn lịch sử chính thống. 
+                    Đây là công cụ học tập hỗ trợ, không thay thế tài liệu học tập chính thức.
+                  </p>
+                </div>
+
+                <div className="bg-gray-50 border-l-4 border-gray-500 p-4 rounded">
+                  <h3 className="font-bold text-gray-800 mb-2">Quyền riêng tư</h3>
+                  <p className="text-sm">
+                    Ứng dụng không thu thập thông tin cá nhân của người dùng. 
+                    Tương tác với AI chỉ phục vụ mục đích hiển thị nội dung giáo dục.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-6 text-center">
+                <button
+                  onClick={() => setShowAIUsageModal(false)}
+                  className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                >
+                  Đóng
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       <footer className="text-center py-6 bg-gray-100 border-t mt-12">
         <p className="text-gray-500">Một sản phẩm học tập tương tác về Lịch sử Việt Nam.</p>
       </footer>
