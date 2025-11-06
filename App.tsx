@@ -174,7 +174,7 @@ const App: React.FC = () => {
       {/* Info Button */}
       <button
         onClick={() => setShowAIUsageModal(true)}
-        className="fixed bottom-6 right-6 w-12 h-12 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 flex items-center justify-center text-xl font-bold z-50"
+        className="fixed bottom-4 right-4 w-8 h-8 bg-gray-400 bg-opacity-40 text-white rounded-full shadow-sm hover:bg-opacity-70 hover:shadow-md transition-all duration-300 flex items-center justify-center text-sm font-semibold z-50 backdrop-blur-sm"
         aria-label="AI Usage Information"
       >
         i
