@@ -351,7 +351,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </div>
 
         {/* Hà Nội 1991 Image */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8 flex justify-center">
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
           <img
             src="images/Hà Nội 1991_1762457375271.jpg"
             alt="Hà Nội năm 1991"
@@ -667,7 +667,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </div>
 
         {/* Hà Nội 1991 Image */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8 flex justify-center">
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
           <img
             src="images/Hà Nội 1991_1762457375271.jpg"
             alt="Hà Nội năm 1991"
@@ -700,11 +700,12 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           </div>
 
           {/* Vietnam-China Relations Image */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col items-center">
             <img
               src="images/Tổng bí thư Đỗ Mười tại buổi ký kết bình thường hóa quan hệ với Trung Quốc 1991_1762457375271.jpg"
               alt="Bình thường hóa quan hệ Việt-Trung 1991"
-              className="w-full h-auto object-contain"
+              className="max-w-full h-auto object-contain"
+              style={{ maxHeight: '600px' }}
             />
             <div className="p-4">
               <p className="text-gray-700 text-sm text-center font-semibold">
@@ -723,11 +724,12 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           </div>
 
           {/* ASEAN Membership Image */}
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden flex flex-col items-center">
             <img
               src="images/Việt Nam tham gia ASEAN_1762457375272.jpg"
               alt="Việt Nam gia nhập ASEAN"
-              className="w-full h-auto object-contain"
+              className="max-w-full h-auto object-contain"
+              style={{ maxHeight: '600px' }}
             />
             <div className="p-4">
               <p className="text-gray-700 text-sm text-center font-semibold">
