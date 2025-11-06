@@ -351,17 +351,18 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </div>
 
         {/* Hà Nội 1991 Image */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8 flex justify-center">
           <img
             src="images/Hà Nội 1991_1762457375271.jpg"
             alt="Hà Nội năm 1991"
-            className="w-full h-auto object-contain"
+            className="max-w-full h-auto object-contain"
+            style={{ maxHeight: '500px' }}
           />
-          <div className="p-4">
-            <p className="text-gray-700 text-sm text-center font-semibold">
-              Hà Nội đầu thập niên 90 - Bước vào giai đoạn phát triển mới
-            </p>
-          </div>
+        </div>
+        <div className="text-center mb-8">
+          <p className="text-gray-700 text-sm italic">
+            Hà Nội đầu thập niên 90 - Bước vào giai đoạn phát triển mới
+          </p>
         </div>
       </div>
 
@@ -666,17 +667,18 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
         </div>
 
         {/* Hà Nội 1991 Image */}
-        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+        <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8 flex justify-center">
           <img
             src="images/Hà Nội 1991_1762457375271.jpg"
             alt="Hà Nội năm 1991"
-            className="w-full h-auto object-contain"
+            className="max-w-full h-auto object-contain"
+            style={{ maxHeight: '500px' }}
           />
-          <div className="p-4">
-            <p className="text-gray-700 text-sm text-center font-semibold">
-              Hà Nội đầu thập niên 90 - Bước vào giai đoạn phát triển mới
-            </p>
-          </div>
+        </div>
+        <div className="text-center mb-8">
+          <p className="text-gray-700 text-sm italic">
+            Hà Nội đầu thập niên 90 - Bước vào giai đoạn phát triển mới
+          </p>
         </div>
       </div>
 
@@ -1584,7 +1586,7 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
               {formatDetails(
                 getVietnamContextAndRest(event.details)
                   .split("\n")
-                  .slice(0, getVietnamContextAndRest(event.details).split("\n").findIndex(line => 
+                  .slice(getVietnamContextAndRest(event.details).split("\n").findIndex(line => 
                     line.trim().startsWith("**") && 
                     !line.trim().startsWith("**Bối cảnh Việt Nam:**")
                   ))
