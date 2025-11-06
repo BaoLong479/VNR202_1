@@ -791,20 +791,16 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
       </div>
 
        {/* Agricultural Images - Placeholder */}
-       {/* Add specific agricultural images here if available and needed */}
-       {/* Example: */}
-       {/* 
        <div className="grid md:grid-cols-2 gap-4 mb-8">
          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-           <img src="images/agricultural_image_1.jpg" alt="Nông nghiệp" className="w-full h-64 object-cover"/>
-           <div className="p-4"><p className="text-gray-700 text-sm text-center font-semibold">Nông nghiệp phát triển</p></div>
+           <img src="images/Nông dân trên đồng ruộng_1762457106399.jpg" alt="Nông nghiệp" className="w-full h-64 object-cover"/>
+           <div className="p-4"><p className="text-gray-700 text-sm text-center font-semibold">Nông dân Việt Nam làm việc trên đồng ruộng - Nông nghiệp là mặt trận hàng đầu</p></div>
          </div>
          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-           <img src="images/agricultural_image_2.jpg" alt="Nông nghiệp" className="w-full h-64 object-cover"/>
-           <div className="p-4"><p className="text-gray-700 text-sm text-center font-semibold">Sản xuất nông nghiệp</p></div>
+           <img src="images/Nông nghiệp hiện đại_1762457375271.png" alt="Nông nghiệp" className="w-full h-64 object-cover"/>
+           <div className="p-4"><p className="text-gray-700 text-sm text-center font-semibold">Phát triển nông nghiệp ứng dụng công nghệ hiện đại</p></div>
          </div>
-       </div> 
-       */}
+       </div>
 
     </div>
   );
@@ -1586,8 +1582,8 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
               {formatDetails(
                 getVietnamContextAndRest(event.details)
                   .split("\n")
-                  .slice(getVietnamContextAndRest(event.details).split("\n").findIndex(line => 
-                    line.trim().startsWith("**") && 
+                  .slice(getVietnamContextAndRest(event.details).split("\n").findIndex(line =>
+                    line.trim().startsWith("**") &&
                     !line.trim().startsWith("**Bối cảnh Việt Nam:**")
                   ))
                   .join("\n")
@@ -1656,8 +1652,8 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
               isPre1986
                 ? getVietnamContextAndRest(event.details)
                     .split("\n")
-                    .slice(getVietnamContextAndRest(event.details).split("\n").findIndex(line => 
-                      line.trim().startsWith("**") && 
+                    .slice(getVietnamContextAndRest(event.details).split("\n").findIndex(line =>
+                      line.trim().startsWith("**") &&
                       !line.trim().startsWith("**Bối cảnh Việt Nam:**")
                     ))
                     .join("\n")
