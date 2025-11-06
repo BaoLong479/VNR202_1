@@ -234,7 +234,7 @@ const App: React.FC = () => {
 
       <footer className="text-center py-6 bg-gray-100 border-t mt-12">
         <p className="text-gray-500">
-          Một sản phẩm học tập tương tác về Lịch sử Việt Nam.
+          Một sản phẩm học tập tương tác về Lịch sử Đảng Cộng sản Việt Nam.
         </p>
       </footer>
     </main>
