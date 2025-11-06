@@ -76,7 +76,7 @@ export const TIMELINE_DATA: TimelineEvent[] = [
       },
       {
         question:
-          "Bài học lớn nhất rút ra từ thất bại của cải cách Giá - Lương - Tiền là gg?",
+          "Bài học lớn nhất rút ra từ thất bại của cải cách Giá - Lương - Tiền là gì?",
         options: [
           "Phải có sự giúp đỡ của nước ngoài",
           "Phải tôn trọng các quy luật kinh tế khách quan",
