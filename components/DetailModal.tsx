@@ -773,6 +773,37 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
           </p>
         </div>
       </div>
+
+      {/* Cương lĩnh Image */}
+      <div className="bg-white rounded-lg shadow-lg overflow-hidden mb-8">
+        <img
+          src="images/Cương lĩnh_1762457375271.jpg"
+          alt="Cương lĩnh xây dựng đất nước 1991"
+          className="w-full h-auto object-contain"
+        />
+        <div className="p-4">
+          <p className="text-gray-700 text-sm text-center font-semibold">
+            Cương lĩnh xây dựng đất nước trong thời kỳ quá độ lên chủ nghĩa xã hội (1991)
+          </p>
+        </div>
+      </div>
+
+       {/* Agricultural Images - Placeholder */}
+       {/* Add specific agricultural images here if available and needed */}
+       {/* Example: */}
+       {/* 
+       <div className="grid md:grid-cols-2 gap-4 mb-8">
+         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+           <img src="images/agricultural_image_1.jpg" alt="Nông nghiệp" className="w-full h-64 object-cover"/>
+           <div className="p-4"><p className="text-gray-700 text-sm text-center font-semibold">Nông nghiệp phát triển</p></div>
+         </div>
+         <div className="bg-white rounded-lg shadow-lg overflow-hidden">
+           <img src="images/agricultural_image_2.jpg" alt="Nông nghiệp" className="w-full h-64 object-cover"/>
+           <div className="p-4"><p className="text-gray-700 text-sm text-center font-semibold">Sản xuất nông nghiệp</p></div>
+         </div>
+       </div> 
+       */}
+
     </div>
   );
 
