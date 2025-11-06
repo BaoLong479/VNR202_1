@@ -124,8 +124,12 @@ const DetailModal: React.FC<DetailModalProps> = ({ event, onClose }) => {
       // Check for image captions (italic text starting with *)
       if (trimmedLine.startsWith('*') && trimmedLine.endsWith('*') && !trimmedLine.startsWith('**')) {
         const caption = trimmedLine.slice(1, -1);
+        // Check if this is an image caption (follows an image) or a section header
+        const prevElement = elements[elements.length - 1];
+        const isImageCaption = prevElement && prevElement.key && prevElement.key.toString().startsWith('img-container');
+        
         elements.push(
-          <p key={`caption-${index}`} className="text-center text-gray-600 italic text-sm -mt-4 mb-6">
+          <p key={`caption-${index}`} className={isImageCaption ? "text-center text-gray-600 italic text-sm -mt-4 mb-6" : "text-gray-700 italic mb-3"}>
             {caption}
           </p>
         );
